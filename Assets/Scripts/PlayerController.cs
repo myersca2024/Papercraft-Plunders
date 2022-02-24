@@ -16,12 +16,13 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         timePassed += Time.deltaTime;
 
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-
         if (timePassed >= moveDelay) {
-            timePassed = 0;
-            print("time passed move delay");
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+
+            if (movement.x != 0 || movement.y != 0) {
+                timePassed = 0;
+            }
 
             if (movement.x > 0) {
                 transform.position = transform.position + new Vector3(1, 0);
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour {
                 transform.position = transform.position - new Vector3(1, 0);
             } else if (movement.y > 0) {
                 transform.position = transform.position + new Vector3(0, 0, 1);
-            } else {
+            } else if (movement.y < 0) {
                 transform.position = transform.position - new Vector3(0, 0, 1);
             }
         }
