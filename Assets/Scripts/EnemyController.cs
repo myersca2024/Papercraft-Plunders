@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     public float attackDelay = 1.0f;
     private float timePassed;
     private float attackTimer;
-    private Vector2 movement;
     public GameObject player;
     public float damage = 20f;
 
@@ -31,7 +30,6 @@ public class EnemyController : MonoBehaviour
         {
             transform.position += this.GetNextStepToPlayer();
             timePassed = 0.0f;
-            print(timePassed);
         }
         
         if (CheckCollision() && attackTimer >= attackDelay)
