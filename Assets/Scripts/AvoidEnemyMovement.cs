@@ -9,12 +9,13 @@ public class AvoidEnemyMovement : MonoBehaviour {
     private float attackTimer;
     public GameObject player;
     public float damage = 20f;
+    public GameObject laser;
 
 
     // Start is called before the first frame update
     void Start() {
-        timePassed = moveDelay;
-        attackTimer = attackDelay;
+        timePassed = 0;
+        attackTimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -28,7 +29,13 @@ public class AvoidEnemyMovement : MonoBehaviour {
             timePassed = 0.0f;
         }
 
-        if (CheckCollision() && attackTimer >= attackDelay) {
+        if (attackTimer >= attackDelay) {
+            LaserAttack();
+            attackTimer = 0.0f;
+            timePassed = 0;
+        }
+
+        if (CheckCollision()) {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             print("we hit the player");
             attackTimer = 0.0f;
@@ -41,19 +48,28 @@ public class AvoidEnemyMovement : MonoBehaviour {
         if (player.transform.position.x == transform.position.x) {
             nextStep.x = -2 * Random.Range(0, 2) + 1;
             return nextStep;
-        } else if (player.transform.position.z == transform.position.z) {
-            nextStep.z = -2 * Random.Range(0, 2) + 1;
+        }
+
+        if (player.transform.position.z > transform.position.z) {
+            nextStep.z = 1;
+            return nextStep;
+        } else if (player.transform.position.z < transform.position.z) {
+            nextStep.z = -1;
             return nextStep;
         }
 
-        if (player.transform.position.x > transform.position.x) {
-            nextStep.x = -1;
-        } else if (player.transform.position.x < transform.position.x) {
-            nextStep.x = 1;
-        } else if (player.transform.position.z > transform.position.z) {
-            nextStep.z = -1;
-        } else if (player.transform.position.z < transform.position.z) {
-            nextStep.z = 1;
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5) {
+            if (player.transform.position.x > transform.position.x) {
+                nextStep.x = -1;
+            } else if (player.transform.position.x < transform.position.x) {
+                nextStep.x = 1;
+            }
+        } else if (Mathf.Abs(player.transform.position.x - transform.position.x) > 5) {
+            if (player.transform.position.x > transform.position.x) {
+                nextStep.x = 1;
+            } else if (player.transform.position.x < transform.position.x) {
+                nextStep.x = -1;
+            }
         }
 
         return nextStep;
@@ -63,5 +79,13 @@ public class AvoidEnemyMovement : MonoBehaviour {
         return player.transform.position == transform.position;
     }
 
-
+    private void LaserAttack() {
+        Vector3 difference;
+        if (player.transform.position.x >= transform.position.x) {
+            difference = new Vector3(3, 0, 0);
+        } else {
+            difference = new Vector3(-3, 0, 0);
+        }
+        Instantiate(laser, transform.position + difference, Quaternion.LookRotation(new Vector3(1, 500, 0)));
+    }
 }
