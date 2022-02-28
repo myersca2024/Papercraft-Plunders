@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public GameObject player;
     public float damage = 20f;
 
+    private GridObject go;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class EnemyController : MonoBehaviour
         timePassed = moveDelay;
         attackTimer = attackDelay;
         player = GameObject.FindGameObjectWithTag("Player");
+        go = FindObjectOfType<GridObject>();
+        this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
         if (timePassed >= moveDelay)
         {
-            transform.position += this.GetNextStepToPlayer();
+            this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position += this.GetNextStepToPlayer());
             timePassed = 0.0f;
         }
         
