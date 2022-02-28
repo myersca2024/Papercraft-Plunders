@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     private DeckManager dm;
     private GridObject go;
+    private Camera mc;
     private float timePassed;
     private Vector2 movement;
     private int activeCard = 0;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         dm = FindObjectOfType<DeckManager>();
         go = FindObjectOfType<GridObject>();
+        GameObject.FindGameObjectWithTag("MainCamera").TryGetComponent<Camera>(out mc);
         timePassed = moveDelay;
         this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
     }
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour {
                     int relY = 2 - j;
                     if (cc.effect.multidirectional)
                     {
-                        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+                        Vector2 screenCenter = mc.WorldToScreenPoint(this.transform.position);
                         Vector2 mousePosition = Input.mousePosition;
                         float angle = Mathf.Atan2(mousePosition.x - screenCenter.x, mousePosition.y - screenCenter.y) / Mathf.PI * 180f;
                         if (angle < 0) angle += 360f;
