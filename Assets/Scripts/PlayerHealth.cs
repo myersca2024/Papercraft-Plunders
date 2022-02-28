@@ -7,14 +7,14 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maximumHealth = 100f;
     public float currentHealth;
-    public LevelManager levelmanager;
+    public GameManager gm;
     public Text deathText;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maximumHealth;
-        levelmanager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
+        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         if (deathText)
         {
             deathText.gameObject.SetActive(false);
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            print("Player died.");
+            //print("Player died.");
             if (deathText)
             {
                 deathText.gameObject.SetActive(true);
@@ -46,6 +46,6 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerDied()
     {
 
-        levelmanager.RestartLevel();
+        gm.Restart();
     }
 }
