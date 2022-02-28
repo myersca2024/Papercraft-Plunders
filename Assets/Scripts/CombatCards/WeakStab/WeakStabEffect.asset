@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd6e7e3a1ca95f642b61db84d06682df, type: 3}
-  m_Name: DefaultCardEffect
+  m_Name: WeakStabEffect
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   healing: 0
   damageType: 0
-  duration: 1
-  multidirectional: 0
+  duration: 0.1
+  multidirectional: 1
   visualEffect: {fileID: 0}
   pattern:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
     cells:
     - row: 0000000000
-    - row: 0000000000
+    - row: 0000010000
     - row: 0000000000
     - row: 0000000000
     - row: 0000000000

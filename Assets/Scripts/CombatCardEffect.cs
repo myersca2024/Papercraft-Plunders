@@ -14,7 +14,7 @@ public class CombatCardEffect : ScriptableObject
     public int damage;
     public int healing;
     public DamageType damageType;
-    public int duration;
+    public float duration = 0.1f;
     public bool multidirectional;
     public GameObject visualEffect;
     public Array2DBool pattern;
