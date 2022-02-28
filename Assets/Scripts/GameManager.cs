@@ -14,18 +14,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(LateStart(.5f));
-        inCombat = true;
-    }
-
-    IEnumerator LateStart(float waitTime) {
-        yield return new WaitForSeconds(waitTime);
         doors = GameObject.FindGameObjectsWithTag("Door");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject door in doors)
         {
             door.SetActive(false);
         }
+        inCombat = true;
     }
 
     // Update is called once per frame
@@ -60,6 +55,6 @@ public class GameManager : MonoBehaviour
     {
         inCombat = false;
         isGameOver = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
