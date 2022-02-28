@@ -8,7 +8,7 @@ public class DoorBehavior : MonoBehaviour
     public string nextRoom;
 
 
-    bool doorOpen = false;
+    //bool doorOpen = false;
     GameObject player;
     // Start is called before the first frame update
     void Start()

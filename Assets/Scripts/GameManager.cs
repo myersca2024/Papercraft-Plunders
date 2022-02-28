@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         CheckEnemies();
 
-        Debug.Log(enemies.Length);
+        //Debug.Log(enemies.Length);
     }
 
     void CheckEnemies()
@@ -59,5 +60,6 @@ public class GameManager : MonoBehaviour
     {
         inCombat = false;
         isGameOver = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
