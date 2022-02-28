@@ -5,12 +5,14 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     public List<CombatCard> deck;
-    public int deckSize = 0;
-    public int handSize = 0;
-    public int discardSize = 0;
+    public float drawTime;
+    [HideInInspector] public int deckSize = 0;
+    [HideInInspector] public int handSize = 0;
+    [HideInInspector] public int discardSize = 0;
 
     private List<CombatCard> hand;
     private List<CombatCard> discard;
+    private float currTime;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class DeckManager : MonoBehaviour
         {
             DrawCard();
         }
+
+        currTime = drawTime;
     }
 
     private void Update()
@@ -31,6 +35,14 @@ public class DeckManager : MonoBehaviour
         {
             ShuffleDiscardToDeck();
         }
+
+        if (currTime >= drawTime && handSize < 5)
+        {
+            DrawCard();
+            currTime = 0;
+        }
+
+        currTime += Time.deltaTime;
     }
 
     // Found on Stack Overflow:
