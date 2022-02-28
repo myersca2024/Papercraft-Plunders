@@ -11,12 +11,16 @@ public class AvoidEnemyMovement : MonoBehaviour {
     public float damage = 20f;
     public GameObject laser;
 
+    private GridObject go;
+
 
     // Start is called before the first frame update
     void Start() {
         timePassed = 0;
         attackTimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
+        go = FindObjectOfType<GridObject>();
+        this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
     }
 
     // Update is called once per frame
@@ -24,8 +28,9 @@ public class AvoidEnemyMovement : MonoBehaviour {
         timePassed += Time.deltaTime;
         attackTimer += Time.deltaTime;
 
-        if (timePassed >= moveDelay) {
-            transform.position += this.AvoidMovement();
+        if (timePassed >= moveDelay)
+        {
+            this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position += this.AvoidMovement());
             timePassed = 0.0f;
         }
 
