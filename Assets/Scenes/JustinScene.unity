@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDelay: 0.1
+  hitbox: {fileID: 0}
 --- !u!114 &1766127412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   currentHealth: 100
+  gm: {fileID: 0}
+  deathText: {fileID: 0}
 --- !u!1001 &2265765150736579705
 PrefabInstance:
   m_ObjectHideFlags: 0
