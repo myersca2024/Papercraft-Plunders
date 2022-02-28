@@ -13,7 +13,7 @@ public class HandUI : MonoBehaviour
 
     private void Start()
     {
-        if (dm == null) { dm = FindObjectOfType<DeckManager>(); }
+        dm = FindObjectOfType<DeckManager>();
     }
 
     private void Update()
@@ -33,11 +33,13 @@ public class HandUI : MonoBehaviour
 
     public void Enable()
     {
-        gameObject.SetActive(true);
+        cardName.gameObject.SetActive(true);
+        cardImage.gameObject.SetActive(true);
     }
 
     public void Disable()
     {
-        gameObject.SetActive(false);
+        cardName.gameObject.SetActive(false);
+        cardImage.gameObject.SetActive(false);
     }
 }

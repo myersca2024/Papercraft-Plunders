@@ -16,7 +16,7 @@ MonoBehaviour:
   healing: 0
   damageType: 0
   duration: 0.1
-  multidirectional: 0
+  multidirectional: 1
   visualEffect: {fileID: 0}
   pattern:
     gridSize: {x: 5, y: 5}

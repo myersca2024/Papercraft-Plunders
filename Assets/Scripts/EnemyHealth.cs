@@ -18,12 +18,22 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             print("Enemy slain!");
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Hitbox")
+        {
+            Hitbox hb;
+            other.gameObject.TryGetComponent<Hitbox>(out hb);
+            TakeDamage(hb.damage);
+        }
     }
 }

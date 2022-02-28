@@ -2012,6 +2012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   currentHealth: 100
+  gm: {fileID: 0}
+  deathText: {fileID: 0}
 --- !u!1 &1856296714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,73 +2089,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856296714}
   m_CullTransparentMesh: 1
---- !u!1 &2017644120
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2017644122}
-  - component: {fileID: 2017644121}
-  m_Layer: 0
-  m_Name: DeckManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2017644121
+--- !u!114 &2017644121 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+  m_PrefabInstance: {fileID: 6856233691057004706}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017644120}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b13c693ef5e0b1418ea6227ce705277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - {fileID: 11400000, guid: 1552154964006f44f8fbc58e6849a91d, type: 2}
-  - {fileID: 11400000, guid: d415d756fa65f8f4db7b2d6bb1b471d3, type: 2}
-  - {fileID: 11400000, guid: e278d9523d0c74d4ba1e72b83bc9a2fb, type: 2}
-  - {fileID: 11400000, guid: 1ef35a44b2b2b784eafc95614be6d469, type: 2}
-  - {fileID: 11400000, guid: 15ee9351d4428ec4bb0812ea0bec052c, type: 2}
-  - {fileID: 11400000, guid: 9ba1860c41ffc4246b8ebfa37a96223c, type: 2}
-  - {fileID: 11400000, guid: 0d9a93c1adf6fe94aadc55ecb9ded6cb, type: 2}
-  - {fileID: 11400000, guid: bf3c8a4b161b15e419866f38cd311426, type: 2}
-  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
-  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
-  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
-  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
-  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
-  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
-  - {fileID: 11400000, guid: 15ee9351d4428ec4bb0812ea0bec052c, type: 2}
-  - {fileID: 11400000, guid: d415d756fa65f8f4db7b2d6bb1b471d3, type: 2}
-  - {fileID: 11400000, guid: 1552154964006f44f8fbc58e6849a91d, type: 2}
-  - {fileID: 11400000, guid: 0d9a93c1adf6fe94aadc55ecb9ded6cb, type: 2}
-  - {fileID: 11400000, guid: e278d9523d0c74d4ba1e72b83bc9a2fb, type: 2}
-  - {fileID: 11400000, guid: bf3c8a4b161b15e419866f38cd311426, type: 2}
-  deckSize: 0
-  handSize: 0
-  discardSize: 0
---- !u!4 &2017644122
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017644120}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2084157623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2490,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10e41fe792826540983569c5cd283b3, type: 3}
+--- !u!1001 &6856233691057004706
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228730, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: m_Name
+      value: DeckManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
 --- !u!1001 &7807792609036388437
 PrefabInstance:
   m_ObjectHideFlags: 0
