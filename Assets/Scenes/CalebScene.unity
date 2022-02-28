@@ -725,8 +725,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429159305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.55}
+  m_LocalPosition: {x: -0.5047, y: -0.1, z: 0.7359}
+  m_LocalScale: {x: 2.7167363, y: 1, z: 1.5400676}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -760,8 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a86ac816340724b9cc011d1e1df29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
+  width: 27
+  height: 15
   cellSize: 1
 --- !u!4 &466504515
 Transform:
@@ -771,7 +771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466504513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: -3}
+  m_LocalPosition: {x: -14, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1997,6 +1997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDelay: 0.1
+  hitbox: {fileID: 6799724127834603035, guid: b48e113b66a81724a909e2062e807acb, type: 3}
 --- !u!114 &1766127412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,16 +2117,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
-  - {fileID: 11400000, guid: 257edf80f89455240a467bb4f27cc6f9, type: 2}
+  - {fileID: 11400000, guid: 1552154964006f44f8fbc58e6849a91d, type: 2}
+  - {fileID: 11400000, guid: d415d756fa65f8f4db7b2d6bb1b471d3, type: 2}
+  - {fileID: 11400000, guid: e278d9523d0c74d4ba1e72b83bc9a2fb, type: 2}
+  - {fileID: 11400000, guid: 1ef35a44b2b2b784eafc95614be6d469, type: 2}
+  - {fileID: 11400000, guid: 15ee9351d4428ec4bb0812ea0bec052c, type: 2}
+  - {fileID: 11400000, guid: 9ba1860c41ffc4246b8ebfa37a96223c, type: 2}
+  - {fileID: 11400000, guid: 0d9a93c1adf6fe94aadc55ecb9ded6cb, type: 2}
+  - {fileID: 11400000, guid: bf3c8a4b161b15e419866f38cd311426, type: 2}
+  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
+  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
+  - {fileID: 11400000, guid: 14100cb7dabdcfa47a78ddb61400dbcd, type: 2}
+  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
+  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
+  - {fileID: 11400000, guid: 99d6adb7cbad7904fb89acf1c6b204eb, type: 2}
+  - {fileID: 11400000, guid: 15ee9351d4428ec4bb0812ea0bec052c, type: 2}
+  - {fileID: 11400000, guid: d415d756fa65f8f4db7b2d6bb1b471d3, type: 2}
+  - {fileID: 11400000, guid: 1552154964006f44f8fbc58e6849a91d, type: 2}
+  - {fileID: 11400000, guid: 0d9a93c1adf6fe94aadc55ecb9ded6cb, type: 2}
+  - {fileID: 11400000, guid: e278d9523d0c74d4ba1e72b83bc9a2fb, type: 2}
+  - {fileID: 11400000, guid: bf3c8a4b161b15e419866f38cd311426, type: 2}
   deckSize: 0
   handSize: 0
   discardSize: 0
@@ -2466,6 +2477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RandomEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
 --- !u!1001 &6213991851905991464
@@ -2583,6 +2598,10 @@ PrefabInstance:
     - target: {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
       propertyPath: m_Name
       value: AvoidEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}

@@ -5,6 +5,7 @@ using Array2DEditor;
 
 public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
+    public Hitbox hitbox;
 
     private DeckManager dm;
     private GridObject go;
@@ -21,7 +22,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         timePassed += Time.deltaTime;
 
         // Movement
@@ -61,7 +63,62 @@ public class PlayerController : MonoBehaviour {
 
     public void UseCard(int index)
     {
-
+        CombatCard cc = dm.GetHandCard(index);
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (cc.effect.pattern.GetCell(i, j))
+                {
+                    int relX = 2 - i;
+                    int relY = 2 - j;
+                    if (cc.effect.multidirectional)
+                    {
+                        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+                        Vector2 mousePosition = Input.mousePosition;
+                        float angle = Mathf.Atan2(mousePosition.x - screenCenter.x, mousePosition.y - screenCenter.y) / Mathf.PI * 180f;
+                        if (angle < 0) angle += 360f;
+                        // UP
+                        /*
+                        if (angle > 315 || angle < 45)
+                        {
+                            Do nothing, default should be up
+                        }
+                        */
+                        // RIGHT
+                        if (angle > 45 && angle < 135)
+                        {
+                            int temp = relX;
+                            relX = relY;
+                            relY = -temp;
+                        }
+                        // DOWN
+                        else if (angle > 135 && angle < 225)
+                        {
+                            relX = -relX;
+                            relY = -relY;
+                        }
+                        // LEFT
+                        else if (angle > 225 && angle < 315)
+                        {
+                            int temp = relX;
+                            relX = -relY;
+                            relY = temp;
+                        }
+                    }
+                    Vector2Int playerCoords = go.GetGrid().GetXY(this.transform.position);
+                    Vector2Int hitboxCoords = new Vector2Int(playerCoords.x + relX, playerCoords.y + relY);
+                    Vector3 offset = new Vector3(go.cellSize / 2, 0, go.cellSize / 2);
+                    Hitbox hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                    if (cc.effect.visualEffect != null)
+                    {
+                        Instantiate(cc.effect.visualEffect, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                    }
+                    hb.damage = cc.effect.damage;
+                    hb.duration = cc.effect.duration;
+                }
+            }
+        }
 
         dm.DiscardCard(index);
         activeCard = 0;
