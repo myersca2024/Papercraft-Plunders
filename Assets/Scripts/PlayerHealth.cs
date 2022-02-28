@@ -27,11 +27,11 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             print("Player died.");
-            gameObject.GetComponent<PlayerController>().isDead = true;
             if (deathText)
             {
                 deathText.gameObject.SetActive(true);
             }
+            
             //restart level after 2 seconds
             Invoke("PlayerDied", 2);
         }
