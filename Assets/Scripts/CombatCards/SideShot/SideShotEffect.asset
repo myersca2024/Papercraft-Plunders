@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd6e7e3a1ca95f642b61db84d06682df, type: 3}
-  m_Name: DefaultCardEffect
+  m_Name: SideShotEffect
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 4
   healing: 0
   damageType: 0
-  duration: 1
+  duration: 0.1
   multidirectional: 0
   visualEffect: {fileID: 0}
   pattern:
@@ -24,6 +24,6 @@ MonoBehaviour:
     cells:
     - row: 0000000000
     - row: 0000000000
-    - row: 0000000000
+    - row: 0101000101
     - row: 0000000000
     - row: 0000000000
