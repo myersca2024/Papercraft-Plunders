@@ -10,7 +10,7 @@ public class GridObject : MonoBehaviour
 
     private MapGrid grid;
 
-    void Start()
+    void Awake()
     {
         grid = new MapGrid(width, height, cellSize, this.transform.position);
     }
