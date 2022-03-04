@@ -48,8 +48,8 @@ public class PlayerHealth : MonoBehaviour
         print("Took damage! currentHealth = " + currentHealth + ".");
     }
 
-    public void PlayerDied()
-    {
+    public void PlayerDied() {
+        DataStorage.currentHealth = maximumHealth;
         gm.Restart();
     }
 }
