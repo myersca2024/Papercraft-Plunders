@@ -36,13 +36,10 @@ public class HandUI : MonoBehaviour
             cardImage.sprite = card.icon;
         }
         if (dm.activeCard == id && !highlighted) {
-            //print("highlight this card " + id);
-            //gameObject.transform.Translate(new Vector3(0, 10));
             highlight.gameObject.SetActive(true);
             highlighted = true;
         }
         if (dm.activeCard != id && highlighted) {
-            //gameObject.transform.Translate(new Vector3(0, -10));
             highlight.gameObject.SetActive(false);
             highlighted = false;
         }
