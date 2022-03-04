@@ -48,11 +48,25 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if (Input.mouseScrollDelta.y > 0) {
+            activeCard++;
+            if (activeCard >= dm.handSize) {
+                activeCard = 0;
+            }
+        } else if (Input.mouseScrollDelta.y < 0) {
+            activeCard--;
+            if (activeCard < 0) {
+                activeCard = dm.handSize - 1;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1)) { activeCard = 0; }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { activeCard = 1; }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { activeCard = 2; }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { activeCard = 3; }
         if (Input.GetKeyDown(KeyCode.Alpha5)) { activeCard = 4; }
+
+        dm.HighlightCard(activeCard);
 
         if (Input.GetMouseButtonDown(0))
         {

@@ -6,6 +6,7 @@ public class DeckManager : MonoBehaviour
 {
     public List<CombatCard> deck;
     public float drawTime;
+    public int activeCard = 0;
     [HideInInspector] public int deckSize = 0;
     [HideInInspector] public int handSize = 0;
     [HideInInspector] public int discardSize = 0;
@@ -96,5 +97,9 @@ public class DeckManager : MonoBehaviour
     public CombatCard GetHandCard(int index)
     {
         return hand[index];
+    }
+
+    public void HighlightCard(int index) {
+        activeCard = index;
     }
 }
