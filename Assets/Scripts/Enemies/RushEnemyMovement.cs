@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class RushEnemyMovement : MonoBehaviour
 {
     public float moveDelay = 1.0f;
     public float attackDelay = 1.0f;
@@ -38,12 +38,8 @@ public class EnemyController : MonoBehaviour
         if (CheckCollision() && attackTimer >= attackDelay)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
-            print("we hit the player");
             attackTimer = 0.0f;
         }
-        
-        
-        
     }
 
     private Vector3 GetNextStepToPlayer()
@@ -73,8 +69,7 @@ public class EnemyController : MonoBehaviour
 
     private bool CheckCollision()
     {
-        return player.transform.position == transform.position;
+        Vector3 difference = player.transform.position - transform.position;
+        return difference.magnitude <= 1;
     }
-
-
 }

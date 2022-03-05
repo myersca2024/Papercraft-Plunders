@@ -9,12 +9,14 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public GameManager gm;
     public Text deathText;
+    public Slider healthSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maximumHealth;
         gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        currentHealth = DataStorage.currentHealth;
+        healthSlider.value = currentHealth;
         if (deathText)
         {
             deathText.gameObject.SetActive(false);
@@ -40,12 +42,14 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.value = currentHealth;
+        DataStorage.TakeDamage(damage);
+        Mathf.Clamp(currentHealth, 0, 100);
         print("Took damage! currentHealth = " + currentHealth + ".");
     }
 
-    public void PlayerDied()
-    {
-
+    public void PlayerDied() {
+        DataStorage.currentHealth = maximumHealth;
         gm.Restart();
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     public static bool inCombat = false;
     public static bool isGameOver = false;
 

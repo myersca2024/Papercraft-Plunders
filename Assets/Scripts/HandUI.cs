@@ -10,10 +10,16 @@ public class HandUI : MonoBehaviour
     public DeckManager dm;
     public TMP_Text cardName;
     public Image cardImage;
+    public Image highlight;
+
+    private bool highlighted = false;
 
     private void Start()
     {
         dm = FindObjectOfType<DeckManager>();
+        if (id != 0) {
+            highlight.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -28,6 +34,14 @@ public class HandUI : MonoBehaviour
             CombatCard card = dm.GetHandCard(id);
             cardName.text = card.name;
             cardImage.sprite = card.icon;
+        }
+        if (dm.activeCard == id && !highlighted) {
+            highlight.gameObject.SetActive(true);
+            highlighted = true;
+        }
+        if (dm.activeCard != id && highlighted) {
+            highlight.gameObject.SetActive(false);
+            highlighted = false;
         }
     }
 
