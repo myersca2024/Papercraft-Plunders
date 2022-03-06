@@ -60,13 +60,11 @@ public class MapGrid
     {
         bool existsOnX = (x < width) && (x >= 0);
         bool existsOnY = (y < height) && (y >= 0);
-        // UNCOMMENT WHEN ADDING FURTHER GRID FUNCTIONALITY
         /*
         if (existsOnX && existsOnY)
         {
-            return gridArray[x, y] > 0;
+            return gridArray[x, y];
         }
-        return false;
         */
         return existsOnX && existsOnY;
     }
