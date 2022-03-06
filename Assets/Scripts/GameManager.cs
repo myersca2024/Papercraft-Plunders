@@ -1,59 +1,99 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool inCombat = false;
-    public static bool isGameOver = false;
+    public DungeonRoom defaultRoom;
 
-    GameObject[] doors;
-    GameObject[] enemies;
-    // Start is called before the first frame update
+    private DungeonRoom activeRoom;
+    private GridObject go;
+    private bool[,] roomGrid = new bool[5, 7];
+    private Vector2Int activeGrid;
+    private float xSize = 15 + 3;
+    private float zSize = 10 + 3;
+
     void Start()
     {
-        doors = GameObject.FindGameObjectsWithTag("Door");
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject door in doors)
+        go = FindObjectOfType<GridObject>();
+        activeGrid = new Vector2Int(2, 0);
+        roomGrid[2, 0] = true;
+    }
+
+    private void Update()
+    {
+        string s = "";
+        for (int i = 6; i >= 0; i--)
         {
-            door.SetActive(false);
+            for (int j = 0; j < 5; j++)
+            {
+                s += (DungeonRoom.grid[j, i].ToString() + " ");
+            }
+            s += "\n";
         }
-        inCombat = true;
+        // Debug.Log(s);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
-        CheckEnemies();
-
-        //Debug.Log(enemies.Length);
+        // Need to fill this out at some point
     }
 
-    void CheckEnemies()
+    public void MakeRoom(DungeonRoom parentRoom, Direction direction)
     {
+        DungeonRoom dr;
+        Vector3 newPos;
+        Direction targetDir;
 
-        GameObject[] curEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (curEnemies.Length == 0)
+        switch (direction)
         {
-            OpenDoors();
-        }
-    }
+            case Direction.UP:
+                newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
+                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                targetDir = Direction.DOWN;
 
-    public void OpenDoors() 
-    {
-        inCombat = false;
-        foreach (GameObject door in doors) 
+                dr.id = parentRoom.GetID() + new Vector2Int(0, 1);
+                break;
+            case Direction.DOWN:
+                newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
+                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                targetDir = Direction.UP;
+
+                dr.id = parentRoom.GetID() - new Vector2Int(0, 1);
+                break;
+            case Direction.LEFT:
+                newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
+                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                targetDir = Direction.RIGHT;
+
+                dr.id = parentRoom.GetID() - new Vector2Int(1, 0);
+                break;
+            case Direction.RIGHT:
+                newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
+                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                targetDir = Direction.LEFT;
+
+                dr.id = parentRoom.GetID() + new Vector2Int(1, 0);
+                break;
+            default:
+                Debug.Log("OH NO! IT ALL WENT WRONG!");
+                dr = Instantiate(defaultRoom, this.transform.position, this.transform.localRotation);
+                targetDir = direction;
+                break;
+        }
+
+        activeRoom = dr;
+
+        Vector2Int id = dr.GetID();
+        dr.SetGridSpace(id.x, id.y);
+
+        DoorTriggerBehavior[] doors = dr.gameObject.GetComponentsInChildren<DoorTriggerBehavior>();
+        foreach (DoorTriggerBehavior door in doors)
         {
-            door.SetActive(true);
+            if (door.direction == targetDir) door.SetAdjacent(true);
         }
-    }
 
-
-    public void Restart() 
-    {
-        inCombat = false;
-        isGameOver = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        go.RecalculateAvailableSpaces();
+        //DisableRedundantTriggers(dr);
     }
 }
