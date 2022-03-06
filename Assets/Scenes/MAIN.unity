@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 66657123329024174, guid: f9867c8504982404183669dbff29b34c, type: 3}
+      propertyPath: isDefault
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 66657123329024175, guid: f9867c8504982404183669dbff29b34c, type: 3}
       propertyPath: m_RootOrder
       value: 6
