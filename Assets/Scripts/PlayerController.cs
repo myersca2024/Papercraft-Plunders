@@ -5,31 +5,37 @@ using Array2DEditor;
 
 public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
+    public float attackBuffer = .1f;
     public Hitbox hitbox;
 
     private DeckManager dm;
+    private PlayerHealth playerHealth;
     private GridObject go;
     private Camera mc;
     private float timePassed;
     private Vector2 movement;
     private int activeCard = 0;
+    private float attackTimer;
 
     // Start is called before the first frame update
     void Start() {
         dm = FindObjectOfType<DeckManager>();
         go = FindObjectOfType<GridObject>();
+        playerHealth = GetComponent<PlayerHealth>();
         GameObject.FindGameObjectWithTag("MainCamera").TryGetComponent<Camera>(out mc);
         timePassed = moveDelay;
         this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
+        attackTimer = attackBuffer;
     }
 
     // Update is called once per frame
     void Update()
     {
         timePassed += Time.deltaTime;
+        attackTimer += Time.deltaTime;
 
         // Movement
-        if (timePassed >= moveDelay) {
+        if (timePassed >= moveDelay && attackTimer >= attackBuffer) {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
@@ -72,23 +78,25 @@ public class PlayerController : MonoBehaviour {
         {
             if (dm.handSize > 0 && activeCard < dm.handSize)
             {
-                UseCard(activeCard);
+                UseCombatCard(this.transform.position, activeCard);
             }
         }
     }
 
-    public void UseCard(int index)
+    public void UseCombatCard(Vector3 center, int index)
     {
+        attackTimer = 0;
         CombatCard cc = dm.GetHandCard(index);
-        for (int i = 0; i < 5; i++)
+        playerHealth.TakeDamage(-cc.healing);
+        for (int i = 0; i < cc.pattern.GridSize.x; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < cc.pattern.GridSize.y; j++)
             {
-                if (cc.effect.pattern.GetCell(i, j))
+                if (cc.pattern.GetCell(i, j))
                 {
-                    int relX = 2 - i;
-                    int relY = 2 - j;
-                    if (cc.effect.multidirectional)
+                    int relX = (cc.pattern.GridSize.x / 2) - i;
+                    int relY = (cc.pattern.GridSize.y / 2) - j;
+                    if (cc.multidirectional)
                     {
                         Vector2 screenCenter = mc.WorldToScreenPoint(this.transform.position);
                         Vector2 mousePosition = Input.mousePosition;
@@ -122,16 +130,16 @@ public class PlayerController : MonoBehaviour {
                             relY = temp;
                         }
                     }
-                    Vector2Int playerCoords = go.GetGrid().GetXY(this.transform.position);
+                    Vector2Int playerCoords = go.GetGrid().GetXY(center);
                     Vector2Int hitboxCoords = new Vector2Int(playerCoords.x + relX, playerCoords.y + relY);
                     Vector3 offset = new Vector3(go.cellSize / 2, 0, go.cellSize / 2);
                     Hitbox hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
-                    if (cc.effect.visualEffect != null)
+                    if (cc.visualEffect != null)
                     {
-                        Instantiate(cc.effect.visualEffect, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                        Instantiate(cc.visualEffect, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
                     }
-                    hb.damage = cc.effect.damage;
-                    hb.duration = cc.effect.duration;
+                    hb.damage = cc.damage;
+                    hb.duration = cc.duration;
                 }
             }
         }
