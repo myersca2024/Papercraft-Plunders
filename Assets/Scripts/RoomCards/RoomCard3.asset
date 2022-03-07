@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: DefaultRoomCard
+  m_Name: RoomCard3
   m_EditorClassIdentifier: 
   name: 
-  effectText: Contains 1 enemy and has a reward of 1 common room card.
+  effectText: Contains 6 enemies and has 2 rare combat cards as awards.
   challengeRating: 0
-  numberOfEnemies: 1
+  numberOfEnemies: 6
   potentialEnemies:
+  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
-  containsChest: 1
-  combatCardRewards: []
-  roomCardRewards:
-  - {fileID: 11400000, guid: e14d963d882b3454890d0cbfa22f8e92, type: 2}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  containsChest: 0
+  combatCardRewards:
+  - {fileID: 11400000, guid: f744d9284e74f6e47acaa59e883904a2, type: 2}
+  - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}
+  roomCardRewards: []

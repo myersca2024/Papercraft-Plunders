@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024a33c69ccce6446a82b09c08d7ab3d, type: 3}
-  m_Name: MediumCard
+  m_Name: Ring of Fire
   m_EditorClassIdentifier: 
-  name: MediumCardTest
-  icon: {fileID: 21300000, guid: 6b56e819b752a2e47a10ddc2e3d89df5, type: 3}
+  name: Ring of Fire
+  icon: {fileID: 21300000, guid: c34c1d2e99a185446af04790f4367e9f, type: 3}
   effectText: 
-  damage: 5
-  healing: 0
-  duration: 0.1
-  multidirectional: 1
+  damage: 3
+  healing: -10
+  duration: 3
+  multidirectional: 0
   visualEffect: {fileID: 0}
   pattern:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000010000
-    - row: 0000010000
-    - row: 0000000000
-    - row: 0000000000
-    - row: 0000000000
+    - row: 0101010101
+    - row: 0100000001
+    - row: 0100000001
+    - row: 0100000001
+    - row: 0101010101
