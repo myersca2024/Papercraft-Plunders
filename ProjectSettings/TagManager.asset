@@ -8,11 +8,8 @@ TagManager:
   - Enemy
   - Hitbox
   - Ground
-<<<<<<< Updated upstream
   - HealthBarFill
-=======
   - RoomCardUI
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

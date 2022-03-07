@@ -15,8 +15,11 @@ MonoBehaviour:
   name: Default Card
   effectText: Default room contains a single enemy.
   challengeRating: 0
-  numberOfEnemies: 0
-  potentialEnemies: []
+  numberOfEnemies: 2
+  potentialEnemies:
+  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   containsChest: 0
   combatCardRewards: []
   roomCardRewards: []
