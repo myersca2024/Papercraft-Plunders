@@ -15,13 +15,17 @@ public class DoorTriggerBehavior : MonoBehaviour
     public Direction direction;
 
     private GameManager gm;
+    private CanvasContainer dungeonDeckUI;
     private DungeonRoom parentRoom;
+    private DungeonDeckManager ddm;
     private bool adjacentRoom = false;
 
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        dungeonDeckUI = GameObject.FindGameObjectWithTag("RoomCardUI").GetComponent<CanvasContainer>();
         parentRoom = this.transform.parent.gameObject.GetComponent<DungeonRoom>();
+        ddm = FindObjectOfType<DungeonDeckManager>();
     }
 
     public void SetAdjacent(bool isAdjacent)
@@ -75,9 +79,16 @@ public class DoorTriggerBehavior : MonoBehaviour
             Debug.Log(id.ToString());
             if (!adjacentRoom && IsValidRoom(id.x, id.y))
             {
-                gm.MakeRoom(parentRoom, direction);
+                dungeonDeckUI.StartRoomUI(this);
                 adjacentRoom = true;
             }
         }
+    }
+
+    public void StartMakeRoom(int index)
+    {
+        RoomCard rc = ddm.deck[index];
+        gm.MakeRoom(parentRoom, direction, rc);
+        // ddm.DiscardCard(index);
     }
 }

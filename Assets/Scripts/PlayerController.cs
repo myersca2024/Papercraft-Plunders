@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
     public float attackBuffer = .1f;
     public Hitbox hitbox;
+    public static bool freeze = false;
 
     private DeckManager dm;
     private PlayerHealth playerHealth;
@@ -34,51 +35,68 @@ public class PlayerController : MonoBehaviour {
         timePassed += Time.deltaTime;
         attackTimer += Time.deltaTime;
 
-        // Movement
-        if (timePassed >= moveDelay && attackTimer >= attackBuffer) {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
-
-            if (movement.x != 0 || movement.y != 0) {
-                timePassed = 0;
-            }
-
-            if (movement.x > 0) {
-                this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(1, 0));
-            } else if (movement.x < 0) {
-                this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(1, 0));
-            } else if (movement.y > 0) {
-                this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, 1));
-            } else if (movement.y < 0) {
-                this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, 1));
-            }
-        }
-
-        if (Input.mouseScrollDelta.y > 0) {
-            activeCard++;
-            if (activeCard >= dm.handSize) {
-                activeCard = 0;
-            }
-        } else if (Input.mouseScrollDelta.y < 0) {
-            activeCard--;
-            if (activeCard < 0) {
-                activeCard = dm.handSize - 1;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { activeCard = 0; }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { activeCard = 1; }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { activeCard = 2; }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { activeCard = 3; }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { activeCard = 4; }
-
-        dm.HighlightCard(activeCard);
-
-        if (Input.GetMouseButtonDown(0))
+        if (!freeze)
         {
-            if (dm.handSize > 0 && activeCard < dm.handSize)
+            // Movement
+            if (timePassed >= moveDelay && attackTimer >= attackBuffer)
             {
-                UseCombatCard(this.transform.position, activeCard);
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
+
+                if (movement.x != 0 || movement.y != 0)
+                {
+                    timePassed = 0;
+                }
+
+                if (movement.x > 0)
+                {
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(1, 0));
+                }
+                else if (movement.x < 0)
+                {
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(1, 0));
+                }
+                else if (movement.y > 0)
+                {
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, 1));
+                }
+                else if (movement.y < 0)
+                {
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, 1));
+                }
+            }
+
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                activeCard++;
+                if (activeCard >= dm.handSize)
+                {
+                    activeCard = 0;
+                }
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                activeCard--;
+                if (activeCard < 0)
+                {
+                    activeCard = dm.handSize - 1;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { activeCard = 0; }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) { activeCard = 1; }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { activeCard = 2; }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { activeCard = 3; }
+            if (Input.GetKeyDown(KeyCode.Alpha5)) { activeCard = 4; }
+
+            dm.HighlightCard(activeCard);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (dm.handSize > 0 && activeCard < dm.handSize)
+                {
+                    UseCombatCard(this.transform.position, activeCard);
+                }
             }
         }
     }

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         // Need to fill this out at some point
     }
 
-    public void MakeRoom(DungeonRoom parentRoom, Direction direction)
+    public void MakeRoom(DungeonRoom parentRoom, Direction direction, RoomCard rc)
     {
         DungeonRoom dr;
         Vector3 newPos;
@@ -91,6 +91,23 @@ public class GameManager : MonoBehaviour
         foreach (DoorTriggerBehavior door in doors)
         {
             if (door.direction == targetDir) door.SetAdjacent(true);
+        }
+
+        List<int> usedSpawnPoints = new List<int>();
+        for (int i = 0; i < rc.numberOfEnemies; i++)
+        {
+            int randNum = Random.Range(0, 8);
+            if (!usedSpawnPoints.Contains(randNum))
+            {
+                int randEnemyID = Random.Range(0, rc.potentialEnemies.Length - 1);
+                GameObject randEnemy = rc.potentialEnemies[randEnemyID];
+                Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, this.transform.localRotation);
+                usedSpawnPoints.Add(randNum);
+            }
+            else
+            {
+                i--;
+            }
         }
 
         go.RecalculateAvailableSpaces();
