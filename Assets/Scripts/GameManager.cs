@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
         roomGrid[2, 0] = true;
     }
 
-    /*
     private void Update()
     {
         string s = "";
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
         }
         // Debug.Log(s);
     }
-    */
 
     public void Restart()
     {

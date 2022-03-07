@@ -8,7 +8,6 @@ public class DungeonRoom : MonoBehaviour
     public GameObject leftDoor;
     public GameObject rightDoor;
     public GameObject bottomDoor;
-    public GameObject[] spawnPoints;
     public bool isDefault;
     public static bool[,] grid = new bool[5, 7];
 
