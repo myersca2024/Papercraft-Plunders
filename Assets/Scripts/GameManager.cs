@@ -5,13 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public DungeonRoom defaultRoom;
+    public TreasureBehavior treasure;
 
+    // Room generation
     private DungeonRoom activeRoom;
     private GridObject go;
     private bool[,] roomGrid = new bool[5, 7];
     private Vector2Int activeGrid;
     private float xSize = 15 + 3;
     private float zSize = 10 + 3;
+
+    // Enemy tracking
+    private GameObject[] activeEnemies;
+    private bool inNewRoom;
+    private RoomCard[] activeTreasureRC;
+    private CombatCard[] activeTreasureCC;
 
     void Start()
     {
@@ -22,16 +30,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        string s = "";
-        for (int i = 6; i >= 0; i--)
+        activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (inNewRoom)
         {
-            for (int j = 0; j < 5; j++)
+            if (activeEnemies.Length == 0)
             {
-                s += (DungeonRoom.grid[j, i].ToString() + " ");
+                inNewRoom = false;
+                int randNum = Random.Range(0, 8);
+                TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
+                t.SetRewards(activeTreasureCC, activeTreasureRC);
+                inNewRoom = false;
             }
-            s += "\n";
         }
-        // Debug.Log(s);
     }
 
     public void Restart()
@@ -109,6 +120,10 @@ public class GameManager : MonoBehaviour
                 i--;
             }
         }
+
+        inNewRoom = true;
+        activeTreasureRC = rc.roomCardRewards;
+        activeTreasureCC = rc.combatCardRewards;
 
         go.RecalculateAvailableSpaces();
         //DisableRedundantTriggers(dr);
