@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RoomCard5
   m_EditorClassIdentifier: 
   name: 
-  effectText: Contains 3 enemies and has a reward of 3 room cards.
+  effectText: Contains 4 enemies and has a reward of 3 room cards.
   challengeRating: 0
   numberOfEnemies: 3
   potentialEnemies:
