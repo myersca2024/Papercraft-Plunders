@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
             {
                 int randEnemyID = Random.Range(0, rc.potentialEnemies.Length - 1);
                 GameObject randEnemy = rc.potentialEnemies[randEnemyID];
-                Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, this.transform.localRotation);
+                Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, randEnemy.transform.localRotation);
                 usedSpawnPoints.Add(randNum);
             }
             else
