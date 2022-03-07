@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        // Need to fill this out at some point
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MakeRoom(DungeonRoom parentRoom, Direction direction, RoomCard rc)

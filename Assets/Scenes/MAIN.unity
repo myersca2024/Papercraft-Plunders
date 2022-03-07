@@ -3351,7 +3351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
   - {fileID: 11400000, guid: ec98018b841fb6c438d41b5f936f7d71, type: 2}
-  - {fileID: 11400000, guid: ec98018b841fb6c438d41b5f936f7d71, type: 2}
 --- !u!4 &1614275206
 Transform:
   m_ObjectHideFlags: 0
@@ -3574,44 +3573,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.size
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 070494f197be6cc4c862a386b4f6a328, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 070494f197be6cc4c862a386b4f6a328, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 070494f197be6cc4c862a386b4f6a328, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 74d2d7d273b9cd44bbdbd2b2c0076f48, type: 2}
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 74d2d7d273b9cd44bbdbd2b2c0076f48, type: 2}
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 74d2d7d273b9cd44bbdbd2b2c0076f48, type: 2}
+      objectReference: {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 5d3ca26d63226f542b095a3964f8efb6, type: 2}
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[7]
       value: 
-      objectReference: {fileID: 11400000, guid: 5d3ca26d63226f542b095a3964f8efb6, type: 2}
+      objectReference: {fileID: 11400000, guid: e7d49a86434a1274b8426e397c333e93, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: 5d3ca26d63226f542b095a3964f8efb6, type: 2}
+      objectReference: {fileID: 11400000, guid: 7cec3af8d3ac59244802930b4a0749de, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e7d750c5a1e7184db48cf352ab8bb55, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: deck.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
 --- !u!4 &1989854187 stripped
