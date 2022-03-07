@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
             //print("Player died.");
             if (deathText)
             {
+                PlayerController.freeze = true;
                 deathText.gameObject.SetActive(true);
             }
             
@@ -50,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerDied() {
         DataStorage.currentHealth = maximumHealth;
+        PlayerController.freeze = false;
         gm.Restart();
     }
 }
