@@ -9,6 +9,10 @@ public class GridObject : MonoBehaviour
     public float cellSize;
     public HitDetector hitDetector;
 
+    public float lineThickness;
+    public Color lineColor;
+    public Shader lineShader;
+
     private MapGrid grid;
     private GameObject player;
 
@@ -21,6 +25,7 @@ public class GridObject : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         RecalculateAvailableSpaces();
+        DrawGrid();
     }
 
     public void RecalculateAvailableSpaces()
@@ -44,6 +49,38 @@ public class GridObject : MonoBehaviour
             }
         }
     }
+
+    public void DrawGrid()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                DrawLine(grid.GetWorldPosition(i, j), grid.GetWorldPosition(i, j + 1), Color.red);
+                DrawLine(grid.GetWorldPosition(i, j), grid.GetWorldPosition(i + 1, j), Color.red);
+            }
+        }
+        DrawLine(grid.GetWorldPosition(0, height), grid.GetWorldPosition(width, height), Color.red);
+        DrawLine(grid.GetWorldPosition(width, 0), grid.GetWorldPosition(width, height), Color.red);
+    }
+
+    // https://answers.unity.com/questions/8338/how-to-draw-a-line-using-script.html
+    void DrawLine(Vector3 start, Vector3 end, Color color)
+    {
+        GameObject myLine = new GameObject();
+        myLine.transform.position = start;
+        myLine.AddComponent<LineRenderer>();
+        LineRenderer lr = myLine.GetComponent<LineRenderer>();
+        lr.material = new Material(lineShader);
+        lr.startColor = lineColor;
+        lr.endColor = lineColor;
+        lr.startWidth = lineThickness;
+        lr.endWidth = lineThickness;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+        // GameObject.Destroy(myLine, duration);
+    }
+
 
     public void SetGridValue(int i, int j, bool isCollided)
     {

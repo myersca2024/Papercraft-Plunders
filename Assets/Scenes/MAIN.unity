@@ -880,6 +880,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4504757565164090767, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
   m_PrefabInstance: {fileID: 1356888785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &215878605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215878604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead73ec11c393be43ad2c65bdcb2a907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxPreview: {fileID: 2397101054196834945, guid: 7edcc78371a6271408b51b0417893f68, type: 3}
+  mc: {fileID: 131541445}
 --- !u!54 &215878610
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3675,6 +3689,9 @@ MonoBehaviour:
   height: 100
   cellSize: 1
   hitDetector: {fileID: 234688596710022141, guid: b1a54876b5906ad4ab22768ca98dc889, type: 3}
+  lineThickness: 0.03
+  lineColor: {r: 0.0019579534, g: 0.3567001, b: 0.5188679, a: 1}
+  lineShader: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &2059930936
 Transform:
   m_ObjectHideFlags: 0

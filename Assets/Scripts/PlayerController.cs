@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private DeckManager dm;
     private PlayerHealth playerHealth;
     private GridObject go;
+    private CombatCardPreview preview;
     private Camera mc;
     private float timePassed;
     private Vector2 movement;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         dm = FindObjectOfType<DeckManager>();
         go = FindObjectOfType<GridObject>();
         playerHealth = GetComponent<PlayerHealth>();
+        preview = GetComponent<CombatCardPreview>();
         GameObject.FindGameObjectWithTag("MainCamera").TryGetComponent<Camera>(out mc);
         timePassed = moveDelay;
         this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Alpha5)) { activeCard = 4; }
 
             dm.HighlightCard(activeCard);
+            if (dm.handSize != 0) preview.AttackPreview(dm.GetHandCard(activeCard));
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -98,6 +101,10 @@ public class PlayerController : MonoBehaviour {
                     UseCombatCard(this.transform.position, activeCard);
                 }
             }
+        }
+        else
+        {
+            preview.ClearPreview();
         }
     }
 
@@ -162,7 +169,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        dm.DiscardCard(index);
-        activeCard = 0;
+        cc.DecrementUses();
+        if (cc.GetUses() == 0)
+        {
+            dm.DiscardCard(index);
+            cc.RefreshUses();
+            activeCard = 0;
+        }
     }
 }
