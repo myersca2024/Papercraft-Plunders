@@ -11,8 +11,27 @@ public class CombatCard : ScriptableObject
     public string effectText;
     public int damage;
     public int healing;
+    public int uses = 1;
     public float duration = 0.1f;
     public bool multidirectional;
     public GameObject visualEffect;
     public Array2DBool pattern;
+
+    private int currentUses = -1;
+
+    public void DecrementUses()
+    {
+        if (currentUses == -1 || currentUses == 0) RefreshUses();
+        currentUses--;
+    }
+
+    public int GetUses()
+    {
+        return currentUses;
+    }
+
+    public void RefreshUses()
+    {
+        currentUses = uses;
+    }
 }
