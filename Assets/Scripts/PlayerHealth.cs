@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = currentHealth;
         DataStorage.TakeDamage(damage);
         Mathf.Clamp(currentHealth, 0, 100);
-        print("Took damage! currentHealth = " + currentHealth + ".");
+        //print("Took damage! currentHealth = " + currentHealth + ".");
     }
 
     public void PlayerDied() {

@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - HealthBarFill
   - RoomCardUI
+  - CollisionDetector
   layers:
   - Default
   - TransparentFX
