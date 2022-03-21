@@ -6,21 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScenes/KirinScene.unity
-    guid: 958f5ba1c7931ef4f84ab8d7a71ede84
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/BigRoom.unity
-    guid: b1a2fed52e0e0af46a628e14de9f5012
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/MediumRoom.unity
-    guid: 26efc6aa5acbd7f489ce9825c06c0668
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/ExtraRoom.unity
-    guid: 4f9c0db8f4b85ae42a12e0b6c2b14e54
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/TreasureRoom.unity
-    guid: 5c9dc7cd86991574290aec169e5eeada
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/BossRoom.unity
-    guid: 887596826279aee4180fe01136fadb12
+    path: Assets/Scenes/MAIN.unity
+    guid: c2454518440dbee4cac05918909a42ca
   m_configObjects: {}
