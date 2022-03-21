@@ -17,7 +17,7 @@ public class HitDetector : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && other.tag != "Enemy" && other.tag != "Ground" && other.tag != "Hitbox")
+        if (other.tag != "Player" && other.tag != "Enemy" && other.tag != "Ground" && other.tag != "Hitbox" && other.tag != "CollisionDetector")
         {
             go.SetGridValue(x, y, true);
         }
