@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // Room generation
     private DungeonRoom activeRoom;
     private GridObject go;
+    private GameObject player;
     private bool[,] roomGrid = new bool[5, 7];
     private Vector2Int activeGrid;
     private float xSize = 15 + 3;
@@ -21,10 +22,13 @@ public class GameManager : MonoBehaviour
     private bool inNewRoom;
     private RoomCard[] activeTreasureRC;
     private CombatCard[] activeTreasureCC;
+    private int activeTreasureNum;
 
     void Start()
     {
+        player = FindObjectOfType<PlayerController>().gameObject;
         go = FindObjectOfType<GridObject>();
+        activeRoom = defaultRoom;
         activeGrid = new Vector2Int(2, 0);
         roomGrid[2, 0] = true;
     }
@@ -35,12 +39,13 @@ public class GameManager : MonoBehaviour
 
         if (inNewRoom)
         {
+            activeRoom.DeactivateAllDoorways();
             if (activeEnemies.Length == 0)
             {
-                inNewRoom = false;
+                activeRoom.DeactivateBadDoorways();
                 int randNum = Random.Range(0, 8);
                 TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
-                t.SetRewards(activeTreasureCC, activeTreasureRC);
+                t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
                 inNewRoom = false;
             }
         }
@@ -55,6 +60,7 @@ public class GameManager : MonoBehaviour
     {
         DungeonRoom dr;
         Vector3 newPos;
+        Vector3 playerMoveDir = new Vector3();
         Direction targetDir;
 
         switch (direction)
@@ -63,6 +69,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.DOWN;
+                playerMoveDir = new Vector3(0, 0, 2);
 
                 dr.id = parentRoom.GetID() + new Vector2Int(0, 1);
                 break;
@@ -70,6 +77,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.UP;
+                playerMoveDir = new Vector3(0, 0, -2);
 
                 dr.id = parentRoom.GetID() - new Vector2Int(0, 1);
                 break;
@@ -77,6 +85,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.RIGHT;
+                playerMoveDir = new Vector3(-2, 0);
 
                 dr.id = parentRoom.GetID() - new Vector2Int(1, 0);
                 break;
@@ -84,6 +93,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.LEFT;
+                playerMoveDir = new Vector3(2, 0);
 
                 dr.id = parentRoom.GetID() + new Vector2Int(1, 0);
                 break;
@@ -123,10 +133,22 @@ public class GameManager : MonoBehaviour
         }
 
         inNewRoom = true;
+        player.transform.position = go.GetGrid().AttemptMove(player.transform.position, player.transform.position + playerMoveDir);
         activeTreasureRC = rc.roomCardRewards;
         activeTreasureCC = rc.combatCardRewards;
+        activeTreasureNum = rc.numberOfRewards;
 
         go.RecalculateAvailableSpaces();
         //DisableRedundantTriggers(dr);
+    }
+
+    public Vector3 GetRoomWorldPosition()
+    {
+        return activeRoom.transform.position;
+    }
+
+    public void SetActiveRoom(DungeonRoom room)
+    {
+        activeRoom = room;
     }
 }

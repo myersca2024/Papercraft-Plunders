@@ -75,6 +75,7 @@ public class DoorTriggerBehavior : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            gm.SetActiveRoom(parentRoom);
             Vector2Int id = parentRoom.GetID();
             Debug.Log(id.ToString());
             if (!adjacentRoom && IsValidRoom(id.x, id.y))

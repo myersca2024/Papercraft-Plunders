@@ -21,7 +21,6 @@ public class CombatCardPreview : MonoBehaviour
     {
         currentCard = cc;
         ClearPreview();
-        hitboxes.Clear();
         LoadNewCard(cc);
     }
 
@@ -85,5 +84,6 @@ public class CombatCardPreview : MonoBehaviour
         {
             Destroy(hb);
         }
+        hitboxes.Clear();
     }
 }

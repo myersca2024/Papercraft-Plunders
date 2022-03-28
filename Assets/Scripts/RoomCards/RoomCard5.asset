@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
   containsChest: 0
+  numberOfRewards: 2
   combatCardRewards: []
   roomCardRewards:
   - {fileID: 11400000, guid: 15081b165bb8b624d8ef96892921cd03, type: 2}
