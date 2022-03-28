@@ -52,6 +52,16 @@ public class GridObject : MonoBehaviour
 
     public void DrawGrid()
     {
+        Vector3 buffer = new Vector3(0, 0.1f, 0);
+        for (int i = 0; i < width; i++)
+        {
+            DrawLine(grid.GetWorldPosition(i, 0) + buffer, grid.GetWorldPosition(i, height) + buffer, Color.red);
+        }
+        for (int i = 0; i < width; i++)
+        {
+            DrawLine(grid.GetWorldPosition(0, i) + buffer, grid.GetWorldPosition(width, i) + buffer, Color.red);
+        }
+        /*
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -62,6 +72,7 @@ public class GridObject : MonoBehaviour
         }
         DrawLine(grid.GetWorldPosition(0, height), grid.GetWorldPosition(width, height), Color.red);
         DrawLine(grid.GetWorldPosition(width, 0), grid.GetWorldPosition(width, height), Color.red);
+        */
     }
 
     // https://answers.unity.com/questions/8338/how-to-draw-a-line-using-script.html

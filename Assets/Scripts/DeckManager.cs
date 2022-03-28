@@ -7,6 +7,7 @@ public class DeckManager : MonoBehaviour
     public List<CombatCard> deck;
     public float drawTime;
     public int activeCard = 0;
+    public int totalHandSize = 3;
     [HideInInspector] public int deckSize = 0;
     [HideInInspector] public int handSize = 0;
     [HideInInspector] public int discardSize = 0;
@@ -22,7 +23,7 @@ public class DeckManager : MonoBehaviour
 
         deckSize = deck.Count;
         ShuffleDeck();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < totalHandSize; i++)
         {
             DrawCard();
         }
@@ -37,7 +38,7 @@ public class DeckManager : MonoBehaviour
             ShuffleDiscardToDeck();
         }
 
-        if (currTime >= drawTime && handSize < 5)
+        if (currTime >= drawTime && handSize < totalHandSize)
         {
             DrawCard();
             currTime = 0;

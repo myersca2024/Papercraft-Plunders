@@ -11,6 +11,7 @@ public class RoomCard : ScriptableObject
     public int numberOfEnemies;
     public GameObject[] potentialEnemies;
     public bool containsChest;
+    public int numberOfRewards;
     public CombatCard[] combatCardRewards;
     public RoomCard[] roomCardRewards;
 }

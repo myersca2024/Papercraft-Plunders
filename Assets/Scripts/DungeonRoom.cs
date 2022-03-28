@@ -11,8 +11,8 @@ public class DungeonRoom : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isDefault;
     public static bool[,] grid = new bool[5, 7];
-
     public Vector2Int id;
+
     private GridObject go;
     private float xSize = 15;
     private float zSize = 10;
@@ -23,6 +23,11 @@ public class DungeonRoom : MonoBehaviour
         grid[2, 0] = true;
         go = FindObjectOfType<GridObject>();
         DeactivateBadDoorways();
+    }
+
+    private void Update()
+    {
+        RecalculateDoorwaysOnGrid();
     }
 
     public void DeactivateBadDoorways()
@@ -56,6 +61,14 @@ public class DungeonRoom : MonoBehaviour
         }
     }
 
+    public void DeactivateAllDoorways()
+    {
+        topDoor.SetActive(true);
+        leftDoor.SetActive(true);
+        rightDoor.SetActive(true);
+        bottomDoor.SetActive(true);
+    }
+
     public Vector2Int GetID()
     {
         return id;
@@ -71,6 +84,43 @@ public class DungeonRoom : MonoBehaviour
         if (x >= 0 && x < 5 && y >= 0 && y < 7)
         {
             grid[x, y] = true;
+        }
+    }
+
+    public void RecalculateDoorwaysOnGrid()
+    {
+        Vector2Int gridXY;
+        MapGrid grid = go.GetGrid();
+
+        if (!topDoor.activeSelf)
+        {
+            gridXY = grid.GetXY(topDoor.transform.position);
+            grid.SetValue(gridXY.x, gridXY.y, false);
+            grid.SetValue(gridXY.x + 1, gridXY.y, false);
+            grid.SetValue(gridXY.x - 1, gridXY.y, false);
+            grid.SetValue(gridXY.x - 2, gridXY.y, false);
+        }
+        if (!bottomDoor.activeSelf)
+        {
+            gridXY = grid.GetXY(bottomDoor.transform.position);
+            grid.SetValue(gridXY.x, gridXY.y, false);
+            grid.SetValue(gridXY.x + 1, gridXY.y, false);
+            grid.SetValue(gridXY.x + 2, gridXY.y, false);
+            grid.SetValue(gridXY.x - 1, gridXY.y, false);
+        }
+        if (!leftDoor.activeSelf)
+        {
+            gridXY = grid.GetXY(leftDoor.transform.position);
+            grid.SetValue(gridXY.x, gridXY.y, false);
+            grid.SetValue(gridXY.x, gridXY.y - 1, false);
+            grid.SetValue(gridXY.x, gridXY.y + 1, false);
+        }
+        if (!rightDoor.activeSelf)
+        {
+            gridXY = grid.GetXY(rightDoor.transform.position);
+            grid.SetValue(gridXY.x, gridXY.y, false);
+            grid.SetValue(gridXY.x, gridXY.y - 1, false);
+            grid.SetValue(gridXY.x, gridXY.y + 1, false);
         }
     }
 }

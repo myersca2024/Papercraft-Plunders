@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TreasureBehavior : MonoBehaviour
 {
-    public CombatCard[] combatCards;
-    public RoomCard[] roomCards;
+    public List<CombatCard> combatCards;
+    public List<RoomCard> roomCards;
 
     private DeckManager dm;
     private DungeonDeckManager ddm;
@@ -16,10 +16,23 @@ public class TreasureBehavior : MonoBehaviour
         ddm = FindObjectOfType<DungeonDeckManager>();
     }
 
-    public void SetRewards(CombatCard[] ccs, RoomCard[] rcs)
+    public void SetRewards(int numRewards, CombatCard[] ccs, RoomCard[] rcs)
     {
-        combatCards = ccs;
-        roomCards = rcs;
+        // NOTE: Possibility of dropping nothing if one list is empty
+        for (int i = 0; i < numRewards; i++)
+        {
+            int list = Random.Range(0, 2);
+            if (list == 0)
+            {
+                int reward = Random.Range(0, ccs.Length);
+                combatCards.Add(ccs[reward]);
+            }
+            else
+            {
+                int reward = Random.Range(0, rcs.Length);
+                roomCards.Add(rcs[reward]);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
