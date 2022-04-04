@@ -6,9 +6,13 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
+
+    private GridObject go;
+
     // Start is called before the first frame update
     void Start()
     {
+        go = FindObjectOfType<GridObject>();
         currentHealth = maxHealth;
     }
 
@@ -18,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             //print("Enemy slain!");
+            Vector2Int enemyPos = go.GetGrid().GetXY(this.transform.position);
+            go.GetGrid().SetValue(enemyPos.x, enemyPos.y, false);
             Destroy(this.gameObject);
         }
     }
