@@ -43,9 +43,12 @@ public class GameManager : MonoBehaviour
             if (activeEnemies.Length == 0)
             {
                 activeRoom.DeactivateBadDoorways();
-                int randNum = Random.Range(0, 8);
-                TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
-                t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
+                if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)
+                {
+                    int randNum = Random.Range(0, 8);
+                    TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
+                    t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
+                }
                 inNewRoom = false;
             }
         }

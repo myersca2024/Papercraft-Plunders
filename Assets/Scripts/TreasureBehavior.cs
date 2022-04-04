@@ -18,19 +18,25 @@ public class TreasureBehavior : MonoBehaviour
 
     public void SetRewards(int numRewards, CombatCard[] ccs, RoomCard[] rcs)
     {
-        // NOTE: Possibility of dropping nothing if one list is empty
+        // NOTE: Bug here - possibility of dropping nothing if one list is empty
         for (int i = 0; i < numRewards; i++)
         {
-            int list = Random.Range(0, 2);
+            int list;
+            if (ccs.Length == 0) { list = 1; }
+            else if (rcs.Length == 0) { list = 0; }
+            else { list = Random.Range(0, 2); }
+
             if (list == 0)
             {
                 int reward = Random.Range(0, ccs.Length);
                 combatCards.Add(ccs[reward]);
+                Debug.Log("Combat card added");
             }
             else
             {
                 int reward = Random.Range(0, rcs.Length);
                 roomCards.Add(rcs[reward]);
+                Debug.Log("Room card added");
             }
         }
     }

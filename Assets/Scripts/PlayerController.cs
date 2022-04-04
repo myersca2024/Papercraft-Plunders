@@ -89,14 +89,17 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Alpha2)) { activeCard = 1; }
             if (Input.GetKeyDown(KeyCode.Alpha3)) { activeCard = 2; }
 
-            dm.HighlightCard(activeCard);
-            if (dm.handSize != 0) preview.AttackPreview(dm.GetHandCard(activeCard));
-
-            if (Input.GetMouseButtonDown(0))
+            if (activeCard < dm.handSize)
             {
-                if (dm.handSize > 0 && activeCard < dm.handSize)
+                dm.HighlightCard(activeCard);
+                if (dm.handSize != 0) preview.AttackPreview(dm.GetHandCard(activeCard));
+
+                if (Input.GetMouseButtonDown(0))
                 {
-                    UseCombatCard(this.transform.position, activeCard);
+                    if (dm.handSize > 0 && activeCard < dm.handSize)
+                    {
+                        UseCombatCard(this.transform.position, activeCard);
+                    }
                 }
             }
         }
