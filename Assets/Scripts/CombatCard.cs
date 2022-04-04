@@ -27,6 +27,7 @@ public class CombatCard : ScriptableObject
 
     public int GetUses()
     {
+        if (currentUses == -1) RefreshUses();
         return currentUses;
     }
 

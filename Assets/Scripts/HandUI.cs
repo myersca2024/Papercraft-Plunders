@@ -9,6 +9,7 @@ public class HandUI : MonoBehaviour
     public int id;
     public DeckManager dm;
     public TMP_Text cardName;
+    public TMP_Text uses;
     public Image cardImage;
     public Image highlight;
 
@@ -33,6 +34,7 @@ public class HandUI : MonoBehaviour
             Enable();
             CombatCard card = dm.GetHandCard(id);
             cardName.text = card.name;
+            uses.text = card.GetUses().ToString();
             cardImage.sprite = card.icon;
         }
         if (dm.activeCard == id && !highlighted) {
@@ -48,12 +50,14 @@ public class HandUI : MonoBehaviour
     public void Enable()
     {
         cardName.gameObject.SetActive(true);
+        uses.gameObject.SetActive(true);
         cardImage.gameObject.SetActive(true);
     }
 
     public void Disable()
     {
         cardName.gameObject.SetActive(false);
+        uses.gameObject.SetActive(false);
         cardImage.gameObject.SetActive(false);
     }
 }

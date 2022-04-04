@@ -17,6 +17,7 @@ MonoBehaviour:
   effectText: 
   damage: 3
   healing: 0
+  uses: 2
   duration: 0.1
   multidirectional: 0
   visualEffect: {fileID: 0}

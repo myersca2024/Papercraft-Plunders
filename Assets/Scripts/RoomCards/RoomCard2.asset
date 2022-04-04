@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: RoomCard2
   m_EditorClassIdentifier: 
   name: 
-  effectText: Contains 1 enemy and no treasure.
+  effectText: Contains 1 enemy and the boss room card.
   challengeRating: 0
   numberOfEnemies: 1
   potentialEnemies:
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
-  containsChest: 0
-  numberOfRewards: 0
+  containsChest: 1
+  numberOfRewards: 1
   combatCardRewards: []
-  roomCardRewards: []
+  roomCardRewards:
+  - {fileID: 11400000, guid: 1d99c4c8db5a1e243a22a5d3647b735c, type: 2}
