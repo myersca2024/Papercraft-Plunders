@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DungeonRoom : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DungeonRoom : MonoBehaviour
     public Vector2Int id;
 
     private GridObject go;
+    private GameManager gm;
     private float xSize = 15;
     private float zSize = 10;
 
@@ -22,7 +24,13 @@ public class DungeonRoom : MonoBehaviour
         if (isDefault) id = new Vector2Int(2, 0);
         grid[2, 0] = true;
         go = FindObjectOfType<GridObject>();
-        DeactivateBadDoorways();
+        gm = FindObjectOfType<GameManager>();
+        Invoke("LateStart", 0.1f);
+    }
+
+    void LateStart()
+    {
+        ActivateGoodDoorways();
     }
 
     private void Update()
@@ -30,8 +38,9 @@ public class DungeonRoom : MonoBehaviour
         RecalculateDoorwaysOnGrid();
     }
 
-    public void DeactivateBadDoorways()
+    public void ActivateGoodDoorways()
     {
+        /*
         Vector3 newRoom = topDoor.transform.position + new Vector3(0, 0, zSize);
         Vector2Int roomXY = go.GetGrid().GetXY(newRoom);
         if (go.GetGrid().ContainsCell(roomXY.x, roomXY.y))
@@ -56,6 +65,36 @@ public class DungeonRoom : MonoBehaviour
         newRoom = bottomDoor.transform.position - new Vector3(0, 0, zSize);
         roomXY = go.GetGrid().GetXY(newRoom);
         if (go.GetGrid().ContainsCell(roomXY.x, roomXY.y))
+        {
+            bottomDoor.SetActive(false);
+        }
+        */
+        if (gm == null)
+        {
+            gm = FindObjectOfType<GameManager>();
+        }
+
+        Vector2Int nextID;
+        nextID = id + new Vector2Int(0, 1);
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        {
+            topDoor.SetActive(false);
+        }
+
+        nextID = id - new Vector2Int(1, 0);
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        {
+            leftDoor.SetActive(false);
+        }
+
+        nextID = id + new Vector2Int(1, 0);
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        {
+            rightDoor.SetActive(false);
+        }
+
+        nextID = id - new Vector2Int(0, 1);
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
         {
             bottomDoor.SetActive(false);
         }
