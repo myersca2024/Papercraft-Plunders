@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Dialogue dialogue;
-
     public Text nameText;
     public Text dialogueText;
 
@@ -17,11 +15,13 @@ public class DialogueManager : MonoBehaviour
     private string currentSentence = "";
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         names = new Queue<string>();
         sentences = new Queue<string>();
+    }
 
+    public void StartDialogue(Dialogue dialogue) {
         names.Clear();
         sentences.Clear();
 
@@ -38,6 +38,8 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence() {
         if (sentences.Count == 0) {
             EndDialogue();
+            FindObjectOfType<PauseGameForDialogue>().UnpauseForDialogue();
+            
             return;
         }
 
@@ -65,7 +67,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char letter in sentence.ToCharArray()) {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSecondsRealtime(0.02f);
         }
 
         scrolling = false;
