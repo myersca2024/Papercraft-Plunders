@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Dialogue[] dialogues;
+
     public float maximumHealth = 100f;
     public float currentHealth;
     public GameManager gm;
     public Text deathText;
     public Slider healthSlider;
+
+    bool died = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +30,24 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !died)
         {
+            died = true;
+
+            int rand = Random.Range(0, dialogues.Length);
+            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[rand]);
+
+            PlayerController.freeze = true;
+
             //print("Player died.");
-            if (deathText)
-            {
-                PlayerController.freeze = true;
-                deathText.gameObject.SetActive(true);
-            }
-            
+            //if (deathText)
+            //{
+
+            //    deathText.gameObject.SetActive(true);
+            //}
+
             //restart level after 2 seconds
-            Invoke("PlayerDied", 2);
+            Invoke("PlayerDied", 1);
         }
     }
 
