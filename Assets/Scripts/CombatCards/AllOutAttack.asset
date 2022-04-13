@@ -30,4 +30,4 @@ MonoBehaviour:
     - row: 0001000100
     - row: 0100010001
     - row: 0001000100
-  clip: {fileID: 8300000, guid: f1f33ec40caef1c4199bb1e5b87bc2ac, type: 3}
+  clip: {fileID: 8300000, guid: fa76ef8afb40b1449b5e6d5c374e07f6, type: 3}
