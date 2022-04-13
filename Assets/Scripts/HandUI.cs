@@ -34,7 +34,9 @@ public class HandUI : MonoBehaviour
             Enable();
             CombatCard card = dm.GetHandCard(id);
             cardName.text = card.name;
-            uses.text = card.GetUses().ToString();
+            if (id != 0) {
+                uses.text = card.GetUses().ToString();
+            }
             cardImage.sprite = card.icon;
         }
         if (dm.activeCard == id && !highlighted) {

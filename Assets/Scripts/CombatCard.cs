@@ -21,6 +21,10 @@ public class CombatCard : ScriptableObject
     private int currentUses = -1;
 
     public void DecrementUses() {
+        if (name == "Weak Stab") {
+            return;
+        }
+
         AudioSource.PlayClipAtPoint(clip, GameObject.FindGameObjectWithTag("Player").transform.position);
         if (currentUses == -1 || currentUses == 0) RefreshUses();
         currentUses--;

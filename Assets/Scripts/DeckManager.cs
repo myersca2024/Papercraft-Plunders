@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
+    public CombatCard defaultCard;
     public List<CombatCard> deck;
-    public float drawTime;
+    public float shuffleTime;
     public int activeCard = 0;
     public int totalHandSize = 3;
     [HideInInspector] public int deckSize = 0;
@@ -21,27 +22,29 @@ public class DeckManager : MonoBehaviour
         hand = new List<CombatCard>();
         discard = new List<CombatCard>();
 
+        hand.Add(defaultCard);
+
         deckSize = deck.Count;
         ShuffleDeck();
-        for (int i = 0; i < totalHandSize; i++)
+        for (int i = 0; i < totalHandSize - 1; i++)
         {
             DrawCard();
         }
 
-        currTime = drawTime;
+        currTime = shuffleTime;
     }
 
     private void Update()
     {
-        if (deckSize == 0)
+        if (deckSize == 0 && handSize == 1)
         {
+            currTime = 0;
             ShuffleDiscardToDeck();
         }
 
-        if (currTime >= drawTime && handSize < totalHandSize)
+        if (handSize < totalHandSize && currTime > shuffleTime && deckSize > 0)
         {
             DrawCard();
-            currTime = 0;
         }
 
         currTime += Time.deltaTime;
@@ -97,6 +100,10 @@ public class DeckManager : MonoBehaviour
 
     public CombatCard GetHandCard(int index)
     {
+        if (index >= hand.Count) {
+            return null;
+        }
+
         return hand[index];
     }
 
