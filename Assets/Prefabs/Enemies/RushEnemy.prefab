@@ -130,6 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+  hitSound: {fileID: 8300000, guid: a94a0f24ce386894ba4ede99aa7c4fb9, type: 3}
+  deathSound: {fileID: 0}
 --- !u!65 &-1768362729134921950
 BoxCollider:
   m_ObjectHideFlags: 0
