@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour {
                 dm.HighlightCard(activeCard);
                 if (dm.handSize != 0) preview.AttackPreview(dm.GetHandCard(activeCard));
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
                 {
                     if (dm.handSize > 0 && activeCard < dm.handSize)
                     {
