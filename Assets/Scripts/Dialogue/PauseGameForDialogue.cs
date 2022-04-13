@@ -11,7 +11,7 @@ public class PauseGameForDialogue : MonoBehaviour
     public Text dialogueText;
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && paused) {
             FindObjectOfType<DialogueManager>().DisplayNextSentence();
         }
     }

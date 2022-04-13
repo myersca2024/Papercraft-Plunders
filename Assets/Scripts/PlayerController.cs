@@ -5,7 +5,7 @@ using Array2DEditor;
 
 public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
-    public float attackBuffer = .1f;
+    public float attackBuffer = .3f;
     public Hitbox hitbox;
     public static bool freeze = false;
 
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 
                 if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
                 {
-                    if (dm.handSize > 0 && activeCard < dm.handSize)
+                    if (dm.handSize > 0 && activeCard < dm.handSize && attackTimer >= attackBuffer)
                     {
                         UseCombatCard(this.transform.position, activeCard);
                     }
@@ -175,7 +175,10 @@ public class PlayerController : MonoBehaviour {
         {
             dm.DiscardCard(index);
             cc.RefreshUses();
-            activeCard = 0;
+
+            if (activeCard >= dm.handSize + dm.deckSize) {
+                activeCard = dm.handSize - 1;
+            }
         }
     }
 }

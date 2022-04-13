@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Weak Stab
   icon: {fileID: 21300000, guid: 8a5b616425354a84caab593d4b259840, type: 3}
   effectText: 
-  damage: 2
+  damage: 1
   healing: 0
-  uses: 3
+  uses: 999
   duration: 0.1
   multidirectional: 1
   visualEffect: {fileID: 0}
