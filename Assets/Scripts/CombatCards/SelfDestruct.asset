@@ -17,6 +17,7 @@ MonoBehaviour:
   effectText: 
   damage: 10
   healing: -10
+  uses: 1
   duration: 0.1
   multidirectional: 0
   visualEffect: {fileID: 0}
@@ -29,3 +30,4 @@ MonoBehaviour:
     - row: 0101000101
     - row: 0101010101
     - row: 0101010101
+  clip: {fileID: 8300000, guid: f1f33ec40caef1c4199bb1e5b87bc2ac, type: 3}

@@ -16,11 +16,12 @@ public class CombatCard : ScriptableObject
     public bool multidirectional;
     public GameObject visualEffect;
     public Array2DBool pattern;
+    public AudioClip clip;
 
     private int currentUses = -1;
 
-    public void DecrementUses()
-    {
+    public void DecrementUses() {
+        AudioSource.PlayClipAtPoint(clip, GameObject.FindGameObjectWithTag("Player").transform.position);
         if (currentUses == -1 || currentUses == 0) RefreshUses();
         currentUses--;
     }
