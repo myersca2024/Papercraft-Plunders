@@ -1282,6 +1282,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409691718}
   m_CullTransparentMesh: 1
+--- !u!1 &512012511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512012513}
+  - component: {fileID: 512012512}
+  m_Layer: 0
+  m_Name: MusicPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &512012512
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512012511}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a6f2225b5116f7540abcd821ccb85dcc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.02
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &512012513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512012511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04792867, y: -0.13476664, z: -3.8525896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551222209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: \u221E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2971,7 +3098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4504757565164090753, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
       propertyPath: attackBuffer
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4504757565164090754, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
       propertyPath: m_Enabled
@@ -4559,69 +4686,77 @@ PrefabInstance:
       value: CombatDeckManager
       objectReference: {fileID: 0}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: defaultCard
+      value: 
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
+      propertyPath: shuffleTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.size
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
+      objectReference: {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+      objectReference: {fileID: 11400000, guid: e7d49a86434a1274b8426e397c333e93, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
+      objectReference: {fileID: 11400000, guid: 7cec3af8d3ac59244802930b4a0749de, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+      objectReference: {fileID: 11400000, guid: 3e7d750c5a1e7184db48cf352ab8bb55, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[7]
       value: 
-      objectReference: {fileID: 11400000, guid: e7d49a86434a1274b8426e397c333e93, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: 7cec3af8d3ac59244802930b4a0749de, type: 2}
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 3e7d750c5a1e7184db48cf352ab8bb55, type: 2}
+      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[10]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
+      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[11]
       value: 
-      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[12]
       value: 
-      objectReference: {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[13]
       value: 
-      objectReference: {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     - target: {fileID: 6856233690390228731, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: deck.Array.data[14]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
+      objectReference: {fileID: 11400000, guid: 867950d1acfe637439089d9ba4699c39, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
 --- !u!1 &2034258557

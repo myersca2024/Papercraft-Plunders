@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2265765149846133580}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -3, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+  hitSound: {fileID: 8300000, guid: 53d303e7a16bb8b43b9f86060acabe3e, type: 3}
+  deathSound: {fileID: 0}
 --- !u!65 &4309374778213980715
 BoxCollider:
   m_ObjectHideFlags: 0

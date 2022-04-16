@@ -9,6 +9,6 @@ public class DialogueTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);   
+        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogue);
     }
 }

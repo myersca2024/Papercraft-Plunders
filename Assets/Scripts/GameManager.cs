@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
             int randNum = UnityEngine.Random.Range(0, 8);
             if (!usedSpawnPoints.Contains(randNum))
             {
-                int randEnemyID = UnityEngine.Random.Range(0, rc.potentialEnemies.Length - 1);
+                int randEnemyID = UnityEngine.Random.Range(0, rc.potentialEnemies.Length);
                 GameObject randEnemy = rc.potentialEnemies[randEnemyID];
                 Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, randEnemy.transform.localRotation);
                 usedSpawnPoints.Add(randNum);

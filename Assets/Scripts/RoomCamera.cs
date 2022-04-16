@@ -18,6 +18,10 @@ public class RoomCamera : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) {
+            return;
+        }
+
         Vector3 worldPos = gm.GetRoomWorldPosition() + offset;
         float newX = Mathf.SmoothDamp(this.transform.position.x, worldPos.x, ref xVel, timeToTarget);
         float newZ = Mathf.SmoothDamp(this.transform.position.z, worldPos.z, ref zVel, timeToTarget);

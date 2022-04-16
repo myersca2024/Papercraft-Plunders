@@ -36,17 +36,17 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        if (sentences.Count == 0) {
-            EndDialogue();
-            FindObjectOfType<PauseGameForDialogue>().UnpauseForDialogue();
-            
-            return;
-        }
-
         if (scrolling) {
             scrolling = false;
             StopAllCoroutines();
             dialogueText.text = currentSentence;
+            return;
+        }
+
+        if (sentences.Count == 0) {
+            EndDialogue();
+            FindObjectOfType<PauseGameForDialogue>().UnpauseForDialogue();
+            
             return;
         }
 
