@@ -16,8 +16,6 @@ public class DungeonRoom : MonoBehaviour
 
     private GridObject go;
     private GameManager gm;
-    private float xSize = 15;
-    private float zSize = 10;
 
     void Start()
     {
@@ -31,11 +29,6 @@ public class DungeonRoom : MonoBehaviour
     void LateStart()
     {
         ActivateGoodDoorways();
-    }
-
-    private void Update()
-    {
-        RecalculateDoorwaysOnGrid();
     }
 
     public void ActivateGoodDoorways()
@@ -76,28 +69,46 @@ public class DungeonRoom : MonoBehaviour
 
         Vector2Int nextID;
         nextID = id + new Vector2Int(0, 1);
-        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y] && !DoorwayCutOff(id, nextID))
         {
             topDoor.SetActive(false);
         }
 
         nextID = id - new Vector2Int(1, 0);
-        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y] && !DoorwayCutOff(id, nextID))
         {
             leftDoor.SetActive(false);
         }
 
         nextID = id + new Vector2Int(1, 0);
-        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y] && !DoorwayCutOff(id, nextID))
         {
             rightDoor.SetActive(false);
         }
 
         nextID = id - new Vector2Int(0, 1);
-        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y])
+        if (gm.IsValidPosition(nextID.x, nextID.y) && gm.roomGrid[nextID.x, nextID.y] && !DoorwayCutOff(id, nextID))
         {
             bottomDoor.SetActive(false);
         }
+
+        Invoke("RecalculateDoorwaysOnGrid", 0.1f);
+    }
+
+    public bool DoorwayCutOff(Vector2Int room1, Vector2Int room2)
+    {
+        foreach (Tuple<Vector2Int, Vector2Int> id in gm.doorsClosed)
+        {
+            if ((id.Item1.x == room1.x && id.Item1.y == room1.y &&
+                id.Item2.x == room2.x && id.Item2.y == room2.y) 
+                ||
+                (id.Item2.x == room1.x && id.Item2.y == room1.y &&
+                id.Item1.x == room2.x && id.Item1.y == room2.y))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void DeactivateAllDoorways()
@@ -128,38 +139,21 @@ public class DungeonRoom : MonoBehaviour
 
     public void RecalculateDoorwaysOnGrid()
     {
-        Vector2Int gridXY;
-        MapGrid grid = go.GetGrid();
-
         if (!topDoor.activeSelf)
         {
-            gridXY = grid.GetXY(topDoor.transform.position);
-            grid.SetValue(gridXY.x, gridXY.y, false);
-            grid.SetValue(gridXY.x + 1, gridXY.y, false);
-            grid.SetValue(gridXY.x - 1, gridXY.y, false);
-            grid.SetValue(gridXY.x - 2, gridXY.y, false);
+            go.RecalculateDoors(topDoor.transform.position);
         }
         if (!bottomDoor.activeSelf)
         {
-            gridXY = grid.GetXY(bottomDoor.transform.position);
-            grid.SetValue(gridXY.x, gridXY.y, false);
-            grid.SetValue(gridXY.x + 1, gridXY.y, false);
-            grid.SetValue(gridXY.x + 2, gridXY.y, false);
-            grid.SetValue(gridXY.x - 1, gridXY.y, false);
+            go.RecalculateDoors(bottomDoor.transform.position);
         }
         if (!leftDoor.activeSelf)
         {
-            gridXY = grid.GetXY(leftDoor.transform.position);
-            grid.SetValue(gridXY.x, gridXY.y, false);
-            grid.SetValue(gridXY.x, gridXY.y - 1, false);
-            grid.SetValue(gridXY.x, gridXY.y + 1, false);
+            go.RecalculateDoors(leftDoor.transform.position);
         }
         if (!rightDoor.activeSelf)
         {
-            gridXY = grid.GetXY(rightDoor.transform.position);
-            grid.SetValue(gridXY.x, gridXY.y, false);
-            grid.SetValue(gridXY.x, gridXY.y - 1, false);
-            grid.SetValue(gridXY.x, gridXY.y + 1, false);
+            go.RecalculateDoors(rightDoor.transform.position);
         }
     }
 }

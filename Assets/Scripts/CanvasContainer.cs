@@ -35,7 +35,7 @@ public class CanvasContainer : MonoBehaviour
         {
             dtb.StartMakeRoom(index);
             container.SetActive(false);
-            ddm.DiscardCard(index);
+            //ddm.DiscardCard(index);
             PlayerController.freeze = false;
         }
     }

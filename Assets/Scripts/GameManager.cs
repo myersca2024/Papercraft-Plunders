@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private GridObject go;
     private GameObject player;
     public bool[,] roomGrid = new bool[5, 7];
+    public List<Tuple<Vector2Int, Vector2Int>> doorsClosed = new List<Tuple<Vector2Int, Vector2Int>>();
     public List<Tuple<Vector2Int, Vector2Int>> roomPaths = new List<Tuple<Vector2Int, Vector2Int>>();
     private Vector2Int activeGrid;
     private float xSize = 15 + 3;
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>().gameObject;
         go = FindObjectOfType<GridObject>();
+        xSize *= go.cellSize;
+        zSize *= go.cellSize;
         activeRoom = defaultRoom;
         activeGrid = new Vector2Int(2, 0);
         roomGrid[2, 0] = true;
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
             activeRoom.DeactivateAllDoorways();
             if (activeEnemies.Length == 0)
             {
+                Debug.Log("Activation from game manager");
                 activeRoom.ActivateGoodDoorways();
                 if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)
                 {
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void MakeRoom(DungeonRoom parentRoom, Direction direction, RoomCard rc)
     {
+        // Debug.Log("Making new room");
         DungeonRoom dr;
         Vector3 newPos;
         Vector3 playerMoveDir = new Vector3();
@@ -74,7 +79,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.DOWN;
-                playerMoveDir = new Vector3(0, 0, 2);
+                playerMoveDir = new Vector3(0, 0, go.cellSize * 2);
 
                 dr.id = parentRoom.GetID() + new Vector2Int(0, 1);
                 break;
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.UP;
-                playerMoveDir = new Vector3(0, 0, -2);
+                playerMoveDir = new Vector3(0, 0, -go.cellSize * 2);
 
                 dr.id = parentRoom.GetID() - new Vector2Int(0, 1);
                 break;
@@ -90,7 +95,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.RIGHT;
-                playerMoveDir = new Vector3(-2, 0);
+                playerMoveDir = new Vector3(-go.cellSize * 2, 0);
 
                 dr.id = parentRoom.GetID() - new Vector2Int(1, 0);
                 break;
@@ -98,7 +103,7 @@ public class GameManager : MonoBehaviour
                 newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
                 dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.LEFT;
-                playerMoveDir = new Vector3(2, 0);
+                playerMoveDir = new Vector3(go.cellSize * 2, 0);
 
                 dr.id = parentRoom.GetID() + new Vector2Int(1, 0);
                 break;
@@ -151,6 +156,57 @@ public class GameManager : MonoBehaviour
     {
         int numRooms = 5 * 7 / 2;
         RecursiveGeneratePathways(numRooms, new Vector2Int(2, 0));
+        /*
+        CloseRandomDoors(4);
+        foreach (Tuple<Vector2Int, Vector2Int> id in doorsClosed)
+        {
+            Debug.Log(id);
+        }
+        */
+    }
+
+    private void CloseRandomDoors(int doorsToClose)
+    {
+        int preferredVacancies = 4;
+        List<Vector2Int> chosenRooms = new List<Vector2Int>();
+        int iterations = 500;
+        while (doorsToClose > 0 && iterations > 0)
+        {
+            Vector2Int curr_room = GetRandomVacantRoom(preferredVacancies);
+            Vector2Int rand_neighbor = new Vector2Int(0, 0);
+            do
+            {
+                int rand = UnityEngine.Random.Range(0, 4);
+                switch (rand)
+                {
+                    // UP
+                    case 0:
+                        rand_neighbor.x = curr_room.x;
+                        rand_neighbor.y = curr_room.y + 1;
+                        break;
+                    // DOWN
+                    case 1:
+                        rand_neighbor.x = curr_room.x;
+                        rand_neighbor.y = curr_room.y - 1;
+                        break;
+                    // LEFT
+                    case 2:
+                        rand_neighbor.x = curr_room.x - 1;
+                        rand_neighbor.y = curr_room.y;
+                        break;
+                    // RIGHT
+                    case 3:
+                        rand_neighbor.x = curr_room.x + 1;
+                        rand_neighbor.y = curr_room.y;
+                        break;
+                }
+            }
+            while (!IsValidPosition(rand_neighbor.x, rand_neighbor.y) || !roomGrid[rand_neighbor.x, rand_neighbor.y] || NumAvailableNeighbors(rand_neighbor) == 1);
+            doorsClosed.Add(new Tuple<Vector2Int, Vector2Int>(curr_room, rand_neighbor));
+            chosenRooms.Add(curr_room);
+            doorsToClose--;
+            iterations--;
+        }
     }
 
     private void RecursiveGeneratePathways(int roomsLeft, Vector2Int currentRoom)
@@ -250,7 +306,7 @@ public class GameManager : MonoBehaviour
     private Vector2Int RandomNextStep(Vector2Int xy)
     {
         Vector2Int toReturn = new Vector2Int(0, 0);
-        int rand = UnityEngine.Random.Range(0, 5);
+        int rand = UnityEngine.Random.Range(0, 4);
         switch (rand)
         {
             // UP
