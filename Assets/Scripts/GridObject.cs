@@ -45,9 +45,38 @@ public class GridObject : MonoBehaviour
                         this.transform.localRotation);
                     hd.x = i;
                     hd.y = j;
+                    hd.go = this;
                 }
             }
         }
+    }
+
+    public void RecalculateDoors(Vector3 doorXY)
+    {
+        Vector2Int doorPos = grid.GetXY(doorXY);
+        int buffer = 3;
+
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if ((Mathf.Abs(doorPos.x + i) <= buffer || Mathf.Abs(doorPos.x - i) <= buffer) &&
+                    (Mathf.Abs(doorPos.y + j) <= buffer || Mathf.Abs(doorPos.y - j) <= buffer))
+                {
+                    HitDetector hd = Instantiate(hitDetector,
+                        grid.GetWorldPosition(i, j) + new Vector3(cellSize / 2, 0, cellSize / 2),
+                        this.transform.localRotation);
+                    hd.x = i;
+                    hd.y = j;
+                    hd.go = this;
+                }
+            }
+        }
+    }
+
+    public void DeactivateCell(int x, int y)
+    {
+        grid.SetValue(x, y, false);
     }
 
     public void DrawGrid()
