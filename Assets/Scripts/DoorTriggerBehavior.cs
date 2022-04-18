@@ -75,6 +75,7 @@ public class DoorTriggerBehavior : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Setting new room");
             gm.SetActiveRoom(parentRoom);
             Vector2Int id = parentRoom.GetID();
             Debug.Log(id.ToString());

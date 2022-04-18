@@ -11,6 +11,7 @@ TagManager:
   - HealthBarFill
   - RoomCardUI
   - CollisionDetector
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX

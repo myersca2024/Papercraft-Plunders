@@ -52,19 +52,19 @@ public class PlayerController : MonoBehaviour {
 
                 if (movement.x > 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(1, 0));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(go.cellSize, 0));
                 }
                 else if (movement.x < 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(1, 0));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(go.cellSize, 0));
                 }
                 else if (movement.y > 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, 1));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, go.cellSize));
                 }
                 else if (movement.y < 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, 1));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, go.cellSize));
                 }
             }
 
