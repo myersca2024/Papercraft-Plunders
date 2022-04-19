@@ -21,7 +21,7 @@ public class CombatCard : ScriptableObject
     private int currentUses = -1;
 
     public void DecrementUses() {
-        AudioSource.PlayClipAtPoint(clip, GameObject.FindGameObjectWithTag("Player").transform.position);
+        AudioSource.PlayClipAtPoint(clip, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         if (name == "Weak Stab") {
             return;
         }
