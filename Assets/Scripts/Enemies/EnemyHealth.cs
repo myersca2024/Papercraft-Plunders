@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
         go = FindObjectOfType<GridObject>();
         currentHealth = maxHealth;
         List<Material> m = new List<Material>();
-        gameObject.GetComponent<MeshRenderer>().GetMaterials(m);
+        gameObject.GetComponentInChildren<SpriteRenderer>().GetMaterials(m);
         material = m[0];
         color = material.color;
 
