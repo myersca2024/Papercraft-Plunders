@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThreePointer
   m_EditorClassIdentifier: 
   name: Three Pointer
-  icon: {fileID: 21300000, guid: e73c75a2c713d2441bf0b852ea22305c, type: 3}
+  icon: {fileID: 21300000, guid: 1c9cdbe5585c13d4ca2c6e3996715429, type: 3}
   effectText: 
   damage: 6
   healing: 0
