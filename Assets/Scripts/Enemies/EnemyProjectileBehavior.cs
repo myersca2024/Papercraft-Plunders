@@ -27,7 +27,7 @@ public class EnemyProjectileBehavior : MonoBehaviour
         attackTimer += Time.deltaTime;
 
         if (timePassed >= moveDelay) {
-            transform.position += velocity;
+            transform.position += velocity * 10;
             timePassed = 0.0f;
         }
 
