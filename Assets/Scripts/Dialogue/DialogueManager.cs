@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Image portrait;
 
+    public AudioClip dialogueSFX;
+
     private Queue<string> names;
     private Queue<string> sentences;
     private Queue<Sprite> sprites;
@@ -47,6 +49,7 @@ public class DialogueManager : MonoBehaviour
             scrolling = false;
             StopAllCoroutines();
             dialogueText.text = currentSentence;
+            GetComponent<AudioSource>().Stop();
             return;
         }
 
@@ -56,6 +59,9 @@ public class DialogueManager : MonoBehaviour
             
             return;
         }
+
+        GetComponent<AudioSource>().time = Random.Range(0.0f, 4.0f);
+        GetComponent<AudioSource>().Play();
 
         string name = names.Dequeue();
         string sentence = sentences.Dequeue();
@@ -83,10 +89,12 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.02f);
         }
 
+        GetComponent<AudioSource>().Stop();
         scrolling = false;
     }
 
     void EndDialogue() {
+        GetComponent<AudioSource>().Stop();
         Debug.Log("this is where u load the main game");
     }
 }
