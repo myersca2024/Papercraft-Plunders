@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlameZone
   m_EditorClassIdentifier: 
   name: Flame Zone
-  icon: {fileID: 21300000, guid: 8e584b29279e1f54e833871a84728c12, type: 3}
+  icon: {fileID: 21300000, guid: 8f721ca13407d4d40b6aa4ab915e446c, type: 3}
   effectText: 
   damage: 3
   healing: 0
