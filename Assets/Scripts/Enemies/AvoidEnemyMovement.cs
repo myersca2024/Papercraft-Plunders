@@ -56,24 +56,24 @@ public class AvoidEnemyMovement : MonoBehaviour {
         }
 
         if (player.transform.position.z > transform.position.z) {
-            nextStep.z = 1;
+            nextStep.z = 1 * transform.localScale.z;
             return nextStep;
         } else if (player.transform.position.z < transform.position.z) {
-            nextStep.z = -1;
+            nextStep.z = -1 * transform.localScale.z;
             return nextStep;
         }
 
         if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5) {
             if (player.transform.position.x > transform.position.x) {
-                nextStep.x = -1;
+                nextStep.x = -1 * transform.localScale.x;
             } else if (player.transform.position.x < transform.position.x) {
-                nextStep.x = 1;
+                nextStep.x = 1 * transform.localScale.x;
             }
         } else if (Mathf.Abs(player.transform.position.x - transform.position.x) > 5) {
             if (player.transform.position.x > transform.position.x) {
-                nextStep.x = 1;
+                nextStep.x = 1 * transform.localScale.x;
             } else if (player.transform.position.x < transform.position.x) {
-                nextStep.x = -1;
+                nextStep.x = -1 * transform.localScale.x;
             }
         }
 

@@ -54,9 +54,9 @@ public class RandomEnemyMovement : MonoBehaviour {
             dir = -1;
         }
         if (axis == 0) {
-            nextStep.x += dir;
+            nextStep.x += dir * transform.localScale.x;
         } else {
-            nextStep.z += dir;
+            nextStep.z += dir * transform.localScale.z;
         }
 
         return nextStep;
