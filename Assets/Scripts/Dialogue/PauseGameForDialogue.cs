@@ -7,8 +7,9 @@ public class PauseGameForDialogue : MonoBehaviour
 {
     public static bool paused = false;
 
-    public Text nameText;
-    public Text dialogueText;
+    public Image name;
+    public Image text;
+    public Image portrait;
 
     private void Update() {
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && paused) {
@@ -17,8 +18,9 @@ public class PauseGameForDialogue : MonoBehaviour
     }
 
     public void PauseForDialogue(Dialogue dialogue) {
-        nameText.gameObject.SetActive(true);
-        dialogueText.gameObject.SetActive(true);
+        name.gameObject.SetActive(true);
+        text.gameObject.SetActive(true);
+        portrait.gameObject.SetActive(true);
 
         Time.timeScale = 0;
         PauseGameForDialogue.paused = true;
@@ -26,8 +28,9 @@ public class PauseGameForDialogue : MonoBehaviour
     }
 
     public void UnpauseForDialogue() {
-        nameText.gameObject.SetActive(false);
-        dialogueText.gameObject.SetActive(false);
+        name.gameObject.SetActive(false);
+        text.gameObject.SetActive(false);
+        portrait.gameObject.SetActive(false);
         Time.timeScale = 1;
         PauseGameForDialogue.paused = false;
     }

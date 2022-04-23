@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AllOutAttack
   m_EditorClassIdentifier: 
   name: All-Out Attack
-  icon: {fileID: 21300000, guid: d3ef5ab13a62d94468aa17d337104ce7, type: 3}
+  icon: {fileID: 21300000, guid: 8f2ca85cb23c5b7459d04729ef0e8382, type: 3}
   effectText: 
   damage: 8
   healing: 0

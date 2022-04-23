@@ -7,9 +7,13 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public Image portrait;
+
+    public AudioClip dialogueSFX;
 
     private Queue<string> names;
     private Queue<string> sentences;
+    private Queue<Sprite> sprites;
 
     private bool scrolling = false;
     private string currentSentence = "";
@@ -19,17 +23,22 @@ public class DialogueManager : MonoBehaviour
     {
         names = new Queue<string>();
         sentences = new Queue<string>();
+        sprites = new Queue<Sprite>();
     }
 
     public void StartDialogue(Dialogue dialogue) {
         names.Clear();
         sentences.Clear();
+        sprites.Clear();
 
         foreach (string name in dialogue.names) {
             names.Enqueue(name);
         }
         foreach (string sentence in dialogue.sentences) {
             sentences.Enqueue(sentence);
+        }
+        foreach (Sprite sprite in dialogue.sprites) {
+            sprites.Enqueue(sprite);
         }
 
         DisplayNextSentence();
@@ -40,6 +49,7 @@ public class DialogueManager : MonoBehaviour
             scrolling = false;
             StopAllCoroutines();
             dialogueText.text = currentSentence;
+            GetComponent<AudioSource>().Stop();
             return;
         }
 
@@ -50,8 +60,17 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        GetComponent<AudioSource>().time = Random.Range(0.0f, 4.0f);
+        GetComponent<AudioSource>().Play();
+
         string name = names.Dequeue();
         string sentence = sentences.Dequeue();
+        portrait.sprite = sprites.Dequeue();
+        if (portrait.sprite == null) {
+            portrait.gameObject.transform.parent.gameObject.SetActive(false);
+        } else {
+            portrait.gameObject.transform.parent.gameObject.SetActive(true);
+        }
         currentSentence = sentence;
 
         nameText.text = name;
@@ -70,10 +89,12 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.02f);
         }
 
+        GetComponent<AudioSource>().Stop();
         scrolling = false;
     }
 
     void EndDialogue() {
+        GetComponent<AudioSource>().Stop();
         Debug.Log("this is where u load the main game");
     }
 }

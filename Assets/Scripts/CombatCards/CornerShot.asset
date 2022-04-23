@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CornerShot
   m_EditorClassIdentifier: 
   name: Corner Shot
-  icon: {fileID: 21300000, guid: d9cd84dc099d3794f9664b879849142b, type: 3}
+  icon: {fileID: 21300000, guid: e35c2fd763691f546960615a97d4066f, type: 3}
   effectText: 
   damage: 4
   healing: 0

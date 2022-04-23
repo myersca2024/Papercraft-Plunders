@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
         go = FindObjectOfType<GridObject>();
         currentHealth = maxHealth;
         List<Material> m = new List<Material>();
-        gameObject.GetComponent<MeshRenderer>().GetMaterials(m);
+        gameObject.GetComponentInChildren<SpriteRenderer>().GetMaterials(m);
         material = m[0];
         color = material.color;
 
@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
     void Update()
     {
         if (currentHealth <= 0) {
-            AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(deathSound, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
             //print("Enemy slain!");
             Vector2Int enemyPos = go.GetGrid().GetXY(this.transform.position);
             go.GetGrid().SetValue(enemyPos.x, enemyPos.y, false);
@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
 
         if (currentHealth > 0) {
-            AudioSource.PlayClipAtPoint(hitSound, gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(hitSound, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         }
 
         material.SetColor("_Color", Color.red);
