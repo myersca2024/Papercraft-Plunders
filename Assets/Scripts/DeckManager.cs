@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     public CombatCard defaultCard;
+    public List<CombatCard> hand;
     public List<CombatCard> deck;
     public float shuffleTime;
     public int activeCard = 0;
@@ -12,8 +13,8 @@ public class DeckManager : MonoBehaviour
     [HideInInspector] public int deckSize = 0;
     [HideInInspector] public int handSize = 0;
     [HideInInspector] public int discardSize = 0;
+    [HideInInspector] public int initialDeckSize;
 
-    private List<CombatCard> hand;
     private List<CombatCard> discard;
     private float currTime;
 
@@ -21,8 +22,10 @@ public class DeckManager : MonoBehaviour
     {
         hand = new List<CombatCard>();
         discard = new List<CombatCard>();
+        initialDeckSize = deck.Count;
 
         hand.Add(defaultCard);
+        handSize++;
 
         deckSize = deck.Count;
         ShuffleDeck();
@@ -61,11 +64,14 @@ public class DeckManager : MonoBehaviour
 
     void DrawCard()
     {
-        CombatCard card = deck[0];
-        hand.Add(card);
-        handSize++;
-        deck.RemoveAt(0);
-        deckSize--;
+        if (deckSize > 0)
+        {
+            CombatCard card = deck[0];
+            hand.Add(card);
+            handSize++;
+            deck.RemoveAt(0);
+            deckSize--;
+        }
     }
 
     public void DiscardCard(int index)
@@ -86,7 +92,7 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    void ShuffleDiscardToDeck()
+    public void ShuffleDiscardToDeck()
     {
         for (int i = 0; i < discard.Count; i++)
         {
@@ -96,6 +102,44 @@ public class DeckManager : MonoBehaviour
         discard.RemoveRange(0, discard.Count);
         discardSize = discard.Count;
         ShuffleDeck();
+    }
+
+    public bool AddCardToDeck(CombatCard card)
+    {
+        if (handSize - 1 + deckSize < initialDeckSize)
+        {
+            if (handSize < totalHandSize)
+            {
+                hand.Add(card);
+                handSize++;
+                return true;
+            }
+            else
+            {
+                deck.Add(card);
+                deckSize++;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool RemoveCardFromDeck(int index, bool isInHand)
+    {
+        if (isInHand && index < handSize && index != 0)
+        {
+            hand.RemoveAt(index);
+            handSize--;
+            DrawCard();
+            return true;
+        }
+        else if (!isInHand && index < deckSize)
+        {
+            deck.RemoveAt(index);
+            deckSize--;
+            return true;
+        }
+        return false;
     }
 
     public CombatCard GetHandCard(int index)

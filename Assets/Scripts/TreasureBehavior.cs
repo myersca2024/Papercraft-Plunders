@@ -6,6 +6,7 @@ public class TreasureBehavior : MonoBehaviour
 {
     public List<CombatCard> combatCards;
     public List<RoomCard> roomCards;
+    public CCEditUI editUI;
 
     private DeckManager dm;
     private DungeonDeckManager ddm;
@@ -16,9 +17,24 @@ public class TreasureBehavior : MonoBehaviour
         ddm = FindObjectOfType<DungeonDeckManager>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            foreach (RoomCard rc in roomCards)
+            {
+                ddm.AddCard(rc);
+            }
+
+            dm.ShuffleDiscardToDeck();
+            editUI.SetChest(this);
+            PlayerController.freeze = true;
+            editUI.gameObject.SetActive(true);
+        }
+    }
+
     public void SetRewards(int numRewards, CombatCard[] ccs, RoomCard[] rcs)
     {
-        // NOTE: Bug here - possibility of dropping nothing if one list is empty
         for (int i = 0; i < numRewards; i++)
         {
             int list;
@@ -41,21 +57,11 @@ public class TreasureBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            foreach (CombatCard cc in combatCards)
-            {
-                dm.deck.Add(cc);
-            }
-
-            foreach (RoomCard rc in roomCards)
-            {
-                ddm.AddCard(rc);
-            }
-
-            Destroy(this.gameObject, 0.1f);
+            
         }
     }
 }

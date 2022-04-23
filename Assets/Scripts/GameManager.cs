@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     private CombatCard[] activeTreasureCC;
     private int activeTreasureNum;
 
+    // Deck editing
+    public CCEditUI editUI;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
                     int randNum = UnityEngine.Random.Range(0, 8);
                     TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
                     t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
+                    t.editUI = this.editUI;
                 }
                 inNewRoom = false;
             }
