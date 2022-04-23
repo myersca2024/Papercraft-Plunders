@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrossStrike
   m_EditorClassIdentifier: 
   name: Cross Strike
-  icon: {fileID: 21300000, guid: 72a08e5633c5b134492953b1b98704f7, type: 3}
+  icon: {fileID: 21300000, guid: a166c4a12c8fa7d439c3984977f9e2d0, type: 3}
   effectText: 
   damage: 3
   healing: 0
