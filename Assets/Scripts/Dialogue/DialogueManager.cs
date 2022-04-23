@@ -9,8 +9,6 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Image portrait;
 
-    public AudioClip dialogueSFX;
-
     private Queue<string> names;
     private Queue<string> sentences;
     private Queue<Sprite> sprites;
@@ -67,9 +65,9 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         portrait.sprite = sprites.Dequeue();
         if (portrait.sprite == null) {
-            portrait.gameObject.transform.parent.gameObject.SetActive(false);
+            portrait.gameObject.SetActive(false);
         } else {
-            portrait.gameObject.transform.parent.gameObject.SetActive(true);
+            portrait.gameObject.SetActive(true);
         }
         currentSentence = sentence;
 
@@ -95,6 +93,5 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue() {
         GetComponent<AudioSource>().Stop();
-        Debug.Log("this is where u load the main game");
     }
 }
