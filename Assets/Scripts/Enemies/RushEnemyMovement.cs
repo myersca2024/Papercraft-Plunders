@@ -49,19 +49,19 @@ public class RushEnemyMovement : MonoBehaviour
         //Enemy will always move right/left first, then up/down (more complicated pathfinding is annoying but necessary later probably)
         if (player.transform.position.x > transform.position.x)
         {
-            nextStep.x = 1;
+            nextStep.x = 1 * transform.localScale.x;
         }
         else if (player.transform.position.x < transform.position.x)
         {
-            nextStep.x = -1;
+            nextStep.x = -1 * transform.localScale.x;
         }
         else if (player.transform.position.z > transform.position.z)
         {
-            nextStep.z = 1;
+            nextStep.z = 1 * transform.localScale.z;
         }
         else if (player.transform.position.z < transform.position.z)
         {
-            nextStep.z = -1;
+            nextStep.z = -1 * transform.localScale.z;
         }
 
         return nextStep;
