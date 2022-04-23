@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseGameForDialogue : MonoBehaviour
 {
     public static bool paused = false;
+
+    public bool loadsScene = false;
 
     public Image name;
     public Image text;
@@ -33,5 +36,9 @@ public class PauseGameForDialogue : MonoBehaviour
         portrait.gameObject.SetActive(false);
         Time.timeScale = 1;
         PauseGameForDialogue.paused = false;
+
+        if (loadsScene) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
