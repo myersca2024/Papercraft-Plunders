@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpinAttack
   m_EditorClassIdentifier: 
   name: Spin Attack
-  icon: {fileID: 21300000, guid: c686f27916467404b8691658d6c9f6c8, type: 3}
+  icon: {fileID: 21300000, guid: 260341a6c9115154f98676bf76938c30, type: 3}
   effectText: 
   damage: 3
   healing: 0
