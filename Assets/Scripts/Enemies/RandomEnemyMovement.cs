@@ -38,6 +38,7 @@ public class RandomEnemyMovement : MonoBehaviour {
             if (numberOfProjectiles == 4) 
             {
                 QuadAttack();
+                Debug.Log("Testing something out rq ");
             }
 
             if (numberOfProjectiles == 8) 

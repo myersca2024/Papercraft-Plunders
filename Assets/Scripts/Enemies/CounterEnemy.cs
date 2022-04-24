@@ -14,6 +14,7 @@ public class CounterEnemy : MonoBehaviour
     private GridObject go;
     public bool counterStance = false;
     private Material material;
+    private float timeSinceCounter = 0.0f;
     private Color color;
 
     // Start is called before the first frame update
@@ -44,11 +45,22 @@ public class CounterEnemy : MonoBehaviour
             timePassed = 0.0f;
         }
 
-        if (attackTimer >= attackDelay)
+
+        if (attackTimer >= attackDelay && !counterStance)
         {
             Debug.Log("We are impervious to damage!!!!");
             counterStance = !counterStance;
             material.SetColor("_Color", Color.blue);
+            timeSinceCounter = timePassed;
+            attackTimer = 0.0f;
+            Invoke("EndCounter", counterTime);
+        }
+        // Debug.Log("The time passed is " + timePassed + " the time since the counter started is " + timeSinceCounter);
+        if (timePassed - timeSinceCounter == counterTime && counterStance) 
+        {
+            Debug.Log("No more countering");
+            material.SetColor("_Color", color);
+            counterStance = !counterStance;
         }
     }
 
@@ -96,5 +108,12 @@ public class CounterEnemy : MonoBehaviour
             GetComponent<EnemyHealth>().TakeDamage(-1 * hb.damage);
             player.GetComponent<PlayerHealth>().TakeDamage(hb.damage);
         }
+    }
+
+    private void EndCounter() 
+    {
+        Debug.Log("No more countering");
+        material.SetColor("_Color", color);
+        counterStance = !counterStance;
     }
 }
