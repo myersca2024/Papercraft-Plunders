@@ -15,9 +15,11 @@ public class EventManager : MonoBehaviour
     public Sprite empoweredHealthBarFill;
     private Sprite originalHealthBarFillSprite;
     public GameObject catClaw;
+    public float catClawZOffset = 175f;
     private Camera mainCamera;
     public float eventTimer = 30.0f;
     public float elapsedTime = 0.0f;
+    
 
 
     public float currentEventTimeLimit = 5.0f;
@@ -259,8 +261,8 @@ public class EventManager : MonoBehaviour
     {
         //cat claw moves across the screen (vertically-- hits everything but dodgeable, horizontal would be impossible to dodge but hit only enemies?)
         float xPos = Random.Range(-110, 110);
-        float zOffset = 130f;
-        Vector3 clawPosition = new Vector3(player.transform.position.x + xPos, 0, player.transform.position.z + zOffset);
+        
+        Vector3 clawPosition = new Vector3(player.transform.position.x + xPos, 0, player.transform.position.z + catClawZOffset);
         Instantiate(catClaw, clawPosition, transform.rotation);
     }
 
