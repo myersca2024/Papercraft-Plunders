@@ -88,6 +88,11 @@ public class GridObject : MonoBehaviour
         DrawLine(grid.GetWorldPosition(x, y + 1) + buffer, grid.GetWorldPosition(x + 1, y + 1) + buffer, Color.red);
     }
 
+    public void DrawRoom(int x, int y)
+    {
+
+    }
+
     public void DrawGrid()
     {
         Vector3 buffer = new Vector3(0, 0.1f, 0);
