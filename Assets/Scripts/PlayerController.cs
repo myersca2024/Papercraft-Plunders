@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     int relX = (cc.pattern.GridSize.x / 2) - i;
                     int relY = (cc.pattern.GridSize.y / 2) - j;
+                    bool vertical = false;
                     if (cc.multidirectional)
                     {
                         Vector2 screenCenter = mc.WorldToScreenPoint(this.transform.position);
@@ -130,14 +131,14 @@ public class PlayerController : MonoBehaviour {
                         float angle = Mathf.Atan2(mousePosition.x - screenCenter.x, mousePosition.y - screenCenter.y) / Mathf.PI * 180f;
                         if (angle < 0) angle += 360f;
                         // UP
-                        /*
+                        
                         if (angle > 315 || angle < 45)
                         {
-                            Do nothing, default should be up
+                            vertical = true;
                         }
-                        */
+                        
                         // RIGHT
-                        if (angle > 45 && angle < 135)
+                        else if (angle > 45 && angle < 135)
                         {
                             int temp = relX;
                             relX = relY;
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             relX = -relX;
                             relY = -relY;
+                            vertical = true;
                         }
                         // LEFT
                         else if (angle > 225 && angle < 315)
@@ -165,6 +167,9 @@ public class PlayerController : MonoBehaviour {
                     {
                         hb = Instantiate(hitboxSprite, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, Quaternion.Euler(90, 0, 0));
                         hb.GetComponent<SpriteRenderer>().sprite = cc.visualEffect;
+                        if ((cc.name == "Weak Stab" || cc.name == "Strong Stab") && vertical) {
+                            hb.gameObject.transform.Rotate(new Vector3(0, 0, 90));
+                        }
                     } else {
                         hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
                     }
