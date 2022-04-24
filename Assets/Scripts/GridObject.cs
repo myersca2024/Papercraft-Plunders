@@ -24,10 +24,14 @@ public class GridObject : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        RecalculateAvailableSpaces();
+        Invoke("LateStart", 0.1f);
         // DrawGrid();
     }
 
+    private void LateStart()
+    {
+        RecalculateAvailableSpaces();
+    }
     public void RecalculateAvailableSpaces()
     {
         Vector2Int playerPos = grid.GetXY(player.transform.position);
@@ -138,6 +142,7 @@ public class GridObject : MonoBehaviour
 
     public void SetGridValue(int i, int j, bool isCollided)
     {
+        //Debug.Log("Set grid value call");
         grid.SetValue(i, j, isCollided);
     }
 

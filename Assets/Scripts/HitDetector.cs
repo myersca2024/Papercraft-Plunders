@@ -23,6 +23,7 @@ public class HitDetector : MonoBehaviour
         // Debug.Log(other.tag);
         if (other.tag != "Player" && other.tag != "Enemy" && other.tag != "Ground" && other.tag != "Hitbox" && other.tag != "CollisionDetector" && other.tag != "DoorTrigger")
         {
+            //Debug.Log("Thing happened");
             go.SetGridValue(x, y, true);
         }
     }
