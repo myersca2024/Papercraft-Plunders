@@ -107,11 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f5f8bf857063048b51d71a547f80d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDelay: 1
-  attackDelay: 5
+  moveDelay: 0.5
+  attackDelay: 1
   player: {fileID: 0}
   damage: 20
   enemyProjectile: {fileID: 8988220774898360880, guid: 44cd13cdb3150a04585dfcf3b9342299, type: 3}
+  maxMoves: 4
 --- !u!1 &8164692523357927347
 GameObject:
   m_ObjectHideFlags: 0
