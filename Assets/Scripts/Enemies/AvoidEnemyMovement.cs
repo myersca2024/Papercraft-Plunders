@@ -40,11 +40,13 @@ public class AvoidEnemyMovement : MonoBehaviour {
             timePassed = 0;
         }
 
-        if (CheckCollision()) {
+        /*
+        if (CheckCollision() && attackTimer >= attackDelay) {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             print("we hit the player");
             attackTimer = 0.0f;
         }
+        */
     }
 
     private Vector3 AvoidMovement() {
@@ -63,13 +65,13 @@ public class AvoidEnemyMovement : MonoBehaviour {
             return nextStep;
         }
 
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5) {
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 60) {
             if (player.transform.position.x > transform.position.x) {
                 nextStep.x = -1 * go.cellSize;
             } else if (player.transform.position.x < transform.position.x) {
                 nextStep.x = 1 * go.cellSize;
             }
-        } else if (Mathf.Abs(player.transform.position.x - transform.position.x) > 5) {
+        } else if (Mathf.Abs(player.transform.position.x - transform.position.x) > 60) {
             if (player.transform.position.x > transform.position.x) {
                 nextStep.x = 1 * go.cellSize;
             } else if (player.transform.position.x < transform.position.x) {
@@ -87,10 +89,12 @@ public class AvoidEnemyMovement : MonoBehaviour {
     private void LaserAttack() {
         Vector3 difference;
         if (player.transform.position.x >= transform.position.x) {
-            difference = new Vector3(3, 0, 0);
+            difference = new Vector3(33, .1f, 0);
+            Instantiate(laser, transform.position + difference, Quaternion.LookRotation(new Vector3(-1, 0, 0)));
         } else {
-            difference = new Vector3(-3, 0, 0);
+            difference = new Vector3(-33, .1f, 0);
+            Instantiate(laser, transform.position + difference, Quaternion.LookRotation(new Vector3(1, 0, 0)));
         }
-        Instantiate(laser, transform.position + difference, Quaternion.LookRotation(new Vector3(1, 500, 0)));
+        
     }
 }

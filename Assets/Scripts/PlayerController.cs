@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Hitbox hitbox;
     public Hitbox hitboxSprite;
     public static bool freeze = false;
+    public bool infiniteUses = false;
 
     private DeckManager dm;
     private PlayerHealth playerHealth;
@@ -179,7 +180,15 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        cc.DecrementUses();
+        if (!infiniteUses)
+        {
+            cc.DecrementUses();
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(cc.clip, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        }
+        
         if (cc.GetUses() == 0)
         {
             dm.DiscardCard(index);

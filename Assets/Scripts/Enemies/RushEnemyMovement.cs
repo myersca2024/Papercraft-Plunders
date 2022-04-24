@@ -72,4 +72,16 @@ public class RushEnemyMovement : MonoBehaviour
         Vector3 difference = player.transform.position - transform.position;
         return difference.magnitude <= 1;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (attackTimer >= attackDelay)
+            {
+                player.GetComponent<PlayerHealth>().TakeDamage(damage);
+                attackTimer = 0.0f;
+            }
+        }
+    }
 }
