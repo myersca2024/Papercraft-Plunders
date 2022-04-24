@@ -1509,7 +1509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 82.29, y: 0, z: 0}
 --- !u!114 &131541447
 MonoBehaviour:
@@ -6403,12 +6403,53 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
     - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}
+  - names:
+    - Stan
+    - Wally
+    - Stan
+    - Wally
+    sentences:
+    - holy cow this card has infinite uses
+    - no it doesnt
+    - look see im using it over and over again!!!!!
+    - alright whatever
+    sprites:
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+  - names:
+    - Wally
+    - Stan
+    sentences:
+    - WHISKERS NOOOOO
+    - GET OFF THE TABLE WHISKERS
+    sprites:
+    - {fileID: 21300000, guid: fbdc9b36221cb8d4aad383975d38a8fd, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+  - names:
+    - Wally
+    - Stan
+    - Wally
+    - Stan
+    sentences:
+    - you know what would make things really hard for you right now
+    - please wally dont do it
+    - if you were twice as big
+    - NOOOOO
+    sprites:
+    - {fileID: 21300000, guid: 4ec115c53ae23824d9341d6d1a227ff8, type: 3}
+    - {fileID: 21300000, guid: 9fa0968343c4be24b9f953a4261e1f9e, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
   empoweredHealthBarFill: {fileID: 21300000, guid: d072c66e02eda774d93f81abc8bea6ed, type: 3}
+  catClaw: {fileID: 3928780367376342400, guid: 573de6f113db8ee4a9a927abb1aa4bab, type: 3}
+  catClawZOffset: 175
   eventTimer: 4
   elapsedTime: 0
   currentEventTimeLimit: 3
   currentEventTime: 0
-  numEvents: 4
+  numEvents: 6
   currentState: 0
   firstEvents: 
 --- !u!4 &955591552
@@ -8757,7 +8798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4504757565164090757, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4504757565164090757, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
       propertyPath: m_LocalScale.x
@@ -13326,7 +13367,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6856233690390228728, guid: ed6545584c570a147bd807a21b244a9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14855,7 +14896,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2062186285 stripped
 RectTransform:
