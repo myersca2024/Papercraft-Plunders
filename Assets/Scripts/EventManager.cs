@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
+    public Dialogue tutorial;
     public Dialogue[] dialogues;
 
     private PlayerController playercontroller;
@@ -56,6 +57,8 @@ public class EventManager : MonoBehaviour
 
         firstEvents = new bool[numEvents];
         for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
+
+        PlayTutorialDialogue();
     }
 
     // Update is called once per frame
@@ -216,5 +219,9 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PlayTutorialDialogue() {
+        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
     }
 }
