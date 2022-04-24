@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ring of Fire
   m_EditorClassIdentifier: 
   name: Ring of Fire
-  icon: {fileID: 21300000, guid: c34c1d2e99a185446af04790f4367e9f, type: 3}
+  icon: {fileID: 21300000, guid: e1c28164a908a5742b6566333fd21e3b, type: 3}
   effectText: 
   damage: 3
   healing: -10

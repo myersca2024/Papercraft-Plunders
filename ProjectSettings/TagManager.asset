@@ -12,6 +12,7 @@ TagManager:
   - RoomCardUI
   - CollisionDetector
   - DoorTrigger
+  - PlayerEmpowered
   layers:
   - Default
   - TransparentFX

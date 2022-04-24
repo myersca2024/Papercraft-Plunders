@@ -10,6 +10,8 @@ public class EventManager : MonoBehaviour
     private PlayerController playercontroller;
     private PlayerHealth playerhealth;
     private Image healthBarFill;
+    public Sprite empoweredHealthBarFill;
+    private Sprite originalHealthBarFillSprite;
     public float eventTimer = 30.0f;
     public float elapsedTime = 0.0f;
 
@@ -25,6 +27,8 @@ public class EventManager : MonoBehaviour
     private float oldRandomMoveDelay = 1.0f;
     private float oldRushMoveDelay = 1.0f;
     private GameObject[] enemies;
+
+    private GameObject playerEmpowered;
 
     public enum EventState
     {
@@ -46,6 +50,9 @@ public class EventManager : MonoBehaviour
         currentState = EventState.None;
         oldPlayerMoveDelay = playercontroller.moveDelay;
         healthBarFill = GameObject.FindGameObjectWithTag("HealthBarFill").GetComponent<Image>();
+        originalHealthBarFillSprite = healthBarFill.sprite;
+        playerEmpowered = GameObject.FindGameObjectWithTag("PlayerEmpowered");
+        playerEmpowered.SetActive(false);
 
         firstEvents = new bool[numEvents];
         for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
@@ -89,7 +96,9 @@ public class EventManager : MonoBehaviour
 
                     //player becomes invincible for 5 seconds
                     currentState = EventState.MakePlayerInvincible;
-                    healthBarFill.color = new Color(0, 0, 255);
+                    healthBarFill.sprite = empoweredHealthBarFill;
+                    playerEmpowered.SetActive(true);
+                    //healthBarFill.color = new Color(0, 0, 255);
                     break;
                 default:
                     Debug.Log("defaulted for some reason, should not be here");
@@ -122,7 +131,9 @@ public class EventManager : MonoBehaviour
             currentEventTime = 0.0f;
             currentState = EventState.None;
             //Debug.Log("event is over");
-            healthBarFill.color = new Color(255, 0, 0);
+            //healthBarFill.color = new Color(255, 0, 0);
+            healthBarFill.sprite = originalHealthBarFillSprite;
+            playerEmpowered.SetActive(false);
             if (playercontroller.moveDelay != oldPlayerMoveDelay)
             {
                 playercontroller.moveDelay = oldPlayerMoveDelay;
@@ -171,6 +182,16 @@ public class EventManager : MonoBehaviour
     {
         //Debug.Log("doubling player speed!");
         playercontroller.moveDelay /= 2;
+    }
+
+    private void InfiniteCombatCardUses()
+    {
+        //flip a variable in the player controller that causes the cc.decrementuses() function to not be called (in use combat card function, line 173)
+    }
+
+    private void CatClaw()
+    {
+        //cat claw moves across the screen (vertically-- hits everything but dodgeable, horizontal would be impossible to dodge but hit only enemies?)
     }
 
     private void DoubleEnemySpeed()
