@@ -289,7 +289,7 @@ MonoBehaviour:
     - thats not cheating
     - yeah it is
     - whatever
-    - '*Mom walks into the room*'
+    - Their mother walks into the room.
     - What are you boys doing in here? Why is there paper everywhere?
     - "UH UM WE WERE DOING HOMEWORK WE\u2019RE NOT PLAYING A GAME WE MADE"
     - "You made a game together? Hm\u2026"
@@ -311,8 +311,8 @@ MonoBehaviour:
     - YESSSSS
     - LETS GOOOOOOOOO
     - I CAN PLAY VIDEO GAMES AGAIN
-    - '*In a rush of excitement, Wally and Stan go back to playing their video games.*'
-    - '*The next day, they both find themselves in their room.*'
+    - In a rush of excitement, Wally and Stan go back to playing their video games.
+    - The next day, they both find themselves in their room.
     - im bored of video games
     - me too
     - can we play the other game again
@@ -520,8 +520,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.753235, y: -19.7166}
-  m_SizeDelta: {x: 1224.6448, y: 404.503}
+  m_AnchoredPosition: {x: 30.2914, y: 2.2378}
+  m_SizeDelta: {x: 1203.5684, y: 360.5943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &306860523
 Animator:

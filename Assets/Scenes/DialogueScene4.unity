@@ -334,8 +334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.753235, y: 2.2378}
-  m_SizeDelta: {x: 1224.6448, y: 360.5943}
+  m_AnchoredPosition: {x: 30.2914, y: 2.2378}
+  m_SizeDelta: {x: 1203.5684, y: 360.5943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &380871519
 Animator:
@@ -684,10 +684,10 @@ MonoBehaviour:
     - and laser sword boomerang knight can keep learning new attacks and getting
       stronger!
     - definitely!
-    - '*And so, despite no longer being grounded, Wally and Stan found themselves
-      drawn to this game they had created.*'
-    - '*They continued to play it every day after school, and once in a while their
-      mother would join in and make a boss for Stan to fight.*'
+    - And so, despite no longer being grounded, Wally and Stan found themselves drawn
+      to this game they had created.
+    - They continued to play it every day after school, and once in a while their
+      mother would join in and make a boss for Stan to fight.
     - THE END
     sprites:
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
