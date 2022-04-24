@@ -20,7 +20,7 @@ MonoBehaviour:
   uses: 999
   duration: 0.1
   multidirectional: 1
-  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
+  visualEffect: {fileID: 21300000, guid: cf5250260378d7b4997f93ed6cd312ca, type: 3}
   pattern:
     gridSize: {x: 3, y: 3}
     cellSize: {x: 16, y: 16}
