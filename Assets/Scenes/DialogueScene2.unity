@@ -594,14 +594,14 @@ MonoBehaviour:
       knight
     - "Boys! Come downstairs, it\u2019s time for dinner!"
     - fine stan you can try to beat the next one tomorrow
-    - '*the next day arrives*'
+    - The next day arrives.
     - i hope ur stupid boss is ready because laser sword boomerang knight trained
       all night for this
     - well the next boss trained all night times infinity
     - how did he do that
     - time travel
     - whoa
-    - well im i will be fine lets fight
+    - well im sure i will be fine lets fight
     sprites:
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
     - {fileID: 21300000, guid: fbdc9b36221cb8d4aad383975d38a8fd, type: 3}
@@ -1012,8 +1012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.753235, y: 2.5354004}
-  m_SizeDelta: {x: 1224.6448, y: 359.9991}
+  m_AnchoredPosition: {x: 30.2914, y: 2.2378}
+  m_SizeDelta: {x: 1203.5684, y: 360.5943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1539316355
 Animator:
