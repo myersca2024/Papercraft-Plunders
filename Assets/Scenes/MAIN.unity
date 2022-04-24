@@ -4969,7 +4969,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a6f2225b5116f7540abcd821ccb85dcc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7315,9 +7315,6 @@ MonoBehaviour:
     - Wally
     - Stan
     - Wally
-    - Wally
-    - Wally
-    - Wally
     - Stan
     - Wally
     - Stan
@@ -7336,11 +7333,6 @@ MonoBehaviour:
       damage
     - when you run out of other attacks, ill reshuffle the deck after a few seconds
     - weak stab is the best attack got it
-    - each room will have some enemies and theyll give you combat cards you can swap
-      out
-    - most rooms also give you another room card so you can choose how hard the next
-      room will be
-    - harder rooms give better combat card rewards
     - you want to find the boss room card and use that to fight the boss, then you
       win
     - this is gonna be so easy
@@ -7360,9 +7352,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
-    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
-    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
-    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
@@ -15242,6 +15231,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultRoom: {fileID: 66657123329024174, guid: f9867c8504982404183669dbff29b34c, type: 3}
   treasure: {fileID: 1347257904362014284, guid: 4d52ed630c6b75746bc0c4227167318e, type: 3}
+  chestTutorial:
+    names:
+    - Wally
+    - Wally
+    - Stan
+    - Wally
+    - Wally
+    - Wally
+    - Stan
+    - Wally
+    - Stan
+    - Wally
+    - Wally
+    - Wally
+    - Wally
+    - Stan
+    - Wally
+    sentences:
+    - good job stan you beat the first enemy
+    - he drops a treasure chest, you can take the treasure in it by pressing E
+    - what is E
+    - you can only have 9 combat cards, so mix and match at a treasure chest
+    - you can use any combat cards you want
+    - try swapping out some of yours for better cards by clicking them
+    - no i love these cards i will keep them forever
+    - theyll help your guy get stronger
+    - ill take all of them
+    - that will give you new dungeon cards as well
+    - go to one of the new exits and you can see all your dungeon cards
+    - hover over one to see what it does and click it to use it
+    - in general harder dungeon rooms give better card rewards
+    - i can hover?????
+    - if you try hard enough yes
+    sprites:
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 9fa0968343c4be24b9f953a4261e1f9e, type: 3}
+    - {fileID: 21300000, guid: 09452295bae10ad4893102d0336e7474, type: 3}
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   editUI: {fileID: 793314084}
 --- !u!4 &2109294995
 Transform:

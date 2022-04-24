@@ -73,7 +73,9 @@ public class EventManager : MonoBehaviour
         firstEvents = new bool[numEvents];
         for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
 
-        PlayTutorialDialogue();
+        if (tutorial != null) {
+            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
+        }
     }
 
     // Update is called once per frame
@@ -231,7 +233,7 @@ public class EventManager : MonoBehaviour
     }
 
     private void FirstDialogue(int i) {
-        if (firstEvents[i]) {
+        if (firstEvents[i] && tutorial != null) {
             firstEvents[i] = false;
             FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
         }
@@ -306,9 +308,5 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void PlayTutorialDialogue() {
-        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
     }
 }
