@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
     public float attackBuffer = .3f;
     public Hitbox hitbox;
+    public Hitbox hitboxSprite;
     public static bool freeze = false;
 
     private DeckManager dm;
@@ -92,12 +93,12 @@ public class PlayerController : MonoBehaviour {
             if (activeCard < dm.handSize)
             {
                 dm.HighlightCard(activeCard);
-                if (dm.handSize != 0) preview.AttackPreview(dm.GetHandCard(activeCard));
+                if (dm.handSize != 0 && attackTimer >= attackBuffer) preview.AttackPreview(dm.GetHandCard(activeCard));
 
                 if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
                 {
-                    if (dm.handSize > 0 && activeCard < dm.handSize && attackTimer >= attackBuffer)
-                    {
+                    if (dm.handSize > 0 && activeCard < dm.handSize && attackTimer >= attackBuffer) {
+                        preview.ClearPreview();
                         UseCombatCard(this.transform.position, activeCard);
                     }
                 }
@@ -159,10 +160,13 @@ public class PlayerController : MonoBehaviour {
                     Vector2Int playerCoords = go.GetGrid().GetXY(center);
                     Vector2Int hitboxCoords = new Vector2Int(playerCoords.x + relX, playerCoords.y + relY);
                     Vector3 offset = new Vector3(go.cellSize / 2, 0, go.cellSize / 2);
-                    Hitbox hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                    Hitbox hb;
                     if (cc.visualEffect != null)
                     {
-                        Instantiate(cc.visualEffect, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                        hb = Instantiate(hitboxSprite, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, Quaternion.Euler(90, 0, 0));
+                        hb.GetComponent<SpriteRenderer>().sprite = cc.visualEffect;
+                    } else {
+                        hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
                     }
                     hb.damage = cc.damage;
                     hb.duration = cc.duration;

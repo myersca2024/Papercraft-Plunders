@@ -14,7 +14,7 @@ public class CombatCard : ScriptableObject
     public int uses = 1;
     public float duration = 0.1f;
     public bool multidirectional;
-    public GameObject visualEffect;
+    public Sprite visualEffect;
     public Array2DBool pattern;
     public AudioClip clip;
 
