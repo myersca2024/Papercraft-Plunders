@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SideShot
   m_EditorClassIdentifier: 
   name: Side Shot
-  icon: {fileID: 21300000, guid: 0e9ee345c6fa59040b5aada1f7be47ad, type: 3}
+  icon: {fileID: 21300000, guid: e89fd51001f0e2346a5b65d1f05156ae, type: 3}
   effectText: 
   damage: 4
   healing: 0

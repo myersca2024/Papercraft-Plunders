@@ -27,4 +27,13 @@ public class LaserBehavior : MonoBehaviour
     private bool CheckCollision() {
         return (Mathf.Abs(player.transform.position.x - transform.position.x) <= 3 && transform.position.z == player.transform.position.z);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            
+        }
+    }
 }
