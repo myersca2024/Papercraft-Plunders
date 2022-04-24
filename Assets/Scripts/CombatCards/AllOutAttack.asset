@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: AllOutAttack
   m_EditorClassIdentifier: 
   name: All-Out Attack
-  icon: {fileID: 21300000, guid: d3ef5ab13a62d94468aa17d337104ce7, type: 3}
+  icon: {fileID: 21300000, guid: 9dbbbd20834761a46989a73089706d10, type: 3}
   effectText: 
   damage: 8
   healing: 0
+  uses: 1
   duration: 0.1
   multidirectional: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
   pattern:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
@@ -29,3 +30,4 @@ MonoBehaviour:
     - row: 0001000100
     - row: 0100010001
     - row: 0001000100
+  clip: {fileID: 8300000, guid: fa76ef8afb40b1449b5e6d5c374e07f6, type: 3}

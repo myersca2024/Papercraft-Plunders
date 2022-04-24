@@ -20,7 +20,8 @@ MonoBehaviour:
   - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
-  containsChest: 0
+  containsChest: 1
+  numberOfRewards: 2
   combatCardRewards:
   - {fileID: 11400000, guid: f744d9284e74f6e47acaa59e883904a2, type: 2}
   - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: StunGun
   m_EditorClassIdentifier: 
   name: Stun Gun
-  icon: {fileID: 21300000, guid: adc0336172819274e95d513bff3aa1f8, type: 3}
+  icon: {fileID: 21300000, guid: 37bea08736ffc5d49b0325659a074efd, type: 3}
   effectText: 
   damage: 3
   healing: 0
+  uses: 1
   duration: 0.1
   multidirectional: 1
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
   pattern:
     gridSize: {x: 5, y: 5}
     cellSize: {x: 16, y: 16}
@@ -29,3 +30,4 @@ MonoBehaviour:
     - row: 0000000000
     - row: 0000000000
     - row: 0000000000
+  clip: {fileID: 8300000, guid: d6e263402c2610f41bcd168d93654686, type: 3}

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
+    public Dialogue[] dialogues;
+
     private PlayerController playercontroller;
     private PlayerHealth playerhealth;
     private Image healthBarFill;
@@ -15,6 +17,8 @@ public class EventManager : MonoBehaviour
     public float currentEventTime = 0.0f;
     public int numEvents = 3;
     public EventState currentState;
+
+    public bool[] firstEvents;
 
     private float oldPlayerMoveDelay;
     private float oldAvoidMoveDelay = 1.0f;
@@ -35,7 +39,6 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         elapsedTime = 0.0f;
         currentEventTime = 0.0f;
         playercontroller = FindObjectOfType<PlayerController>();
@@ -43,6 +46,9 @@ public class EventManager : MonoBehaviour
         currentState = EventState.None;
         oldPlayerMoveDelay = playercontroller.moveDelay;
         healthBarFill = GameObject.FindGameObjectWithTag("HealthBarFill").GetComponent<Image>();
+
+        firstEvents = new bool[numEvents];
+        for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
     }
 
     // Update is called once per frame
@@ -65,16 +71,22 @@ public class EventManager : MonoBehaviour
                     currentState = EventState.None;
                     break;
                 case 1:
+                    FirstDialogue(rand - 1);
+
                     //enemies double in speed for 5 seconds
                     currentState = EventState.DoubleEnemySpeed;
                     DoubleEnemySpeed();
                     break;
                 case 2:
+                    FirstDialogue(rand - 1);
+
                     // player doubles in speed for 5 seconds
                     currentState = EventState.DoublePlayerSpeed;
                     DoublePlayerSpeed();
                     break;
                 case 3:
+                    FirstDialogue(rand - 1);
+
                     //player becomes invincible for 5 seconds
                     currentState = EventState.MakePlayerInvincible;
                     healthBarFill.color = new Color(0, 0, 255);
@@ -109,7 +121,7 @@ public class EventManager : MonoBehaviour
             elapsedTime = 0.0f; // comment out if the event timer should reset after an event, uncomment if events can happen very soon after each other
             currentEventTime = 0.0f;
             currentState = EventState.None;
-            Debug.Log("event is over");
+            //Debug.Log("event is over");
             healthBarFill.color = new Color(255, 0, 0);
             if (playercontroller.moveDelay != oldPlayerMoveDelay)
             {
@@ -140,9 +152,16 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    private void FirstDialogue(int i) {
+        if (firstEvents[i]) {
+            firstEvents[i] = false;
+            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
+        }
+    }
+
     private void MakePlayerInvincible()
     {
-        Debug.Log("making player invincible!");
+        //Debug.Log("making player invincible!");
         //just setting the player's current health to max health constantly
         playerhealth.currentHealth = playerhealth.maximumHealth;
 
@@ -150,13 +169,13 @@ public class EventManager : MonoBehaviour
 
     private void DoublePlayerSpeed()
     {
-        Debug.Log("doubling player speed!");
+        //Debug.Log("doubling player speed!");
         playercontroller.moveDelay /= 2;
     }
 
     private void DoubleEnemySpeed()
     {
-        Debug.Log("doubling enemy speed!");
+        //Debug.Log("doubling enemy speed!");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {

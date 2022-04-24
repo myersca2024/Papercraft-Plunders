@@ -6,18 +6,22 @@ public class HitDetector : MonoBehaviour
 {
     public int x;
     public int y;
-
-    private GridObject go;
+    public GridObject go;
 
     private void Awake()
     {
-        go = FindObjectOfType<GridObject>();
         Destroy(this.gameObject, 1);
     }
-    
+
+    private void Start()
+    {
+        go.DeactivateCell(x, y);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && other.tag != "Enemy" && other.tag != "Ground" && other.tag != "Hitbox")
+        // Debug.Log(other.tag);
+        if (other.tag != "Player" && other.tag != "Enemy" && other.tag != "Ground" && other.tag != "Hitbox" && other.tag != "CollisionDetector" && other.tag != "DoorTrigger")
         {
             go.SetGridValue(x, y, true);
         }

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: StrongStab
   m_EditorClassIdentifier: 
   name: Strong Stab
-  icon: {fileID: 21300000, guid: 8a5b616425354a84caab593d4b259840, type: 3}
+  icon: {fileID: 21300000, guid: 85ab6923bcbfd114ea844afd751172ca, type: 3}
   effectText: 
   damage: 5
   healing: 0
+  uses: 2
   duration: 0.1
   multidirectional: 1
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
   pattern:
     gridSize: {x: 3, y: 3}
     cellSize: {x: 16, y: 16}
@@ -27,3 +28,4 @@ MonoBehaviour:
     - row: 000100
     - row: 000000
     - row: 000000
+  clip: {fileID: 8300000, guid: 9c11c8198d347a443aa192b61ed48744, type: 3}

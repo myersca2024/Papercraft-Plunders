@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: FlameZone
   m_EditorClassIdentifier: 
   name: Flame Zone
-  icon: {fileID: 21300000, guid: 4c4cc6246b591894b823b93a3a2a42c8, type: 3}
+  icon: {fileID: 21300000, guid: d606f9af301ddba4896973ab1066129f, type: 3}
   effectText: 
   damage: 3
   healing: 0
+  uses: 1
   duration: 0.1
   multidirectional: 1
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
   pattern:
     gridSize: {x: 7, y: 7}
     cellSize: {x: 16, y: 16}
@@ -31,3 +32,4 @@ MonoBehaviour:
     - row: 00000000000000
     - row: 00000000000000
     - row: 00000000000000
+  clip: {fileID: 8300000, guid: 1a4a7fe1ac5d7bf4b9e6a96688673afd, type: 3}

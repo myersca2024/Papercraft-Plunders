@@ -17,9 +17,10 @@ MonoBehaviour:
   effectText: 
   damage: 5
   healing: 0
+  uses: 2
   duration: 0.1
   multidirectional: 1
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 21300000, guid: 52dcf52682b3d374ea7799bb1e4d54fe, type: 3}
   pattern:
     gridSize: {x: 9, y: 9}
     cellSize: {x: 16, y: 16}
@@ -33,3 +34,4 @@ MonoBehaviour:
     - row: 000000000000000000
     - row: 000000000000000000
     - row: 000000000000000000
+  clip: {fileID: 8300000, guid: ec1b41a326bb2114e9723e552c647fcd, type: 3}

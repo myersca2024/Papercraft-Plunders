@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TreasureBehavior : MonoBehaviour
 {
-    public CombatCard[] combatCards;
-    public RoomCard[] roomCards;
+    public List<CombatCard> combatCards;
+    public List<RoomCard> roomCards;
+    public CCEditUI editUI;
 
     private DeckManager dm;
     private DungeonDeckManager ddm;
@@ -16,27 +17,51 @@ public class TreasureBehavior : MonoBehaviour
         ddm = FindObjectOfType<DungeonDeckManager>();
     }
 
-    public void SetRewards(CombatCard[] ccs, RoomCard[] rcs)
+    private void Update()
     {
-        combatCards = ccs;
-        roomCards = rcs;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (CombatCard cc in combatCards)
-            {
-                dm.deck.Add(cc);
-            }
-
             foreach (RoomCard rc in roomCards)
             {
                 ddm.AddCard(rc);
             }
 
-            Destroy(this.gameObject, 0.1f);
+            dm.ShuffleDiscardToDeck();
+            editUI.SetChest(this);
+            PlayerController.freeze = true;
+            editUI.gameObject.SetActive(true);
+        }
+    }
+
+    public void SetRewards(int numRewards, CombatCard[] ccs, RoomCard[] rcs)
+    {
+        for (int i = 0; i < numRewards; i++)
+        {
+            int list;
+            if (ccs.Length == 0) { list = 1; }
+            else if (rcs.Length == 0) { list = 0; }
+            else { list = Random.Range(0, 2); }
+
+            if (list == 0)
+            {
+                int reward = Random.Range(0, ccs.Length);
+                combatCards.Add(ccs[reward]);
+                Debug.Log("Combat card added");
+            }
+            else
+            {
+                int reward = Random.Range(0, rcs.Length);
+                roomCards.Add(rcs[reward]);
+                Debug.Log("Room card added");
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            
         }
     }
 }

@@ -5,13 +5,15 @@ using Array2DEditor;
 
 public class PlayerController : MonoBehaviour {
     public float moveDelay = .1f;
-    public float attackBuffer = .1f;
+    public float attackBuffer = .3f;
     public Hitbox hitbox;
+    public Hitbox hitboxSprite;
     public static bool freeze = false;
 
     private DeckManager dm;
     private PlayerHealth playerHealth;
     private GridObject go;
+    private CombatCardPreview preview;
     private Camera mc;
     private float timePassed;
     private Vector2 movement;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour {
         dm = FindObjectOfType<DeckManager>();
         go = FindObjectOfType<GridObject>();
         playerHealth = GetComponent<PlayerHealth>();
+        preview = GetComponent<CombatCardPreview>();
         GameObject.FindGameObjectWithTag("MainCamera").TryGetComponent<Camera>(out mc);
         timePassed = moveDelay;
         this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
@@ -50,23 +53,23 @@ public class PlayerController : MonoBehaviour {
 
                 if (movement.x > 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(1, 0));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(go.cellSize, 0));
                 }
                 else if (movement.x < 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(1, 0));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(go.cellSize, 0));
                 }
                 else if (movement.y > 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, 1));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position + new Vector3(0, 0, go.cellSize));
                 }
                 else if (movement.y < 0)
                 {
-                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, 1));
+                    this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position - new Vector3(0, 0, go.cellSize));
                 }
             }
 
-            if (Input.mouseScrollDelta.y > 0)
+            if (Input.mouseScrollDelta.y < 0)
             {
                 activeCard++;
                 if (activeCard >= dm.handSize)
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour {
                     activeCard = 0;
                 }
             }
-            else if (Input.mouseScrollDelta.y < 0)
+            else if (Input.mouseScrollDelta.y > 0)
             {
                 activeCard--;
                 if (activeCard < 0)
@@ -86,18 +89,24 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Alpha1)) { activeCard = 0; }
             if (Input.GetKeyDown(KeyCode.Alpha2)) { activeCard = 1; }
             if (Input.GetKeyDown(KeyCode.Alpha3)) { activeCard = 2; }
-            if (Input.GetKeyDown(KeyCode.Alpha4)) { activeCard = 3; }
-            if (Input.GetKeyDown(KeyCode.Alpha5)) { activeCard = 4; }
 
-            dm.HighlightCard(activeCard);
-
-            if (Input.GetMouseButtonDown(0))
+            if (activeCard < dm.handSize)
             {
-                if (dm.handSize > 0 && activeCard < dm.handSize)
+                dm.HighlightCard(activeCard);
+                if (dm.handSize != 0 && attackTimer >= attackBuffer) preview.AttackPreview(dm.GetHandCard(activeCard));
+
+                if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
                 {
-                    UseCombatCard(this.transform.position, activeCard);
+                    if (dm.handSize > 0 && activeCard < dm.handSize && attackTimer >= attackBuffer) {
+                        preview.ClearPreview();
+                        UseCombatCard(this.transform.position, activeCard);
+                    }
                 }
             }
+        }
+        else
+        {
+            preview.ClearPreview();
         }
     }
 
@@ -151,10 +160,13 @@ public class PlayerController : MonoBehaviour {
                     Vector2Int playerCoords = go.GetGrid().GetXY(center);
                     Vector2Int hitboxCoords = new Vector2Int(playerCoords.x + relX, playerCoords.y + relY);
                     Vector3 offset = new Vector3(go.cellSize / 2, 0, go.cellSize / 2);
-                    Hitbox hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                    Hitbox hb;
                     if (cc.visualEffect != null)
                     {
-                        Instantiate(cc.visualEffect, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
+                        hb = Instantiate(hitboxSprite, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, Quaternion.Euler(90, 0, 0));
+                        hb.GetComponent<SpriteRenderer>().sprite = cc.visualEffect;
+                    } else {
+                        hb = Instantiate(hitbox, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
                     }
                     hb.damage = cc.damage;
                     hb.duration = cc.duration;
@@ -162,7 +174,15 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        dm.DiscardCard(index);
-        activeCard = 0;
+        cc.DecrementUses();
+        if (cc.GetUses() == 0)
+        {
+            dm.DiscardCard(index);
+            cc.RefreshUses();
+
+            if (activeCard >= dm.handSize + dm.deckSize) {
+                activeCard = dm.handSize - 1;
+            }
+        }
     }
 }

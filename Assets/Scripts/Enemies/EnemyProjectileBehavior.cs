@@ -27,11 +27,12 @@ public class EnemyProjectileBehavior : MonoBehaviour
         attackTimer += Time.deltaTime;
 
         if (timePassed >= moveDelay) {
-            transform.position += velocity;
+            transform.position += velocity * 10;
             timePassed = 0.0f;
         }
 
         if (CheckCollision()) {
+            Debug.Log("This shit fuckin hit boys!!!!!!! ");
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
@@ -39,5 +40,13 @@ public class EnemyProjectileBehavior : MonoBehaviour
 
     private bool CheckCollision() {
         return player.transform.position == transform.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        }
     }
 }

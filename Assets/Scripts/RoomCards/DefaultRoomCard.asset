@@ -19,7 +19,9 @@ MonoBehaviour:
   potentialEnemies:
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   containsChest: 1
-  combatCardRewards: []
+  numberOfRewards: 2
+  combatCardRewards:
+  - {fileID: 11400000, guid: 873f84532c45874418624ee3980a44a7, type: 2}
   roomCardRewards:
   - {fileID: 11400000, guid: e14d963d882b3454890d0cbfa22f8e92, type: 2}
   - {fileID: 11400000, guid: 1d99c4c8db5a1e243a22a5d3647b735c, type: 2}

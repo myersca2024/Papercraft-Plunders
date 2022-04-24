@@ -54,9 +54,9 @@ public class RandomEnemyMovement : MonoBehaviour {
             dir = -1;
         }
         if (axis == 0) {
-            nextStep.x += dir;
+            nextStep.x += dir * go.cellSize;
         } else {
-            nextStep.z += dir;
+            nextStep.z += dir * go.cellSize;
         }
 
         return nextStep;
@@ -72,4 +72,5 @@ public class RandomEnemyMovement : MonoBehaviour {
         Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, 1), Quaternion.LookRotation(new Vector3(0, 0, 1)));
         Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, -1), Quaternion.LookRotation(new Vector3(0, 0, -1)));
     }
+
 }
