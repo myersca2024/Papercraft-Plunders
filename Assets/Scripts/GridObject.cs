@@ -25,7 +25,7 @@ public class GridObject : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         RecalculateAvailableSpaces();
-        DrawGrid();
+        // DrawGrid();
     }
 
     public void RecalculateAvailableSpaces()
@@ -77,6 +77,20 @@ public class GridObject : MonoBehaviour
     public void DeactivateCell(int x, int y)
     {
         grid.SetValue(x, y, false);
+    }
+
+    public void DrawCell(int x, int y)
+    {
+        Vector3 buffer = new Vector3(0, 0.1f, 0);
+        DrawLine(grid.GetWorldPosition(x, y) + buffer, grid.GetWorldPosition(x + 1, y) + buffer, Color.red);
+        DrawLine(grid.GetWorldPosition(x, y) + buffer, grid.GetWorldPosition(x, y + 1) + buffer, Color.red);
+        DrawLine(grid.GetWorldPosition(x + 1, y) + buffer, grid.GetWorldPosition(x + 1, y + 1) + buffer, Color.red);
+        DrawLine(grid.GetWorldPosition(x, y + 1) + buffer, grid.GetWorldPosition(x + 1, y + 1) + buffer, Color.red);
+    }
+
+    public void DrawRoom(int x, int y)
+    {
+
     }
 
     public void DrawGrid()
