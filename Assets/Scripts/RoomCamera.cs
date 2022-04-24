@@ -8,6 +8,7 @@ public class RoomCamera : MonoBehaviour
     public Vector3 offset;
     public Vector3 zoomOutOffset;
     public float zoomSpeed;
+    public CanvasGroup ui;
 
     private GameManager gm;
     private float xVel;
@@ -36,12 +37,14 @@ public class RoomCamera : MonoBehaviour
             newX = Mathf.SmoothDamp(this.transform.position.x, zoomOutOffset.x, ref xVel, timeToTarget / zoomSpeed);
             newZ = Mathf.SmoothDamp(this.transform.position.z, zoomOutOffset.z, ref zVel, timeToTarget / zoomSpeed);
             newY = Mathf.SmoothDamp(this.transform.position.y, zoomOutOffset.y, ref yVel, timeToTarget / zoomSpeed);
+            ui.alpha = 0.3f;
         }
         else
         {
             newX = Mathf.SmoothDamp(this.transform.position.x, worldPos.x, ref xVel, timeToTarget / zoomSpeed);
             newZ = Mathf.SmoothDamp(this.transform.position.z, worldPos.z, ref zVel, timeToTarget / zoomSpeed);
             newY = Mathf.SmoothDamp(this.transform.position.y, startingY, ref yVel, timeToTarget / zoomSpeed);
+            ui.alpha = 1f;
         }
         transform.position = new Vector3(newX, newY, newZ);
     }
