@@ -571,8 +571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.753235, y: 0.0871}
-  m_SizeDelta: {x: 1224.6448, y: 364.8958}
+  m_AnchoredPosition: {x: 30.2914, y: 2.2378}
+  m_SizeDelta: {x: 1203.5684, y: 360.5943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795157922
 MonoBehaviour:
@@ -1106,8 +1106,8 @@ MonoBehaviour:
       in three days."
     - THREEEEE DAYYSSSSS????????????
     - "THAT\u2019S LIKE FOREVER"
-    - "Find some other way to entertain yourselves. Kids these days\u2026 *slams
-      door behind her*"
+    - "Find some other way to entertain yourselves. Kids these days\u2026 (she leaves
+      and slams the door behind her)"
     - "\u2026"
     - "\u2026"
     - im bored
@@ -1117,7 +1117,7 @@ MonoBehaviour:
       living room"
     - "you\u2019re the one who hit the ball into the tv"
     - well you threw it weird!!!!!
-    - '*2 hours later*'
+    - 2 hours later
     - "well at least i didn\u2019t knock over that vase at grandma\u2019s birthday
       party"
     - "well you didn\u2019t feed our goldfish for a month and it died"
@@ -1129,7 +1129,7 @@ MonoBehaviour:
     - what monsters
     - "i didn\u2019t draw the monsters yet"
     - hold on i have an idea
-    - '*Wally draws something*'
+    - Wally draws something.
     - could he beat this monster
     - yes definitely
     - prove it
@@ -1137,9 +1137,9 @@ MonoBehaviour:
     - well this monster has a billion health so he would be fine actually
     - i bet my guy could beat any monster you make
     - "we\u2019ll see about that"
-    - '*2 hours later*'
-    - '*Wally has set up a bunch of grid paper on a table and the brothers each put
-      their drawings on it*'
+    - 2 hours later
+    - Wally has set up a bunch of grid paper on a table and the brothers each put
+      their drawings on it.
     - "let\u2019s see if your guy can make it through this dungeon i made it\u2019s
       impossible"
     - i eat impossible for breakfast
