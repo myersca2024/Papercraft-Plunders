@@ -20,7 +20,7 @@ public class Boss2Movement : MonoBehaviour
 
     
 
-    private int rotateIndex = 1;
+    //private int rotateIndex = 1;
     private bool fanAttacking = false;
     private float fanTimer;
     public float fanDelay = 0.33f;

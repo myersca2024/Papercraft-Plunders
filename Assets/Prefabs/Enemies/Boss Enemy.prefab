@@ -193,7 +193,7 @@ MonoBehaviour:
   moveDelay: 0.5
   attackDelay: 1
   player: {fileID: 0}
-  damage: 20
+  damage: 10
 --- !u!114 &6351886071396813029
 MonoBehaviour:
   m_ObjectHideFlags: 0
