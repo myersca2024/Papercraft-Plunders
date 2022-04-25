@@ -38,7 +38,7 @@ public class PauseGameForDialogue : MonoBehaviour
         PauseGameForDialogue.paused = false;
 
         if (loadsScene) {
-            if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings) {
+            if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1) {
                 SceneManager.LoadScene(0);
             } else {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
