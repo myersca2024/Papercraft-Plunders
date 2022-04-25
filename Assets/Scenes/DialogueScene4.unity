@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadsScene: 1
-  name: {fileID: 1182470154}
+  nameBG: {fileID: 1182470154}
   text: {fileID: 1313206523}
   portrait: {fileID: 607061334}
 --- !u!114 &560537857

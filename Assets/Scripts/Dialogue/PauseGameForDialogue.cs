@@ -10,7 +10,7 @@ public class PauseGameForDialogue : MonoBehaviour
 
     public bool loadsScene = false;
 
-    public Image name;
+    public Image nameBG;
     public Image text;
     public Image portrait;
 
@@ -21,7 +21,7 @@ public class PauseGameForDialogue : MonoBehaviour
     }
 
     public void PauseForDialogue(Dialogue dialogue) {
-        name.gameObject.SetActive(true);
+        nameBG.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
         portrait.gameObject.SetActive(true);
 
@@ -31,7 +31,7 @@ public class PauseGameForDialogue : MonoBehaviour
     }
 
     public void UnpauseForDialogue() {
-        name.gameObject.SetActive(false);
+        nameBG.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         portrait.gameObject.SetActive(false);
         Time.timeScale = 1;
