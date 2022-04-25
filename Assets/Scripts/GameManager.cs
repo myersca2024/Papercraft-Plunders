@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public DungeonRoom bossRoom;
     private Vector2Int bossRoomID;
 
+    // Random room stuff
+    public List<DungeonRoom> potentialRooms;
+
     void Start()
     {
         roomGrid = new bool[5, 7];
@@ -108,7 +111,7 @@ public class GameManager : MonoBehaviour
         {
             case Direction.UP:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
-                dr = parentRoom.id + new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(0, 1) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.DOWN;
                 playerMoveDir = new Vector3(0, 0, go.cellSize * 2);
 
@@ -116,7 +119,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.DOWN:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
-                dr = parentRoom.id - new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(0, 1) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.UP;
                 playerMoveDir = new Vector3(0, 0, -go.cellSize * 2);
 
@@ -124,7 +127,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.LEFT:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
-                dr = parentRoom.id - new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(1, 0) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.RIGHT;
                 playerMoveDir = new Vector3(-go.cellSize * 2, 0);
 
@@ -132,7 +135,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.RIGHT:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
-                dr = parentRoom.id + new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(1, 0) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.LEFT;
                 playerMoveDir = new Vector3(go.cellSize * 2, 0);
 
@@ -186,6 +189,12 @@ public class GameManager : MonoBehaviour
         //DisableRedundantTriggers(dr);
     }
 
+    private DungeonRoom GetRandomDungeonPrefab()
+    {
+        int rand_id = UnityEngine.Random.Range(0, potentialRooms.Count);
+        return potentialRooms[rand_id];
+    }
+
     private void StartGeneratePathways()
     {
         int numRooms = 5 * 7 / 2;
@@ -207,7 +216,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 7; j++)
             {
-                if (roomGrid[i, j] && (i != 0 && j != 2) && !IsNeighbor(0, 2, i, j))
+                if (roomGrid[i, j] && (i != 2 && j != 0) && !IsNeighbor(2, 0, i, j))
                 {
                     rooms.Add(new Vector2Int(i, j));
                 }
