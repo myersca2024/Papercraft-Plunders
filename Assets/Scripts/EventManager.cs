@@ -77,7 +77,10 @@ public class EventManager : MonoBehaviour
         firstEvents = new bool[numEvents];
         for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
 
-        PlayTutorialDialogue();
+        if (!DataStorage.startTutorial) {
+            DataStorage.startTutorial = true;
+            PlayTutorialDialogue();
+        }
     }
 
     // Update is called once per frame
@@ -90,7 +93,7 @@ public class EventManager : MonoBehaviour
         }
         
 
-        if (elapsedTime >= eventTimer)
+        if (elapsedTime >= eventTimer && Time.timeScale != 0)
         {
             elapsedTime = 0.0f;
             int rand = Random.Range(0, numEvents);
