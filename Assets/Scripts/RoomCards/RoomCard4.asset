@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   effectText: Contains 2 enemies and has two common room cards reward.
-  challengeRating: 0
+  challengeRating: 1
   numberOfEnemies: 2
   potentialEnemies:
   - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}

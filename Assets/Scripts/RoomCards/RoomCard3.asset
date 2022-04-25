@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   effectText: Contains 6 enemies and has 2 rare combat cards as awards.
-  challengeRating: 0
+  challengeRating: 4
   numberOfEnemies: 6
   potentialEnemies:
   - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}

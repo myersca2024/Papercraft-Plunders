@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   effectText: Contains 3 enemies and has a reward of 3 room cards.
-  challengeRating: 0
+  challengeRating: 2
   numberOfEnemies: 3
   potentialEnemies:
   - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
