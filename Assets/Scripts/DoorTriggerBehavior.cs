@@ -79,7 +79,29 @@ public class DoorTriggerBehavior : MonoBehaviour
             gm.SetActiveRoom(parentRoom);
             Vector2Int id = parentRoom.GetID();
             Debug.Log(id.ToString());
-            if (!adjacentRoom && IsValidRoom(id.x, id.y))
+            Vector2Int newID = new Vector2Int(parentRoom.id.x, parentRoom.id.y);
+            switch (direction)
+            {
+                case Direction.UP:
+                    newID += new Vector2Int(0, 1);
+                    break;
+                case Direction.DOWN:
+                    newID += new Vector2Int(0, -1);
+                    break;
+                case Direction.LEFT:
+                    newID += new Vector2Int(-1, 0);
+                    break;
+                case Direction.RIGHT:
+                    newID += new Vector2Int(1, 0);
+                    break;
+                default:
+                    break;
+            }
+            if (newID == DungeonRoom.bossRoomID)
+            {
+                StartMakeRoom(0);
+            }
+            else if (!adjacentRoom && IsValidRoom(id.x, id.y))
             {
                 dungeonDeckUI.StartRoomUI(this);
                 adjacentRoom = true;
@@ -89,8 +111,33 @@ public class DoorTriggerBehavior : MonoBehaviour
 
     public void StartMakeRoom(int index)
     {
-        RoomCard rc = ddm.deck[index];
-        gm.MakeRoom(parentRoom, direction, rc);
+        Vector2Int newID = new Vector2Int(0, 0);
+        switch (direction)
+        {
+            case Direction.UP:
+                newID += new Vector2Int(0, 1);
+                break;
+            case Direction.DOWN:
+                newID += new Vector2Int(0, -1);
+                break;
+            case Direction.LEFT:
+                newID += new Vector2Int(-1, 0);
+                break;
+            case Direction.RIGHT:
+                newID += new Vector2Int(1, 0);
+                break;
+            default:
+                break;
+        }
+        if (newID == DungeonRoom.bossRoomID)
+        {
+            gm.MakeRoom(parentRoom, direction, ddm.deck[0]);
+        }
+        else
+        {
+            RoomCard rc = ddm.deck[index];
+            gm.MakeRoom(parentRoom, direction, rc);
+        }
         // ddm.DiscardCard(index);
     }
 }
