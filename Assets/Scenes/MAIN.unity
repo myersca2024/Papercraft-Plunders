@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaundryBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889045, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1113,7 +1117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 82.29, y: 0, z: 0}
 --- !u!114 &131541447
 MonoBehaviour:
@@ -5026,7 +5030,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a6f2225b5116f7540abcd821ccb85dcc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10837,7 +10841,7 @@ RectTransform:
   - {fileID: 637471430}
   - {fileID: 1404640248}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15360,7 +15364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2116007511 stripped
 MonoBehaviour:

@@ -13,6 +13,7 @@ public enum Direction
 public class DoorTriggerBehavior : MonoBehaviour
 {
     public Direction direction;
+    public List<GameObject> bossIndicators;
 
     private GameManager gm;
     private CanvasContainer dungeonDeckUI;
@@ -26,6 +27,36 @@ public class DoorTriggerBehavior : MonoBehaviour
         dungeonDeckUI = GameObject.FindGameObjectWithTag("RoomCardUI").GetComponent<CanvasContainer>();
         parentRoom = this.transform.parent.gameObject.GetComponent<DungeonRoom>();
         ddm = FindObjectOfType<DungeonDeckManager>();
+    }
+
+    private void Update()
+    {
+        Vector2Int newID = new Vector2Int(parentRoom.id.x, parentRoom.id.y);
+        switch (direction)
+        {
+            case Direction.UP:
+                newID += new Vector2Int(0, 1);
+                break;
+            case Direction.DOWN:
+                newID += new Vector2Int(0, -1);
+                break;
+            case Direction.LEFT:
+                newID += new Vector2Int(-1, 0);
+                break;
+            case Direction.RIGHT:
+                newID += new Vector2Int(1, 0);
+                break;
+            default:
+                break;
+        }
+
+        if (newID == DungeonRoom.bossRoomID)
+        {
+            foreach (GameObject bossIndicator in bossIndicators)
+            {
+                bossIndicator.SetActive(true);
+            }
+        }
     }
 
     public void SetAdjacent(bool isAdjacent)
@@ -100,6 +131,7 @@ public class DoorTriggerBehavior : MonoBehaviour
             if (newID == DungeonRoom.bossRoomID)
             {
                 StartMakeRoom(0);
+                adjacentRoom = true;
             }
             else if (!adjacentRoom && IsValidRoom(id.x, id.y))
             {
@@ -111,7 +143,7 @@ public class DoorTriggerBehavior : MonoBehaviour
 
     public void StartMakeRoom(int index)
     {
-        Vector2Int newID = new Vector2Int(0, 0);
+        Vector2Int newID = new Vector2Int(parentRoom.id.x, parentRoom.id.y);
         switch (direction)
         {
             case Direction.UP:
