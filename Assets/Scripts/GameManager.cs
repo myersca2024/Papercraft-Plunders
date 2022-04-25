@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     // Deck editing
     public CCEditUI editUI;
 
+    // Boss room stuff
+    private Vector2Int bossRoomID;
+
     void Start()
     {
         roomGrid = new bool[5, 7];
@@ -86,7 +89,7 @@ public class GameManager : MonoBehaviour
         //StartGeneratePathways();
         DungeonRoom.grid = new bool[5, 7];
         DungeonRoom.grid[2, 0] = true;
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MakeRoom(DungeonRoom parentRoom, Direction direction, RoomCard rc)
@@ -180,6 +183,7 @@ public class GameManager : MonoBehaviour
     {
         int numRooms = 5 * 7 / 2;
         RecursiveGeneratePathways(numRooms, new Vector2Int(2, 0));
+        SetBossRoom();
         /*
         CloseRandomDoors(4);
         foreach (Tuple<Vector2Int, Vector2Int> id in doorsClosed)
@@ -187,6 +191,46 @@ public class GameManager : MonoBehaviour
             Debug.Log(id);
         }
         */
+    }
+
+    private void SetBossRoom()
+    {
+        List<Vector2Int> rooms = new List<Vector2Int>();
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (roomGrid[i, j])
+                {
+                    rooms.Add(new Vector2Int(i, j));
+                }
+            }
+        }
+
+        Vector2Int bossRoom = RecursiveGetBossRoom(rooms, 1);
+        bossRoomID = bossRoom;
+    }
+
+    private Vector2Int RecursiveGetBossRoom(List<Vector2Int> rooms, int idealNeighbors)
+    {
+        List<Vector2Int> viableRooms = new List<Vector2Int>();
+        foreach (Vector2Int room in rooms)
+        {
+            if (NumAvailableNeighbors(room) == idealNeighbors)
+            {
+                viableRooms.Add(room);
+            }
+        }
+
+        if (viableRooms.Count != 0)
+        {
+            int rand_id = UnityEngine.Random.Range(0, viableRooms.Count);
+            return viableRooms[rand_id];
+        }
+        else
+        {
+            return RecursiveGetBossRoom(rooms, idealNeighbors + 1);
+        }
     }
 
     private void CloseRandomDoors(int doorsToClose)
