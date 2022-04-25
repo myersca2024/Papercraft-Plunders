@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7581989552585574826}
   - component: {fileID: 1411622817799609937}
   - component: {fileID: 8018112958084780123}
-  - component: {fileID: 4620269417205848650}
+  - component: {fileID: -3593423242990837310}
   m_Layer: 0
   m_Name: EnemySplits
   m_TagString: Enemy
@@ -45,7 +45,7 @@ MeshCollider:
   m_GameObject: {fileID: 1472545957181816094}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18e22d3223760f40989e3944aaa2f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 53d303e7a16bb8b43b9f86060acabe3e, type: 3}
   deathSound: {fileID: 8300000, guid: 5be32d0b99a929247bfe233c55a3a9b0, type: 3}
@@ -74,11 +74,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472545957181816094}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 0, z: 6.200979}
+  m_Center: {x: 0, y: 0, z: 0.088297844}
 --- !u!54 &8018112958084780123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4620269417205848650
+--- !u!114 &-3593423242990837310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,15 +104,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472545957181816094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc3513c46c3f6f498e15e4c56c4d3d4, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8c70abd8c730e41b3d8345720ebf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDelay: 1
-  attackDelay: 5
+  moveDelay: 0.25
+  attackDelay: 1
   player: {fileID: 0}
   damage: 20
-  splitEnemy: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &2073029538378981866
 GameObject:
   m_ObjectHideFlags: 0
