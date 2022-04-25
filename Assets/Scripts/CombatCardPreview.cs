@@ -70,7 +70,7 @@ public class CombatCardPreview : MonoBehaviour
                     }
                     Vector2Int playerCoords = go.GetGrid().GetXY(this.transform.position);
                     Vector2Int hitboxCoords = new Vector2Int(playerCoords.x + relX, playerCoords.y + relY);
-                    Vector3 offset = new Vector3(go.cellSize / 2, 0, go.cellSize / 2);
+                    Vector3 offset = new Vector3(go.cellSize / 2, 0f, go.cellSize / 2);
                     GameObject hb = Instantiate(hitboxPreview, go.GetGrid().GetWorldPosition(hitboxCoords.x, hitboxCoords.y) + offset, this.transform.localRotation);
                     hitboxes.Add(hb);
                 }

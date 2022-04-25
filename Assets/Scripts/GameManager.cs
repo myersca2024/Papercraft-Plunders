@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public DungeonRoom defaultRoom;
     public TreasureBehavior treasure;
 
+    public Dialogue chestTutorial;
+
     // Room generation
     private DungeonRoom activeRoom;
     private GridObject go;
@@ -53,6 +55,12 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Activation from game manager");
                 activeRoom.ActivateGoodDoorways();
+                
+                if (!DataStorage.chestTutorial) {
+                    FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(chestTutorial);
+                    DataStorage.chestTutorial = true;
+                }
+
                 if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)
                 {
                     int randNum = UnityEngine.Random.Range(0, 8);
