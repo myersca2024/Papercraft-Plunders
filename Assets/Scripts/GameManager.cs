@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public TreasureBehavior treasure;
 
     public Dialogue chestTutorial;
-    private bool first = true;
 
     // Room generation
     private DungeonRoom activeRoom;
@@ -56,9 +55,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Activation from game manager");
                 activeRoom.ActivateGoodDoorways();
                 
-                if (first) {
+                if (!DataStorage.chestTutorial) {
                     FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(chestTutorial);
-                    first = false;
+                    DataStorage.chestTutorial = true;
                 }
 
                 if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)

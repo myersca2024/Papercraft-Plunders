@@ -7430,13 +7430,12 @@ MonoBehaviour:
   empoweredHealthBarFill: {fileID: 21300000, guid: d072c66e02eda774d93f81abc8bea6ed, type: 3}
   catClaw: {fileID: 3928780367376342400, guid: 573de6f113db8ee4a9a927abb1aa4bab, type: 3}
   catClawZOffset: 175
-  eventTimer: 4
+  eventTimer: 30
   elapsedTime: 0
   currentEventTimeLimit: 3
   currentEventTime: 0
   numEvents: 6
   currentState: 0
-  firstEvents: 
 --- !u!4 &955591552
 Transform:
   m_ObjectHideFlags: 0
