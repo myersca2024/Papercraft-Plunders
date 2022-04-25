@@ -10,19 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: ROBOTS!!!RoomCard
+  m_Name: CombinedRoom4
   m_EditorClassIdentifier: 
-  name: ROBOTS!!!!
-  effectText: Contains 6 enemies and 2 rare combat cards as a reward
+  name: Combined Armies Fortress
+  effectText: Contains 6 enemies, with 2 rare combat cards and 2 rare room card as
+    a reward.
   challengeRating: 4
   numberOfEnemies: 6
   potentialEnemies:
-  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
   - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
-  - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 1022246584129310469, guid: 097fe004524fdc041bbbb0124a5120f6, type: 3}
+  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
   containsChest: 1
-  numberOfRewards: 2
+  numberOfRewards: 4
   combatCardRewards:
   - {fileID: 11400000, guid: 873f84532c45874418624ee3980a44a7, type: 2}
   - {fileID: 11400000, guid: f744d9284e74f6e47acaa59e883904a2, type: 2}
-  roomCardRewards: []
+  roomCardRewards:
+  - {fileID: 11400000, guid: 0f4f70cbe0cefd14cb522bc6beaf8b58, type: 2}
+  - {fileID: 11400000, guid: 8cc749ad37f37fb439048429722c2085, type: 2}

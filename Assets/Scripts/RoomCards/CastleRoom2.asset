@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
+  m_Name: CastleRoom2
+  m_EditorClassIdentifier: 
+  name: The Castle Room 2
+  effectText: Contains 3 Enemies, and 2 combat cards and 1 room card as a reward
+  challengeRating: 1
+  numberOfEnemies: 3
+  potentialEnemies:
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+  - {fileID: 3416990529513173020, guid: b00002414cb45474984fbef051d6a20f, type: 3}
+  containsChest: 1
+  numberOfRewards: 3
+  combatCardRewards:
+  - {fileID: 11400000, guid: 399a456a80b3c9b4ba8299d66c43f372, type: 2}
+  - {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+  roomCardRewards:
+  - {fileID: 11400000, guid: 1c0950505168f1f43bbac65c6fda8288, type: 2}
