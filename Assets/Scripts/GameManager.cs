@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public CCEditUI editUI;
 
     // Boss room stuff
+    public DungeonRoom bossRoom;
     private Vector2Int bossRoomID;
 
     void Start()
@@ -64,9 +65,9 @@ public class GameManager : MonoBehaviour
                     DataStorage.chestTutorial = true;
                 }
 
-                if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)
+                if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0 && activeRoom.spawnPoints.Length != 0)
                 {
-                    int randNum = UnityEngine.Random.Range(0, 8);
+                    int randNum = UnityEngine.Random.Range(0, activeRoom.spawnPoints.Length);
                     TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
                     t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
                     t.editUI = this.editUI;
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
         {
             case Direction.UP:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
-                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.DOWN;
                 playerMoveDir = new Vector3(0, 0, go.cellSize * 2);
 
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.DOWN:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
-                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.UP;
                 playerMoveDir = new Vector3(0, 0, -go.cellSize * 2);
 
@@ -120,7 +121,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.LEFT:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
-                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.RIGHT;
                 playerMoveDir = new Vector3(-go.cellSize * 2, 0);
 
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.RIGHT:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
-                dr = Instantiate(defaultRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.LEFT;
                 playerMoveDir = new Vector3(go.cellSize * 2, 0);
 
@@ -153,19 +154,22 @@ public class GameManager : MonoBehaviour
         }
 
         List<int> usedSpawnPoints = new List<int>();
-        for (int i = 0; i < rc.numberOfEnemies; i++)
+        if (dr.spawnPoints.Length != 0)
         {
-            int randNum = UnityEngine.Random.Range(0, 8);
-            if (!usedSpawnPoints.Contains(randNum))
+            for (int i = 0; i < rc.numberOfEnemies; i++)
             {
-                int randEnemyID = UnityEngine.Random.Range(0, rc.potentialEnemies.Length);
-                GameObject randEnemy = rc.potentialEnemies[randEnemyID];
-                Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, randEnemy.transform.localRotation);
-                usedSpawnPoints.Add(randNum);
-            }
-            else
-            {
-                i--;
+                int randNum = UnityEngine.Random.Range(0, dr.spawnPoints.Length);
+                if (!usedSpawnPoints.Contains(randNum))
+                {
+                    int randEnemyID = UnityEngine.Random.Range(0, rc.potentialEnemies.Length);
+                    GameObject randEnemy = rc.potentialEnemies[randEnemyID];
+                    Instantiate(randEnemy, dr.spawnPoints[randNum].transform.position, randEnemy.transform.localRotation);
+                    usedSpawnPoints.Add(randNum);
+                }
+                else
+                {
+                    i--;
+                }
             }
         }
 
@@ -200,7 +204,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 7; j++)
             {
-                if (roomGrid[i, j])
+                if (roomGrid[i, j] && (i != 0 && j != 2))
                 {
                     rooms.Add(new Vector2Int(i, j));
                 }
@@ -208,7 +212,9 @@ public class GameManager : MonoBehaviour
         }
 
         Vector2Int bossRoom = RecursiveGetBossRoom(rooms, 1);
+        Debug.Log("Boss Room: " + bossRoom.ToString());
         bossRoomID = bossRoom;
+        DungeonRoom.bossRoomID = bossRoom;
     }
 
     private Vector2Int RecursiveGetBossRoom(List<Vector2Int> rooms, int idealNeighbors)
@@ -216,7 +222,7 @@ public class GameManager : MonoBehaviour
         List<Vector2Int> viableRooms = new List<Vector2Int>();
         foreach (Vector2Int room in rooms)
         {
-            if (NumAvailableNeighbors(room) == idealNeighbors)
+            if (GetNumNeighbors(room) == idealNeighbors)
             {
                 viableRooms.Add(room);
             }
@@ -364,6 +370,37 @@ public class GameManager : MonoBehaviour
 
         nextID = roomID - new Vector2Int(0, 1);
         if (IsValidPosition(nextID.x, nextID.y) && !roomGrid[nextID.x, nextID.y])
+        {
+            numRooms++;
+        }
+
+        return numRooms;
+    }
+
+    private int GetNumNeighbors(Vector2Int roomID)
+    {
+        int numRooms = 0;
+        Vector2Int nextID;
+        nextID = roomID + new Vector2Int(0, 1);
+        if (IsValidPosition(nextID.x, nextID.y) && roomGrid[nextID.x, nextID.y])
+        {
+            numRooms++;
+        }
+
+        nextID = roomID - new Vector2Int(1, 0);
+        if (IsValidPosition(nextID.x, nextID.y) && roomGrid[nextID.x, nextID.y])
+        {
+            numRooms++;
+        }
+
+        nextID = roomID + new Vector2Int(1, 0);
+        if (IsValidPosition(nextID.x, nextID.y) && roomGrid[nextID.x, nextID.y])
+        {
+            numRooms++;
+        }
+
+        nextID = roomID - new Vector2Int(0, 1);
+        if (IsValidPosition(nextID.x, nextID.y) && roomGrid[nextID.x, nextID.y])
         {
             numRooms++;
         }

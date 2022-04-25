@@ -12,6 +12,7 @@ public class DungeonRoom : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isDefault;
     public static bool[,] grid = new bool[5, 7];
+    public static Vector2Int bossRoomID;
     public Vector2Int id;
 
     private GridObject go;
