@@ -38,8 +38,24 @@ public class GameManager : MonoBehaviour
     // Random room stuff
     public List<DungeonRoom> potentialRooms;
 
+    void InitializeObjects()
+    {
+        //roomGrid = new bool[5, 7];
+        foreach (DoorTriggerBehavior dtb in FindObjectsOfType<DoorTriggerBehavior>(true))
+        {
+            dtb.SetAdjacent(false);
+        }
+        activeRoom = defaultRoom;
+        activeGrid = new Vector2Int(2, 0);
+        //roomGrid[2, 0] = true;
+        //StartGeneratePathways();
+        DungeonRoom.grid = new bool[5, 7];
+        DungeonRoom.grid[2, 0] = true;
+        DungeonRoom.bossRoomID = new Vector2Int();
+    }
     void Start()
     {
+        InitializeObjects();
         roomGrid = new bool[5, 7];
         player = FindObjectOfType<PlayerController>().gameObject;
         go = FindObjectOfType<GridObject>();
@@ -85,18 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        //roomGrid = new bool[5, 7];
-        foreach (DoorTriggerBehavior dtb in FindObjectsOfType<DoorTriggerBehavior>(true))
-        {
-            dtb.SetAdjacent(false);
-        }
-        activeRoom = defaultRoom;
-        activeGrid = new Vector2Int(2, 0);
-        //roomGrid[2, 0] = true;
-        //StartGeneratePathways();
-        DungeonRoom.grid = new bool[5, 7];
-        DungeonRoom.grid[2, 0] = true;
-        DungeonRoom.bossRoomID = new Vector2Int();
+        InitializeObjects();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
