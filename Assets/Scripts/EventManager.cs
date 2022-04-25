@@ -20,10 +20,18 @@ public class EventManager : MonoBehaviour
     public float eventTimer = 30.0f;
     public float elapsedTime = 0.0f;
     
+
+
     public float currentEventTimeLimit = 5.0f;
     public float currentEventTime = 0.0f;
     public int numEvents = 7;
     public EventState currentState;
+
+    public float LifeSaveDamage = 30.0f;
+    public GameObject LifeSaveExplosion;
+    private bool lifeSaved = false;
+
+    public bool[] firstEvents;
 
     private float oldPlayerMoveDelay;
     private float oldAvoidMoveDelay = 1.0f;
@@ -35,7 +43,7 @@ public class EventManager : MonoBehaviour
     private GameObject[] enemies;
 
     private GameObject playerEmpowered;
-    private bool sizeIncreased = false;
+    
 
     public enum EventState
     {
@@ -45,7 +53,7 @@ public class EventManager : MonoBehaviour
         MakePlayerInvincible,
         InfiniteCCUses,
         CatClaw,
-        BigPlayer
+        LifeSave
     };
 
 
@@ -66,10 +74,10 @@ public class EventManager : MonoBehaviour
         playerEmpowered.SetActive(false);
         mainCamera = Camera.main;
 
-        if (!DataStorage.startTutorial) {
-            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
-            DataStorage.startTutorial = true;
-        }
+        firstEvents = new bool[numEvents];
+        for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
+
+        PlayTutorialDialogue();
     }
 
     // Update is called once per frame
@@ -82,10 +90,10 @@ public class EventManager : MonoBehaviour
         }
         
 
-        if (elapsedTime >= eventTimer && Time.timeScale != 0)
+        if (elapsedTime >= eventTimer)
         {
             elapsedTime = 0.0f;
-            int rand = Random.Range(0, numEvents + 1);
+            int rand = Random.Range(0, numEvents);
             switch(rand) {
                 case 0:
                     //nothing happens
@@ -128,12 +136,6 @@ public class EventManager : MonoBehaviour
                     currentState = EventState.CatClaw;
                     CatClaw();
                     break;
-                case 6:
-                    FirstDialogue(rand - 1);
-
-                    currentState = EventState.BigPlayer;
-                    BigPlayer();
-                    break;
                 default:
                     Debug.Log("defaulted for some reason, should not be here");
                     break;
@@ -160,8 +162,14 @@ public class EventManager : MonoBehaviour
             case EventState.CatClaw:
                 // only make 1 cat claw lol
                 break;
-            case EventState.BigPlayer:
-                // probably dont want to constantly increase in size
+            case EventState.LifeSave:
+                //this will be called elsewhere
+                if (!lifeSaved) // this if statement is for debugging, nothing in eventmanager causes the state to change to the LifeSave state.
+                {
+                    LifeSave();
+                    lifeSaved = true;
+                }
+                
                 break;
             default:
                 Debug.Log("defaulted for some reason, should not be here");
@@ -179,12 +187,7 @@ public class EventManager : MonoBehaviour
             playerEmpowered.SetActive(false);
             playerEmpowered.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
             playercontroller.infiniteUses = false;
-            if (sizeIncreased)
-            {
-                player.transform.localScale -= new Vector3(1.5f, 1, 1.5f);
-                sizeIncreased = false;
-            }
-            
+                        
             if (playercontroller.moveDelay != oldPlayerMoveDelay)
             {
                 playercontroller.moveDelay = oldPlayerMoveDelay;
@@ -227,7 +230,10 @@ public class EventManager : MonoBehaviour
     }
 
     private void FirstDialogue(int i) {
-        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
+        if (firstEvents[i]) {
+            firstEvents[i] = false;
+            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
+        }
     }
 
     private void MakePlayerInvincible()
@@ -259,10 +265,30 @@ public class EventManager : MonoBehaviour
         Instantiate(catClaw, clawPosition, transform.rotation);
     }
 
-    private void BigPlayer()
+    public void LifeSave()
     {
-        player.transform.localScale += new Vector3(1.5f, 1, 1.5f);
-        sizeIncreased = true;
+        //chance on death to not die and kill everything
+        FirstDialogue(numEvents - 1);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject e in enemies)
+        {
+            if (e.GetComponent<BossFireBall>() == null && e.GetComponent<Boss2Movement>() == null && e.GetComponent<LaundryBossHealth>() == null)
+            {
+                Destroy(Instantiate(LifeSaveExplosion, e.transform.position, Quaternion.LookRotation(new Vector3(0, 0, 0))), 2); //spawn an explosion, then kill it after 2 seconds
+                Destroy(e);
+            }
+            else
+            {
+                if (e.GetComponent<EnemyHealth>() != null)
+                {
+                    e.GetComponent<EnemyHealth>().TakeDamage(LifeSaveDamage);
+                }
+                else if (e.GetComponent<LaundryBossHealth>() != null)
+                {
+                    e.GetComponent<LaundryBossHealth>().TakeDamage(LifeSaveDamage);
+                }
+            }
+        }
     }
 
     private void DoubleEnemySpeed()
@@ -299,5 +325,9 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PlayTutorialDialogue() {
+        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
     }
 }
