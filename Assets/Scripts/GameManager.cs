@@ -65,12 +65,15 @@ public class GameManager : MonoBehaviour
                     DataStorage.chestTutorial = true;
                 }
 
-                if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0 && activeRoom.spawnPoints.Length != 0)
+                if (activeRoom.spawnPoints.Length != 0)
                 {
-                    int randNum = UnityEngine.Random.Range(0, activeRoom.spawnPoints.Length);
-                    TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
-                    t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
-                    t.editUI = this.editUI;
+                    if (activeTreasureCC.Length != 0 || activeTreasureRC.Length != 0)
+                    {
+                        int randNum = UnityEngine.Random.Range(0, activeRoom.spawnPoints.Length);
+                        TreasureBehavior t = Instantiate(treasure, activeRoom.spawnPoints[randNum].transform.position, this.transform.localRotation);
+                        t.SetRewards(activeTreasureNum, activeTreasureCC, activeTreasureRC);
+                        t.editUI = this.editUI;
+                    }
                 }
                 inNewRoom = false;
             }
@@ -204,7 +207,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 7; j++)
             {
-                if (roomGrid[i, j] && (i != 0 && j != 2))
+                if (roomGrid[i, j] && (i != 0 && j != 2) && !IsNeighbor(0, 2, i, j))
                 {
                     rooms.Add(new Vector2Int(i, j));
                 }
@@ -215,6 +218,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Boss Room: " + bossRoom.ToString());
         bossRoomID = bossRoom;
         DungeonRoom.bossRoomID = bossRoom;
+    }
+
+    private bool IsNeighbor(int fX, int fY, int tX, int tY)
+    {
+        if (fX + 1 == tX && fY == tY) { return true; }
+        if (fX - 1 == tX && fY == tY) { return true; }
+        if (fX == tX && fY + 1 == tY) { return true; }
+        if (fX == tX && fY - 1 == tY) { return true; }
+        return false;
     }
 
     private Vector2Int RecursiveGetBossRoom(List<Vector2Int> rooms, int idealNeighbors)
