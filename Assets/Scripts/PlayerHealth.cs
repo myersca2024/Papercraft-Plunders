@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
 
     bool died = false;
+    private bool lifeSaved = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,22 +33,38 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0 && !died)
         {
-            died = true;
+            
+            if (!lifeSaved)
+            {
+                int lifeSaveRoll = Random.Range(0, 8); // 1 in 8 chance to life save
+                if (lifeSaveRoll == 7)
+                {
+                    FindObjectOfType<EventManager>().LifeSave();
+                    lifeSaved = true;
+                    currentHealth = maximumHealth;
+                    healthSlider.value = currentHealth;
+                    
+                }
+            }
+            else
+            {
+                died = true;
 
-            int rand = Random.Range(0, dialogues.Length);
-            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[rand]);
+                int rand = Random.Range(0, dialogues.Length);
+                FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[rand]);
 
-            PlayerController.freeze = true;
+                PlayerController.freeze = true;
 
-            //print("Player died.");
-            //if (deathText)
-            //{
+                //print("Player died.");
+                //if (deathText)
+                //{
 
-            //    deathText.gameObject.SetActive(true);
-            //}
+                //    deathText.gameObject.SetActive(true);
+                //}
 
-            //restart level after 2 seconds
-            Invoke("PlayerDied", 1);
+                //restart level after 2 seconds
+                Invoke("PlayerDied", 1);
+            } 
         }
     }
 
