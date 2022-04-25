@@ -17,7 +17,7 @@ MonoBehaviour:
   challengeRating: 3
   numberOfEnemies: 5
   potentialEnemies:
-  - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
+  - {fileID: 2723625607880547987, guid: b0108232bf419984aac7ba10c81a3cba, type: 3}
   - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}

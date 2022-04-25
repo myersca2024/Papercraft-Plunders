@@ -23,4 +23,4 @@ MonoBehaviour:
   combatCardRewards:
   - {fileID: 11400000, guid: 7e9caa0f744c6c3499400b108ec62b11, type: 2}
   roomCardRewards:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9f009c733eaf2304cafc23acdec93f86, type: 2}
