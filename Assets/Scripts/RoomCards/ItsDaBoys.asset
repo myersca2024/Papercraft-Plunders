@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: ItsDaBoys
   m_EditorClassIdentifier: 
   name: The Boys
-  effectText: 
-  challengeRating: 0
-  numberOfEnemies: 0
+  effectText: Ruffians with no honor
+  challengeRating: 2
+  numberOfEnemies: 4
   potentialEnemies:
   - {fileID: 2723625607880547987, guid: b0108232bf419984aac7ba10c81a3cba, type: 3}
   - {fileID: 2723625607880547987, guid: b0108232bf419984aac7ba10c81a3cba, type: 3}
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
   - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
-  containsChest: 0
-  numberOfRewards: 0
-  combatCardRewards: []
+  containsChest: 1
+  numberOfRewards: 2
+  combatCardRewards:
+  - {fileID: 11400000, guid: 3e7d750c5a1e7184db48cf352ab8bb55, type: 2}
   roomCardRewards:
   - {fileID: 11400000, guid: 8cc749ad37f37fb439048429722c2085, type: 2}
