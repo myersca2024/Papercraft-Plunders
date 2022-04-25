@@ -15291,6 +15291,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   editUI: {fileID: 793314084}
   bossRoom: {fileID: 715017411841992139, guid: e8b0a0d1b1ae3d2488e6c0585d4eb85e, type: 3}
+  potentialRooms:
+  - {fileID: 66657123329024174, guid: f9867c8504982404183669dbff29b34c, type: 3}
+  - {fileID: 7580782788809732828, guid: 0d6b23bb0b134c04bbaee30083fced99, type: 3}
+  - {fileID: 7984285904858997783, guid: 1e73f25ae2d88694a9dec1784c955824, type: 3}
+  - {fileID: 3981769522352006570, guid: 71fd4e80b1617b64fa8c6b3727783ecf, type: 3}
+  - {fileID: 660736195163663816, guid: 3b40083d82efbf546bab77c220a5a330, type: 3}
+  - {fileID: 8641557517612241041, guid: 84175825bb7f2aa43ad73fc70e4a950c, type: 3}
+  - {fileID: 8295860783090426487, guid: e2509f659e1abfb44bfdc7aa0288f5fd, type: 3}
+  - {fileID: 8065364025370803905, guid: a6115cb62e5a8514eb4fe7245a61a478, type: 3}
 --- !u!4 &2109294995
 Transform:
   m_ObjectHideFlags: 0

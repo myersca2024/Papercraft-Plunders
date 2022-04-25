@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
   m_Name: DefaultRoomCard
   m_EditorClassIdentifier: 
-  name: 
-  effectText: Contains 1 enemy and has a reward of 1 common room card.
+  name: Default Room Card
+  effectText: Contains 1 enemy and has a reward of 1 common room card. Gets harder
+    the more it is used.
   challengeRating: 0
   numberOfEnemies: 1
   potentialEnemies:
@@ -22,6 +23,19 @@ MonoBehaviour:
   numberOfRewards: 1
   combatCardRewards: []
   roomCardRewards:
-  - {fileID: 11400000, guid: e14d963d882b3454890d0cbfa22f8e92, type: 2}
-  - {fileID: 11400000, guid: 1d99c4c8db5a1e243a22a5d3647b735c, type: 2}
+  - {fileID: 11400000, guid: 914472b58af6d5647a2b1c676bbe0bde, type: 2}
+  - {fileID: 11400000, guid: b10ab580e19efe849b813cd6d3dfee85, type: 2}
+  - {fileID: 11400000, guid: 8f3f46403ab64524289c4caa22ba33de, type: 2}
+  - {fileID: 11400000, guid: 1c0950505168f1f43bbac65c6fda8288, type: 2}
+  - {fileID: 11400000, guid: 0f4f70cbe0cefd14cb522bc6beaf8b58, type: 2}
+  - {fileID: 11400000, guid: dfa16d1dd3f3c754b8a6b3b1d1b94c28, type: 2}
+  - {fileID: 11400000, guid: f029e2e714a17124183745ac6604e128, type: 2}
+  - {fileID: 11400000, guid: 20648a4199ce9e54b8755f4a9bd529cd, type: 2}
+  - {fileID: 11400000, guid: 0bbd3f6a074877d4b9225a10d898c9c8, type: 2}
+  - {fileID: 11400000, guid: 614502cf663908c4980f6a728bc46d92, type: 2}
   - {fileID: 11400000, guid: 061f900425eef6548bb44e750d9de750, type: 2}
+  - {fileID: 11400000, guid: 8cc749ad37f37fb439048429722c2085, type: 2}
+  - {fileID: 11400000, guid: 3f9ec99d6d817b64a808c38091bc0a38, type: 2}
+  - {fileID: 11400000, guid: d2914e887a8d456498759ec222e5ea35, type: 2}
+  - {fileID: 11400000, guid: 0e57a8ddd8acc2446832e3582a57f78d, type: 2}
+  - {fileID: 11400000, guid: 9f009c733eaf2304cafc23acdec93f86, type: 2}

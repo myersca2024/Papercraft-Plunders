@@ -8,6 +8,7 @@ public class PauseMenuManager : MonoBehaviour
 {
     public Button resumeButton;
     public Button quitButton;
+    public GameObject deckViewerPanels;
     public AudioClip clickSFX;
     public bool isPaused = false;
 
@@ -19,7 +20,7 @@ public class PauseMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {

@@ -7,19 +7,22 @@ public class TreasureBehavior : MonoBehaviour
     public List<CombatCard> combatCards;
     public List<RoomCard> roomCards;
     public CCEditUI editUI;
+    public float distance = 15f;
 
     private DeckManager dm;
+    private GameObject player;
     private DungeonDeckManager ddm;
 
     private void Start()
     {
         dm = FindObjectOfType<DeckManager>();
         ddm = FindObjectOfType<DungeonDeckManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(this.transform.position, player.transform.position) <= distance)
         {
             foreach (RoomCard rc in roomCards)
             {
@@ -29,6 +32,7 @@ public class TreasureBehavior : MonoBehaviour
             dm.ShuffleDiscardToDeck();
             editUI.SetChest(this);
             PlayerController.freeze = true;
+            Time.timeScale = 0;
             editUI.gameObject.SetActive(true);
         }
     }

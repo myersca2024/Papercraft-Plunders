@@ -13,6 +13,7 @@ public class DungeonRoom : MonoBehaviour
     public bool isDefault;
     public static bool[,] grid = new bool[5, 7];
     public static Vector2Int bossRoomID;
+    public static Vector2Int treasureRoomID;
     public Vector2Int id;
 
     private GridObject go;

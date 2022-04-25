@@ -35,6 +35,7 @@ public class CanvasContainer : MonoBehaviour
     public void StartRoomUI(DoorTriggerBehavior dtb)
     {
         this.dtb = dtb;
+        Time.timeScale = 0;
         container.SetActive(true);
         DrawDisplayCard(0);
         PlayerController.freeze = true;
@@ -45,9 +46,17 @@ public class CanvasContainer : MonoBehaviour
         DungeonDeckManager ddm = FindObjectOfType<DungeonDeckManager>();
         if (index < ddm.deck.Count)
         {
+            Time.timeScale = 1;
             dtb.StartMakeRoom(index);
             container.SetActive(false);
-            ddm.DiscardCard(index);
+            if (index == 0)
+            {
+                ddm.deck[0].IncrementDefaultDifficulty();
+            }
+            else
+            {
+                ddm.DiscardCard(index);
+            }
             PlayerController.freeze = false;
         }
     }

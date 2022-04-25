@@ -111,3 +111,5 @@ MonoBehaviour:
   combatCards: []
   roomCards:
   - {fileID: 11400000, guid: ec98018b841fb6c438d41b5f936f7d71, type: 2}
+  editUI: {fileID: 0}
+  distance: 50

@@ -8,7 +8,7 @@ public class DungeonDeckManager : MonoBehaviour
 
     public void AddCard(RoomCard card)
     {
-        if (deck.Count <= 6)
+        if (deck.Count <= 18 && card.name != "Default Room")
         {
             deck.Add(card);
         }

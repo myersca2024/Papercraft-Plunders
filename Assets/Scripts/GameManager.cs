@@ -31,12 +31,39 @@ public class GameManager : MonoBehaviour
     // Deck editing
     public CCEditUI editUI;
 
-    // Boss room stuff
+    // Extra room stuff
     public DungeonRoom bossRoom;
+    public DungeonRoom treasureRoom;
     private Vector2Int bossRoomID;
+    private Vector2Int treasureRoomID;
 
+    // Random room stuff
+    public List<DungeonRoom> potentialRooms;
+
+    // Default card reseting
+    public RoomCard defaultCard;
+
+    void InitializeObjects()
+    {
+        //roomGrid = new bool[5, 7];
+        foreach (DoorTriggerBehavior dtb in FindObjectsOfType<DoorTriggerBehavior>(true))
+        {
+            dtb.SetAdjacent(false);
+        }
+        defaultCard.numberOfEnemies = 1;
+        defaultCard.challengeRating = 1;
+        activeRoom = defaultRoom;
+        activeGrid = new Vector2Int(2, 0);
+        //roomGrid[2, 0] = true;
+        //StartGeneratePathways();
+        DungeonRoom.grid = new bool[5, 7];
+        DungeonRoom.grid[2, 0] = true;
+        DungeonRoom.bossRoomID = new Vector2Int();
+        DungeonRoom.treasureRoomID = new Vector2Int();
+    }
     void Start()
     {
+        InitializeObjects();
         roomGrid = new bool[5, 7];
         player = FindObjectOfType<PlayerController>().gameObject;
         go = FindObjectOfType<GridObject>();
@@ -82,17 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        //roomGrid = new bool[5, 7];
-        foreach (DoorTriggerBehavior dtb in FindObjectsOfType<DoorTriggerBehavior>(true))
-        {
-            dtb.SetAdjacent(false);
-        }
-        activeRoom = defaultRoom;
-        activeGrid = new Vector2Int(2, 0);
-        //roomGrid[2, 0] = true;
-        //StartGeneratePathways();
-        DungeonRoom.grid = new bool[5, 7];
-        DungeonRoom.grid[2, 0] = true;
+        InitializeObjects();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -108,7 +125,7 @@ public class GameManager : MonoBehaviour
         {
             case Direction.UP:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(0, 0, zSize);
-                dr = parentRoom.id + new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(0, 1) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.DOWN;
                 playerMoveDir = new Vector3(0, 0, go.cellSize * 2);
 
@@ -116,7 +133,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.DOWN:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(0, 0, zSize);
-                dr = parentRoom.id - new Vector2Int(0, 1) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(0, 1) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.UP;
                 playerMoveDir = new Vector3(0, 0, -go.cellSize * 2);
 
@@ -124,7 +141,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.LEFT:
                 newPos = parentRoom.gameObject.transform.position - new Vector3(xSize, 0, 0);
-                dr = parentRoom.id - new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id - new Vector2Int(1, 0) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.RIGHT;
                 playerMoveDir = new Vector3(-go.cellSize * 2, 0);
 
@@ -132,7 +149,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Direction.RIGHT:
                 newPos = parentRoom.gameObject.transform.position + new Vector3(xSize, 0, 0);
-                dr = parentRoom.id + new Vector2Int(1, 0) != bossRoomID ? Instantiate(defaultRoom, newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
+                dr = parentRoom.id + new Vector2Int(1, 0) != bossRoomID ? Instantiate(GetRandomDungeonPrefab(), newPos, this.transform.localRotation) : Instantiate(bossRoom, newPos, this.transform.localRotation);
                 targetDir = Direction.LEFT;
                 playerMoveDir = new Vector3(go.cellSize * 2, 0);
 
@@ -186,11 +203,18 @@ public class GameManager : MonoBehaviour
         //DisableRedundantTriggers(dr);
     }
 
+    private DungeonRoom GetRandomDungeonPrefab()
+    {
+        int rand_id = UnityEngine.Random.Range(0, potentialRooms.Count);
+        return potentialRooms[rand_id];
+    }
+
     private void StartGeneratePathways()
     {
         int numRooms = 5 * 7 / 2;
         RecursiveGeneratePathways(numRooms, new Vector2Int(2, 0));
         SetBossRoom();
+        SetTreasureRoom();
         /*
         CloseRandomDoors(4);
         foreach (Tuple<Vector2Int, Vector2Int> id in doorsClosed)
@@ -200,6 +224,27 @@ public class GameManager : MonoBehaviour
         */
     }
 
+    private void SetTreasureRoom()
+    {
+        List<Vector2Int> rooms = new List<Vector2Int>();
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (roomGrid[i, j] && (i != 2 && j != 0) && !IsNeighbor(2, 0, i, j) && !(i == bossRoomID.x && j == bossRoomID.y))
+                {
+                    rooms.Add(new Vector2Int(i, j));
+                }
+            }
+        }
+
+        int rand_id = UnityEngine.Random.Range(0, rooms.Count);
+        Vector2Int treasureRoom = rooms[rand_id];
+        Debug.Log("Treasure Room: " + treasureRoom.ToString());
+        treasureRoomID = treasureRoom;
+        DungeonRoom.treasureRoomID = treasureRoom;
+    }
+
     private void SetBossRoom()
     {
         List<Vector2Int> rooms = new List<Vector2Int>();
@@ -207,7 +252,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 7; j++)
             {
-                if (roomGrid[i, j] && (i != 0 && j != 2) && !IsNeighbor(0, 2, i, j))
+                if (roomGrid[i, j] && (i != 2 && j != 0) && !IsNeighbor(2, 0, i, j))
                 {
                     rooms.Add(new Vector2Int(i, j));
                 }
