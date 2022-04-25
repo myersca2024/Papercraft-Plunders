@@ -20,14 +20,10 @@ public class EventManager : MonoBehaviour
     public float eventTimer = 30.0f;
     public float elapsedTime = 0.0f;
     
-
-
     public float currentEventTimeLimit = 5.0f;
     public float currentEventTime = 0.0f;
     public int numEvents = 7;
     public EventState currentState;
-
-    public bool[] firstEvents;
 
     private float oldPlayerMoveDelay;
     private float oldAvoidMoveDelay = 1.0f;
@@ -70,10 +66,10 @@ public class EventManager : MonoBehaviour
         playerEmpowered.SetActive(false);
         mainCamera = Camera.main;
 
-        firstEvents = new bool[numEvents];
-        for (int i = 0; i < numEvents; i++) firstEvents[i] = true;
-
-        PlayTutorialDialogue();
+        if (!DataStorage.startTutorial) {
+            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
+            DataStorage.startTutorial = true;
+        }
     }
 
     // Update is called once per frame
@@ -86,7 +82,7 @@ public class EventManager : MonoBehaviour
         }
         
 
-        if (elapsedTime >= eventTimer)
+        if (elapsedTime >= eventTimer && Time.timeScale != 0)
         {
             elapsedTime = 0.0f;
             int rand = Random.Range(0, numEvents + 1);
@@ -231,10 +227,7 @@ public class EventManager : MonoBehaviour
     }
 
     private void FirstDialogue(int i) {
-        if (firstEvents[i]) {
-            firstEvents[i] = false;
-            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
-        }
+        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[i]);
     }
 
     private void MakePlayerInvincible()
@@ -306,9 +299,5 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void PlayTutorialDialogue() {
-        FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(tutorial);
     }
 }

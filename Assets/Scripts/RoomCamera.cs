@@ -35,7 +35,7 @@ public class RoomCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             newX = Mathf.SmoothDamp(this.transform.position.x, zoomOutOffset.x, ref xVel, timeToTarget / zoomSpeed);
-            newZ = Mathf.SmoothDamp(this.transform.position.z, zoomOutOffset.z, ref zVel, timeToTarget / zoomSpeed);
+            newZ = Mathf.SmoothDamp(this.transform.position.z, zoomOutOffset.z + worldPos.z / 2, ref zVel, timeToTarget / zoomSpeed);
             newY = Mathf.SmoothDamp(this.transform.position.y, zoomOutOffset.y, ref yVel, timeToTarget / zoomSpeed);
             ui.alpha = 0.3f;
         }
