@@ -11,6 +11,12 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(initDialogue);
+        FindObjectOfType<AudioSource>().Stop();
+        AudioSource[] sources = FindObjectsOfType<AudioSource>();
+        for (int i = 0; i < sources.Length; i++) {
+            sources[i].Stop();
+        }
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
