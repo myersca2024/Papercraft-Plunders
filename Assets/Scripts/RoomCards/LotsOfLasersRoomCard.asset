@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: RoomCard1
+  m_Name: LotsOfLasersRoomCard
   m_EditorClassIdentifier: 
-  name: 
-  effectText: Contains 4 enemies and a rare combat card award.
+  name: Lots Of Lasers
+  effectText: Contains 4 Enemies and a rare combat card.
   challengeRating: 2
   numberOfEnemies: 4
-  potentialEnemies:
-  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
-  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  potentialEnemies: []
   containsChest: 1
   numberOfRewards: 2
   combatCardRewards:
-  - {fileID: 11400000, guid: 873f84532c45874418624ee3980a44a7, type: 2}
-  roomCardRewards: []
+  - {fileID: 11400000, guid: 5bb74bce18b331248a6642dae3324a1e, type: 2}
+  roomCardRewards:
+  - {fileID: 11400000, guid: 914472b58af6d5647a2b1c676bbe0bde, type: 2}

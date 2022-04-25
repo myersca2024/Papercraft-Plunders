@@ -10,6 +10,8 @@ public class RushEnemyMovement : MonoBehaviour
     private float attackTimer;
     public GameObject player;
     public float damage = 20f;
+    public bool strapped = false;
+    public GameObject enemyProjectile;
 
     private GridObject go;
 
@@ -34,7 +36,13 @@ public class RushEnemyMovement : MonoBehaviour
             this.transform.position = go.GetGrid().AttemptMove(this.transform.position, transform.position += this.GetNextStepToPlayer());
             timePassed = 0.0f;
         }
-        
+
+        if (strapped && attackTimer >= attackDelay)
+        {
+            attackTimer = 0.0f;
+            Shoot();
+        }
+
         if (CheckCollision() && attackTimer >= attackDelay)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
@@ -83,5 +91,26 @@ public class RushEnemyMovement : MonoBehaviour
                 attackTimer = 0.0f;
             }
         }
+    }
+
+    private void Shoot()
+    {
+        if (player.transform.position.x > transform.position.x)
+        {
+            Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(1, 0, 0)));
+        }
+        else if (player.transform.position.x < transform.position.x)
+        {
+            Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(-1, 0, 0)));
+        }
+        else if (player.transform.position.z > transform.position.z)
+        {
+            Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(0, 0, 1)));
+        }
+        else if (player.transform.position.z < transform.position.z)
+        {
+            Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(0, 0, -1)));
+        }
+        
     }
 }
