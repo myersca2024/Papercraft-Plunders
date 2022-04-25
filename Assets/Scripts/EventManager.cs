@@ -283,10 +283,10 @@ public class EventManager : MonoBehaviour
                 {
                     e.GetComponent<EnemyHealth>().TakeDamage(LifeSaveDamage);
                 }
-                else if (e.GetComponent<LaundryBossHealth>() != null)
-                {
-                    e.GetComponent<LaundryBossHealth>().TakeDamage(LifeSaveDamage);
-                }
+                // else if (e.GetComponent<LaundryBossHealth>() != null)
+                // {
+                //    e.GetComponent<LaundryBossHealth>().TakeDamage(LifeSaveDamage);
+                // }
             }
         }
     }
