@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: RobotsRoomCard
+  m_Name: CombinedRoom2
   m_EditorClassIdentifier: 
-  name: Robots
-  effectText: Contains 2 Enemies and a room card as a reward
-  challengeRating: 1
-  numberOfEnemies: 2
+  name: Combined Armies Camp
+  effectText: Contains 3 enemies, with 1 combat card and 1 room card as a reward.
+  challengeRating: 2
+  numberOfEnemies: 3
   potentialEnemies:
-  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
-  - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
   - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
-  containsChest: 0
+  - {fileID: 1022246584129310469, guid: 097fe004524fdc041bbbb0124a5120f6, type: 3}
+  containsChest: 1
   numberOfRewards: 2
   combatCardRewards:
   - {fileID: 11400000, guid: 7cec3af8d3ac59244802930b4a0749de, type: 2}
   roomCardRewards:
-  - {fileID: 11400000, guid: 614502cf663908c4980f6a728bc46d92, type: 2}
+  - {fileID: 11400000, guid: 20648a4199ce9e54b8755f4a9bd529cd, type: 2}
+  - {fileID: 11400000, guid: 8f3f46403ab64524289c4caa22ba33de, type: 2}

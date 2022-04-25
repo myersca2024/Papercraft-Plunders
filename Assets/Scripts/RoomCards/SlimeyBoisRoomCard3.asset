@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: ROBOTS!!!RoomCard
+  m_Name: SlimeyBoisRoomCard3
   m_EditorClassIdentifier: 
-  name: ROBOTS!!!!
-  effectText: Contains 6 enemies and 2 rare combat cards as a reward
+  name: MORE Slimey Boys
+  effectText: Contains 8 Enemies, with 2 rare combat cards as rewards.
   challengeRating: 4
-  numberOfEnemies: 6
+  numberOfEnemies: 8
   potentialEnemies:
-  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
-  - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
-  - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
+  - {fileID: 3416990529513173020, guid: b00002414cb45474984fbef051d6a20f, type: 3}
+  - {fileID: 1472545957181816094, guid: d5918326ce6cabe42847664ffe460658, type: 3}
   containsChest: 1
   numberOfRewards: 2
   combatCardRewards:
-  - {fileID: 11400000, guid: 873f84532c45874418624ee3980a44a7, type: 2}
+  - {fileID: 11400000, guid: 7e1e07664c3e5464a90f678c1a32136e, type: 2}
   - {fileID: 11400000, guid: f744d9284e74f6e47acaa59e883904a2, type: 2}
   roomCardRewards: []

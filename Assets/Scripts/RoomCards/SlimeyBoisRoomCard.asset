@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
+  m_Name: SlimeyBoisRoomCard
+  m_EditorClassIdentifier: 
+  name: Slimey Bois
+  effectText: Contains 2 enemies, 1 combat card and 1 room card as rewards.
+  challengeRating: 1
+  numberOfEnemies: 2
+  potentialEnemies:
+  - {fileID: 3416990529513173020, guid: b00002414cb45474984fbef051d6a20f, type: 3}
+  containsChest: 1
+  numberOfRewards: 2
+  combatCardRewards:
+  - {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
+  roomCardRewards:
+  - {fileID: 11400000, guid: 0e57a8ddd8acc2446832e3582a57f78d, type: 2}
