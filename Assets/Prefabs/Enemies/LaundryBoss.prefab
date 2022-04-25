@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7240871078091889050}
   - component: {fileID: 7240871078091889047}
-  - component: {fileID: 992124428075093286}
   - component: {fileID: 4665967811542128882}
   - component: {fileID: 5462749477958659267}
   - component: {fileID: 485973370658322228}
+  - component: {fileID: 1379726713935476284}
+  - component: {fileID: 3482579958407895543}
   m_Layer: 0
   m_Name: LaundryBoss
   m_TagString: Enemy
@@ -50,22 +51,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &992124428075093286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240871078091889045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18e22d3223760f40989e3944aaa2f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 40
-  currentHealth: 0
-  hitSound: {fileID: 8300000, guid: 53d303e7a16bb8b43b9f86060acabe3e, type: 3}
-  deathSound: {fileID: 8300000, guid: 5be32d0b99a929247bfe233c55a3a9b0, type: 3}
 --- !u!65 &4665967811542128882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 12.76107, y: 2.220446e-16, z: 10}
+  m_Center: {x: -0.054923248, y: 0, z: 0}
 --- !u!54 &5462749477958659267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -113,6 +98,45 @@ MonoBehaviour:
   damage: 20
   splitEnemy: {fileID: 1472545957181816094, guid: d5918326ce6cabe42847664ffe460658, type: 3}
   offset: {x: 1, y: 0, z: 1}
+--- !u!114 &1379726713935476284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240871078091889045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5065b8220262894b906143f32f22985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  splitEnemy:
+  - {fileID: 784070535457010673, guid: 0e276942a0e88334c8a28361fca7af48, type: 3}
+  - {fileID: 6324665033098204349, guid: d7a5447f21d094046a2fce6a1f2ef1ea, type: 3}
+  - {fileID: 6846649646560017462, guid: 6f3b5267a1f299945a6345f2dc5eba94, type: 3}
+  - {fileID: 1940237352218934544, guid: d6b6f848daa27eb4ab3787562c14f735, type: 3}
+  - {fileID: 6124415057140535081, guid: 52e6b3be0d150a64bb3b4b9f25a5761a, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &3482579958407895543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240871078091889045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18e22d3223760f40989e3944aaa2f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!1 &8866779008384531430
 GameObject:
   m_ObjectHideFlags: 0
