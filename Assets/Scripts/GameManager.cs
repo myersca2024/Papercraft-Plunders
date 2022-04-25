@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private DungeonRoom activeRoom;
     private GridObject go;
     private GameObject player;
-    public bool[,] roomGrid = new bool[5, 7];
+    public bool[,] roomGrid;
     public List<Tuple<Vector2Int, Vector2Int>> doorsClosed = new List<Tuple<Vector2Int, Vector2Int>>();
     public List<Tuple<Vector2Int, Vector2Int>> roomPaths = new List<Tuple<Vector2Int, Vector2Int>>();
     private Vector2Int activeGrid;
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        roomGrid = new bool[5, 7];
         player = FindObjectOfType<PlayerController>().gameObject;
         go = FindObjectOfType<GridObject>();
         xSize *= go.cellSize;
@@ -74,7 +75,18 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //roomGrid = new bool[5, 7];
+        foreach (DoorTriggerBehavior dtb in FindObjectsOfType<DoorTriggerBehavior>(true))
+        {
+            dtb.SetAdjacent(false);
+        }
+        activeRoom = defaultRoom;
+        activeGrid = new Vector2Int(2, 0);
+        //roomGrid[2, 0] = true;
+        //StartGeneratePathways();
+        DungeonRoom.grid = new bool[5, 7];
+        DungeonRoom.grid[2, 0] = true;
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MakeRoom(DungeonRoom parentRoom, Direction direction, RoomCard rc)
