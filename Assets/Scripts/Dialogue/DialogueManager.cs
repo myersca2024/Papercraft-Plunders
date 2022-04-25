@@ -24,6 +24,13 @@ public class DialogueManager : MonoBehaviour
         sprites = new Queue<Sprite>();
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            EndDialogue();
+            FindObjectOfType<PauseGameForDialogue>().UnpauseForDialogue();
+        }
+    }
+
     public void StartDialogue(Dialogue dialogue) {
         names.Clear();
         sentences.Clear();
