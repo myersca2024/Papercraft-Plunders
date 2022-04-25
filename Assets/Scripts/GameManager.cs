@@ -31,12 +31,17 @@ public class GameManager : MonoBehaviour
     // Deck editing
     public CCEditUI editUI;
 
-    // Boss room stuff
+    // Extra room stuff
     public DungeonRoom bossRoom;
+    public DungeonRoom treasureRoom;
     private Vector2Int bossRoomID;
+    private Vector2Int treasureRoomID;
 
     // Random room stuff
     public List<DungeonRoom> potentialRooms;
+
+    // Default card reseting
+    public RoomCard defaultCard;
 
     void InitializeObjects()
     {
@@ -45,6 +50,8 @@ public class GameManager : MonoBehaviour
         {
             dtb.SetAdjacent(false);
         }
+        defaultCard.numberOfEnemies = 1;
+        defaultCard.challengeRating = 1;
         activeRoom = defaultRoom;
         activeGrid = new Vector2Int(2, 0);
         //roomGrid[2, 0] = true;
@@ -52,6 +59,7 @@ public class GameManager : MonoBehaviour
         DungeonRoom.grid = new bool[5, 7];
         DungeonRoom.grid[2, 0] = true;
         DungeonRoom.bossRoomID = new Vector2Int();
+        DungeonRoom.treasureRoomID = new Vector2Int();
     }
     void Start()
     {
@@ -206,6 +214,7 @@ public class GameManager : MonoBehaviour
         int numRooms = 5 * 7 / 2;
         RecursiveGeneratePathways(numRooms, new Vector2Int(2, 0));
         SetBossRoom();
+        SetTreasureRoom();
         /*
         CloseRandomDoors(4);
         foreach (Tuple<Vector2Int, Vector2Int> id in doorsClosed)
@@ -213,6 +222,27 @@ public class GameManager : MonoBehaviour
             Debug.Log(id);
         }
         */
+    }
+
+    private void SetTreasureRoom()
+    {
+        List<Vector2Int> rooms = new List<Vector2Int>();
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (roomGrid[i, j] && (i != 2 && j != 0) && !IsNeighbor(2, 0, i, j) && !(i == bossRoomID.x && j == bossRoomID.y))
+                {
+                    rooms.Add(new Vector2Int(i, j));
+                }
+            }
+        }
+
+        int rand_id = UnityEngine.Random.Range(0, rooms.Count);
+        Vector2Int treasureRoom = rooms[rand_id];
+        Debug.Log("Treasure Room: " + treasureRoom.ToString());
+        treasureRoomID = treasureRoom;
+        DungeonRoom.treasureRoomID = treasureRoom;
     }
 
     private void SetBossRoom()

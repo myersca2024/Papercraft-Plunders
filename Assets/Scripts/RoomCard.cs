@@ -14,4 +14,10 @@ public class RoomCard : ScriptableObject
     public int numberOfRewards;
     public CombatCard[] combatCardRewards;
     public RoomCard[] roomCardRewards;
+
+    public void IncrementDefaultDifficulty()
+    {
+        challengeRating++;
+        numberOfEnemies++;
+    }
 }

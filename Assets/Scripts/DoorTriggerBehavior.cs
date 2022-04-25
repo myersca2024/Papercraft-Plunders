@@ -14,6 +14,7 @@ public class DoorTriggerBehavior : MonoBehaviour
 {
     public Direction direction;
     public List<GameObject> bossIndicators;
+    public RoomCard specialTreasure;
 
     private GameManager gm;
     private CanvasContainer dungeonDeckUI;
@@ -128,15 +129,18 @@ public class DoorTriggerBehavior : MonoBehaviour
                 default:
                     break;
             }
-            if (newID == DungeonRoom.bossRoomID)
+            if (!adjacentRoom && IsValidRoom(id.x, id.y))
             {
-                StartMakeRoom(0);
-                adjacentRoom = true;
-            }
-            else if (!adjacentRoom && IsValidRoom(id.x, id.y))
-            {
-                dungeonDeckUI.StartRoomUI(this);
-                adjacentRoom = true;
+                if (newID == DungeonRoom.bossRoomID || newID == DungeonRoom.treasureRoomID)
+                {
+                    StartMakeRoom(0);
+                    adjacentRoom = true;
+                }
+                else
+                {
+                    dungeonDeckUI.StartRoomUI(this);
+                    adjacentRoom = true;
+                }
             }
         }
     }
@@ -161,9 +165,9 @@ public class DoorTriggerBehavior : MonoBehaviour
             default:
                 break;
         }
-        if (newID == DungeonRoom.bossRoomID)
+        if (newID == DungeonRoom.bossRoomID || newID == DungeonRoom.treasureRoomID)
         {
-            gm.MakeRoom(parentRoom, direction, ddm.deck[0]);
+            gm.MakeRoom(parentRoom, direction, specialTreasure);
         }
         else
         {

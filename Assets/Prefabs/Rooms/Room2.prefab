@@ -2055,6 +2055,7 @@ MonoBehaviour:
   - {fileID: 5680210967521969040}
   - {fileID: 5101533699970068809}
   - {fileID: 5747713930264548485}
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &1908562746867066824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,6 +2587,7 @@ MonoBehaviour:
   - {fileID: 3574822358716320224}
   - {fileID: 9082046025573556421}
   - {fileID: 7327752746147413998}
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &2639755240067376978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +2960,7 @@ MonoBehaviour:
   - {fileID: 1877880353668084852}
   - {fileID: 5345294559940894095}
   - {fileID: 7674172643274603999}
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &3574822358716320224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,6 +3156,7 @@ MonoBehaviour:
   - {fileID: 5264669381577083681}
   - {fileID: 2425535992679493548}
   - {fileID: 8734761748620256795}
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &4710197135926039721
 GameObject:
   m_ObjectHideFlags: 0

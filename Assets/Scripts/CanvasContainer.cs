@@ -49,7 +49,14 @@ public class CanvasContainer : MonoBehaviour
             Time.timeScale = 1;
             dtb.StartMakeRoom(index);
             container.SetActive(false);
-            ddm.DiscardCard(index);
+            if (index == 0)
+            {
+                ddm.deck[0].IncrementDefaultDifficulty();
+            }
+            else
+            {
+                ddm.DiscardCard(index);
+            }
             PlayerController.freeze = false;
         }
     }

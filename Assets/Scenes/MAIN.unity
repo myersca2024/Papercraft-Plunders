@@ -14245,6 +14245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resumeButton: {fileID: 637471433}
   quitButton: {fileID: 1404640245}
+  deckViewerPanels: {fileID: 0}
   clickSFX: {fileID: 8300000, guid: 7eeebfb4e2c738f47b24cb83b4e3827f, type: 3}
   isPaused: 0
 --- !u!4 &1996780166
@@ -15352,6 +15353,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   editUI: {fileID: 793314084}
   bossRoom: {fileID: 715017411841992139, guid: 28785ff55194ff04486cebfdd312100b, type: 3}
+  treasureRoom: {fileID: 9220253190253427189, guid: 3f872194b8539394694872d33ff46b11, type: 3}
   potentialRooms:
   - {fileID: 66657123329024174, guid: f9867c8504982404183669dbff29b34c, type: 3}
   - {fileID: 7580782788809732828, guid: 0d6b23bb0b134c04bbaee30083fced99, type: 3}
@@ -15361,6 +15363,7 @@ MonoBehaviour:
   - {fileID: 8641557517612241041, guid: 84175825bb7f2aa43ad73fc70e4a950c, type: 3}
   - {fileID: 8295860783090426487, guid: e2509f659e1abfb44bfdc7aa0288f5fd, type: 3}
   - {fileID: 8065364025370803905, guid: a6115cb62e5a8514eb4fe7245a61a478, type: 3}
+  defaultCard: {fileID: 11400000, guid: ec98018b841fb6c438d41b5f936f7d71, type: 2}
 --- !u!4 &2109294995
 Transform:
   m_ObjectHideFlags: 0

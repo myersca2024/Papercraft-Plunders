@@ -5626,6 +5626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 2
   bossIndicators: []
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &5181931768829243778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5848,6 +5849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 1
   bossIndicators: []
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &5714249960442793581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6070,6 +6072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 3
   bossIndicators: []
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1 &8085291532480677769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,6 +8199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   bossIndicators: []
+  specialTreasure: {fileID: 11400000, guid: 27af3b9cf44b5d2429efd8f02aba9acc, type: 2}
 --- !u!1001 &5703252492800237100
 PrefabInstance:
   m_ObjectHideFlags: 0
