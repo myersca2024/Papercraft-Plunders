@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CastleRoom1
   m_EditorClassIdentifier: 
   name: The Castle Room 1
-  effectText: Contains 2 Enemies, and 1 Room card as a reward
+  effectText: Contains 2 Enemies, with 1 Room card as a reward
   challengeRating: 1
   numberOfEnemies: 2
   potentialEnemies:

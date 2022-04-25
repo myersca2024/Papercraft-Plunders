@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ROBOTS!!!RoomCard
   m_EditorClassIdentifier: 
   name: ROBOTS!!!!
-  effectText: Contains 6 enemies and 2 rare combat cards as a reward
+  effectText: Contains 6 enemies, with 2 rare combat cards as a reward
   challengeRating: 4
   numberOfEnemies: 6
   potentialEnemies:

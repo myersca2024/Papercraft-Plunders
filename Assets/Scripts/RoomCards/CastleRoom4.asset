@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CastleRoom4
   m_EditorClassIdentifier: 
   name: The Castle Room 4
-  effectText: Contains 5 Enemies, and 1 rare combat card as a reward
+  effectText: Contains 5 Enemies, with 2 rare combat card as a reward
   challengeRating: 3
   numberOfEnemies: 5
   potentialEnemies:

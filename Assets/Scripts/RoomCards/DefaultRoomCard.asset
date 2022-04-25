@@ -24,3 +24,4 @@ MonoBehaviour:
   roomCardRewards:
   - {fileID: 11400000, guid: e14d963d882b3454890d0cbfa22f8e92, type: 2}
   - {fileID: 11400000, guid: 1d99c4c8db5a1e243a22a5d3647b735c, type: 2}
+  - {fileID: 11400000, guid: 061f900425eef6548bb44e750d9de750, type: 2}

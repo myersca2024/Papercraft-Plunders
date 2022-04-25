@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoxedInRoomCard
   m_EditorClassIdentifier: 
   name: Boxed in!
-  effectText: Contains 4 Enemies and a rare combat card award.
+  effectText: Contains 4 Enemies with a rare combat card as a reward.
   challengeRating: 3
   numberOfEnemies: 4
   potentialEnemies:

@@ -73,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         healthSlider.value = currentHealth;
         DataStorage.TakeDamage(damage);
-        Mathf.Clamp(currentHealth, 0, 100);
+        Mathf.Clamp(currentHealth, 0, maximumHealth);
         //print("Took damage! currentHealth = " + currentHealth + ".");
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeyBoisRoomCard
   m_EditorClassIdentifier: 
   name: Slimey Bois
-  effectText: Contains 2 enemies, 1 combat card and 1 room card as rewards.
+  effectText: Contains 2 enemies, with 1 combat card and 1 room card as rewards.
   challengeRating: 1
   numberOfEnemies: 2
   potentialEnemies:
