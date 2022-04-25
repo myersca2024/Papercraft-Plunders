@@ -36,6 +36,10 @@ public class EnemyHealth : MonoBehaviour
             //print("Enemy slain!");
             Vector2Int enemyPos = go.GetGrid().GetXY(this.transform.position);
             go.GetGrid().SetValue(enemyPos.x, enemyPos.y, false);
+
+            if (gameObject.GetComponent<BossManager>() != null) {
+                gameObject.GetComponent<BossManager>().BossDefeated();
+            }
             Destroy(this.gameObject);
         }
     }
