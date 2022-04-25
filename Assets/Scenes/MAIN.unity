@@ -10145,6 +10145,7 @@ MonoBehaviour:
     - Wally
     - Stan
     - Wally
+    - Wally
     - Stan
     - Wally
     - Stan
@@ -10153,9 +10154,9 @@ MonoBehaviour:
     - Stan
     sentences:
     - so stan let me tell you how to play
-    - you have to move the guy around with the WASD keys
+    - you have to move the guy around with the "WASD" keys
     - the WASD keys? i cant find them where are they
-    - to select an attack, scroll the mouse wheel or hit the 1-3 number keys
+    - to select an attack, scroll the mouse wheel or hit the "1-3" number keys
     - THERES A MOUSE IN HERE????
     - to use an attack just left click with the mouse
     - WHERE IS THE MOUSE AHHHHHHHHHHHHHH
@@ -10163,10 +10164,10 @@ MonoBehaviour:
       damage
     - when you run out of other attacks, ill reshuffle the deck after a few seconds
     - weak stab is the best attack got it
-    - you want to find the boss room card and use that to fight the boss, then you
-      win
+    - there is a treasure room to find that gets you a bunch of items
+    - there is also a boss room and once you beat the boss, you win
     - this is gonna be so easy
-    - also you can hit shift to zoom out and p to pause
+    - also you can hit "shift" to zoom out and "escape" to pause
     - WHAT ARE YOU TALKING ABOUT
     - dont worry about it
     - anyways im sure youll figure out the rest as you go so lets get started
@@ -10182,6 +10183,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
@@ -21139,7 +21141,7 @@ MonoBehaviour:
     - Wally
     sentences:
     - good job stan you beat the first enemy
-    - he drops a treasure chest, you can take the treasure in it by pressing E
+    - he drops a treasure chest, you can take the treasure in it by pressing "E"
     - what is E
     - you can only have 9 combat cards, so mix and match at a treasure chest
     - you can use any combat cards you want
