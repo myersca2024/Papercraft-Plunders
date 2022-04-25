@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8616871453346233785}
   - component: {fileID: 6351886071396813038}
   - component: {fileID: 6351886071396813029}
+  - component: {fileID: 823254125034378242}
   m_Layer: 0
   m_Name: Boss Enemy
   m_TagString: Enemy
@@ -211,3 +212,35 @@ MonoBehaviour:
   laser: {fileID: 7027003725158611349, guid: d8e1bd98ac1d75e46a2b26bbe8ccbc9a, type: 3}
   enemyProjectile: {fileID: 8988220774898360880, guid: 44cd13cdb3150a04585dfcf3b9342299, type: 3}
   bigBossProjectile: {fileID: 2564911811414070329, guid: b9905af50c046834890550adf6697271, type: 3}
+--- !u!114 &823254125034378242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351886071396813039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94810f85655269049846e1b28b1a35b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initDialogue:
+    names:
+    - Stan
+    - Wally
+    - Stan
+    - Wally
+    - Stan
+    sentences:
+    - do those skulls mean what i think they mean
+    - yup stan youve found the boss room its time for you to fight
+    - what is the boss oh no
+    - he is a big fire guy who is also a boxer and he shoots fireballs and shoots
+      lasers
+    - ohhhh NOOOOO
+    sprites:
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}

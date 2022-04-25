@@ -15290,7 +15290,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   editUI: {fileID: 793314084}
-  bossRoom: {fileID: 715017411841992139, guid: 28785ff55194ff04486cebfdd312100b, type: 3}
+  bossRoom: {fileID: 715017411841992139, guid: e8b0a0d1b1ae3d2488e6c0585d4eb85e, type: 3}
 --- !u!4 &2109294995
 Transform:
   m_ObjectHideFlags: 0
