@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
   m_Name: DefaultRoomCard
   m_EditorClassIdentifier: 
-  name: Default Room Card
+  name: Default Room
   effectText: Contains 1 enemy and has a reward of 1 common room card. Gets harder
     the more it is used.
   challengeRating: 1

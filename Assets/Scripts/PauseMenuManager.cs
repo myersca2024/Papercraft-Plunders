@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public Button resumeButton;
-    public Button quitButton;
-    public GameObject deckViewerPanels;
+    public GameObject pausePanel;
+    public GameObject CCMenu;
+    public GameObject RCMenu;
     public AudioClip clickSFX;
     public bool isPaused = false;
+    public bool inMenu = false;
 
     private void Start()
     {
@@ -32,8 +33,16 @@ public class PauseMenuManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 isPaused = false;
             }
-            resumeButton.gameObject.SetActive(!resumeButton.IsActive());
-            quitButton.gameObject.SetActive(!quitButton.IsActive());
+            if (inMenu)
+            {
+                inMenu = false;
+            }
+            else
+            {
+                pausePanel.SetActive(!pausePanel.activeSelf);
+            }
+            CCMenu.SetActive(false);
+            RCMenu.SetActive(false);
         }
     }
 
@@ -41,9 +50,27 @@ public class PauseMenuManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
-        resumeButton.gameObject.SetActive(!resumeButton.IsActive());
-        quitButton.gameObject.SetActive(!quitButton.IsActive());
+        pausePanel.SetActive(!pausePanel.activeSelf);
         AudioSource.PlayClipAtPoint(clickSFX, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+    }
+
+    public void ViewCombatCards()
+    {
+        CCMenu.SetActive(true);
+        pausePanel.SetActive(!pausePanel.activeSelf);
+        inMenu = true;
+}
+
+    public void ViewDungeonCards()
+    {
+        RCMenu.SetActive(true);
+        pausePanel.SetActive(!pausePanel.activeSelf);
+        inMenu = true;
+    }
+
+    public void SwitchInMenu()
+    {
+        inMenu = !inMenu;
     }
 
     public void QuitToMenu()

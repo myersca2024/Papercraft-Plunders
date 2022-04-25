@@ -67,5 +67,5 @@ public class CanvasContainer : MonoBehaviour
         displayDescription.text = dm.deck[id].effectText;
         displayDifficulty.text = dm.deck[id].challengeRating.ToString();
         displayRewards.text = dm.deck[id].numberOfRewards.ToString();
-}
+    }
 }
