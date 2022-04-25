@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class LaundryBossHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float currentHealth;
-    public AudioClip hitSound;
-    public AudioClip deathSound;
     public GameObject[] splitEnemy = new GameObject[5];
     public Vector3 offset;
 
@@ -19,46 +15,12 @@ public class LaundryBossHealth : MonoBehaviour
     void Start()
     {
         go = FindObjectOfType<GridObject>();
-        currentHealth = maxHealth;
         List<Material> m = new List<Material>();
         gameObject.GetComponentInChildren<SpriteRenderer>().GetMaterials(m);
         material = m[0];
         color = material.color;
         offset.x = offset.x * go.cellSize;
         offset.z = offset.z * go.cellSize;
-
-        if (!deathSound)
-        {
-            deathSound = hitSound;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentHealth <= 0)
-        {
-            AudioSource.PlayClipAtPoint(deathSound, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
-            //print("Enemy slain!");
-            Vector2Int enemyPos = go.GetGrid().GetXY(this.transform.position);
-            go.GetGrid().SetValue(enemyPos.x, enemyPos.y, false);
-            Destroy(this.gameObject);
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        int nextEnemy = Random.Range(0, 5);
-        Instantiate(splitEnemy[nextEnemy], transform.position + offset, transform.rotation);
-
-        if (currentHealth > 0)
-        {
-            AudioSource.PlayClipAtPoint(hitSound, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
-        }
-
-        material.SetColor("_Color", Color.red);
-        Invoke("ResetColor", 0.2f);
     }
 
     public void ResetColor()
@@ -72,7 +34,8 @@ public class LaundryBossHealth : MonoBehaviour
         {
             Hitbox hb;
             other.gameObject.TryGetComponent<Hitbox>(out hb);
-            TakeDamage(hb.damage);
+            int nextEnemy = Random.Range(0, 5);
+            Instantiate(splitEnemy[nextEnemy], transform.position + offset, transform.rotation);
         }
     }
 }

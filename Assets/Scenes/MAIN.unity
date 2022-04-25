@@ -543,6 +543,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29097177}
   m_CullTransparentMesh: 1
+--- !u!1001 &30067050
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7240871078091889045, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_Name
+      value: LaundryBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 61.129166
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.8161087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240871078091889050, guid: 8356e75c275780a49af81562790c33e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8356e75c275780a49af81562790c33e6, type: 3}
 --- !u!1 &36277682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 82.29, y: 0, z: 0}
 --- !u!114 &131541447
 MonoBehaviour:
@@ -4220,7 +4277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &380271353
 AudioSource:
@@ -5065,7 +5122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520617084
 GameObject:
@@ -7413,20 +7470,27 @@ MonoBehaviour:
     - {fileID: 21300000, guid: fbdc9b36221cb8d4aad383975d38a8fd, type: 3}
     - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
   - names:
-    - Wally
     - Stan
     - Wally
     - Stan
+    - Wally
+    - Stan
+    - Wally
     sentences:
-    - you know what would make things really hard for you right now
-    - please wally dont do it
-    - if you were twice as big
-    - NOOOOO
+    - WAIT
+    - what
+    - my guy is so strong that he survived that last hit
+    - ok fine
+    - and he exploded with magical lightning energy that kills every enemy in the
+      room
+    - " sigh\u2026fine"
     sprites:
-    - {fileID: 21300000, guid: 4ec115c53ae23824d9341d6d1a227ff8, type: 3}
-    - {fileID: 21300000, guid: 9fa0968343c4be24b9f953a4261e1f9e, type: 3}
-    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
     - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}
+    - {fileID: 21300000, guid: 9fa0968343c4be24b9f953a4261e1f9e, type: 3}
+    - {fileID: 21300000, guid: 4ec115c53ae23824d9341d6d1a227ff8, type: 3}
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   empoweredHealthBarFill: {fileID: 21300000, guid: d072c66e02eda774d93f81abc8bea6ed, type: 3}
   catClaw: {fileID: 3928780367376342400, guid: 573de6f113db8ee4a9a927abb1aa4bab, type: 3}
   catClawZOffset: 175
@@ -7436,6 +7500,9 @@ MonoBehaviour:
   currentEventTime: 0
   numEvents: 6
   currentState: 0
+  LifeSaveDamage: 30
+  LifeSaveExplosion: {fileID: 2444417686761453510, guid: 0629469bd73bcbf4790ac95bc8d9b1d1, type: 3}
+  firstEvents: 
 --- !u!4 &955591552
 Transform:
   m_ObjectHideFlags: 0
@@ -7448,7 +7515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960615312
 GameObject:
@@ -8376,7 +8443,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128968997
 GameObject:
@@ -10667,7 +10734,7 @@ Transform:
   m_Children:
   - {fileID: 777062174}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498917864
 GameObject:
@@ -10770,7 +10837,7 @@ RectTransform:
   - {fileID: 637471430}
   - {fileID: 1404640248}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11404,7 +11471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1616009797 stripped
 MonoBehaviour:
@@ -12601,7 +12668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1890030514
 GameObject:
@@ -14188,7 +14255,7 @@ Transform:
   m_LocalScale: {x: 0.509375, y: 0.509375, z: 0.509375}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006354717
 GameObject:
@@ -14553,7 +14620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2062186285 stripped
 RectTransform:
@@ -15280,6 +15347,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
     - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
   editUI: {fileID: 793314084}
+  bossRoom: {fileID: 715017411841992139, guid: 28785ff55194ff04486cebfdd312100b, type: 3}
 --- !u!4 &2109294995
 Transform:
   m_ObjectHideFlags: 0
@@ -15292,7 +15360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2116007511 stripped
 MonoBehaviour:
