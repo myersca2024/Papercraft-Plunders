@@ -12,12 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
   m_Name: TheCavelry
   m_EditorClassIdentifier: 
-  name: 
-  effectText: 
-  challengeRating: 0
-  numberOfEnemies: 0
-  potentialEnemies: []
-  containsChest: 0
-  numberOfRewards: 0
-  combatCardRewards: []
-  roomCardRewards: []
+  name: The Army
+  effectText: Trained Killers
+  challengeRating: 3
+  numberOfEnemies: 5
+  potentialEnemies:
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 1022246584129310469, guid: 097fe004524fdc041bbbb0124a5120f6, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+  containsChest: 1
+  numberOfRewards: 3
+  combatCardRewards:
+  - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}
+  - {fileID: 11400000, guid: 5bb74bce18b331248a6642dae3324a1e, type: 2}
+  roomCardRewards:
+  - {fileID: 11400000, guid: f7787f2519f592744a2be478918d4336, type: 2}
+  - {fileID: 11400000, guid: f029e2e714a17124183745ac6604e128, type: 2}
