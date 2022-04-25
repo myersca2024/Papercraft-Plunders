@@ -96,7 +96,7 @@ MonoBehaviour:
   attackDelay: 5
   player: {fileID: 0}
   damage: 20
-  splitEnemy: {fileID: 1472545957181816094, guid: d5918326ce6cabe42847664ffe460658, type: 3}
+  splitEnemy: {fileID: 5141253468650089199, guid: 86127034013a08640bf755b6f048ef46, type: 3}
   offset: {x: 1, y: 0, z: 1}
 --- !u!114 &1379726713935476284
 MonoBehaviour:
@@ -110,10 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5065b8220262894b906143f32f22985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
   splitEnemy:
   - {fileID: 784070535457010673, guid: 0e276942a0e88334c8a28361fca7af48, type: 3}
   - {fileID: 6324665033098204349, guid: d7a5447f21d094046a2fce6a1f2ef1ea, type: 3}
@@ -135,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 53d303e7a16bb8b43b9f86060acabe3e, type: 3}
+  deathSound: {fileID: 8300000, guid: 5be32d0b99a929247bfe233c55a3a9b0, type: 3}
 --- !u!1 &8866779008384531430
 GameObject:
   m_ObjectHideFlags: 0
