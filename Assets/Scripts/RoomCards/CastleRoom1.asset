@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: LotsOfLasersRoomCard
+  m_Name: CastleRoom1
   m_EditorClassIdentifier: 
-  name: Lots Of Lasers
-  effectText: Contains 4 Enemies with a rare combat card reward.
-  challengeRating: 2
-  numberOfEnemies: 4
-  potentialEnemies: []
+  name: The Castle Room 1
+  effectText: Contains 2 Enemies, with 1 Room card as a reward
+  challengeRating: 1
+  numberOfEnemies: 2
+  potentialEnemies:
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
   containsChest: 1
-  numberOfRewards: 2
-  combatCardRewards:
-  - {fileID: 11400000, guid: 5bb74bce18b331248a6642dae3324a1e, type: 2}
+  numberOfRewards: 1
+  combatCardRewards: []
   roomCardRewards:
-  - {fileID: 11400000, guid: 914472b58af6d5647a2b1c676bbe0bde, type: 2}
+  - {fileID: 11400000, guid: 8f3f46403ab64524289c4caa22ba33de, type: 2}

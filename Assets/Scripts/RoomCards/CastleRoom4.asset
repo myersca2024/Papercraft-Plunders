@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: BoxedInRoomCard
+  m_Name: CastleRoom4
   m_EditorClassIdentifier: 
-  name: Boxed in!
-  effectText: Contains 4 Enemies with a rare combat card as a reward.
+  name: The Castle Room 4
+  effectText: Contains 5 Enemies, with 2 rare combat card as a reward
   challengeRating: 3
-  numberOfEnemies: 4
+  numberOfEnemies: 5
   potentialEnemies:
-  - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
+  - {fileID: 1022246584129310469, guid: 097fe004524fdc041bbbb0124a5120f6, type: 3}
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
   containsChest: 1
   numberOfRewards: 2
   combatCardRewards:
+  - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}
   - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}
   roomCardRewards: []

@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
-  m_Name: LotsOfLasersRoomCard
+  m_Name: SlimeyBoisRoomCard
   m_EditorClassIdentifier: 
-  name: Lots Of Lasers
-  effectText: Contains 4 Enemies with a rare combat card reward.
-  challengeRating: 2
-  numberOfEnemies: 4
-  potentialEnemies: []
+  name: Slimey Bois
+  effectText: Contains 2 enemies, with 1 combat card and 1 room card as rewards.
+  challengeRating: 1
+  numberOfEnemies: 2
+  potentialEnemies:
+  - {fileID: 3416990529513173020, guid: b00002414cb45474984fbef051d6a20f, type: 3}
   containsChest: 1
   numberOfRewards: 2
   combatCardRewards:
-  - {fileID: 11400000, guid: 5bb74bce18b331248a6642dae3324a1e, type: 2}
+  - {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
   roomCardRewards:
-  - {fileID: 11400000, guid: 914472b58af6d5647a2b1c676bbe0bde, type: 2}
+  - {fileID: 11400000, guid: 0e57a8ddd8acc2446832e3582a57f78d, type: 2}

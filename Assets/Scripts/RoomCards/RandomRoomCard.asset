@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c351e905426ab48914c98a6d7a596c, type: 3}
+  m_Name: RandomRoomCard
+  m_EditorClassIdentifier: 
+  name: Random Room
+  effectText: Contains 2 Enemies, with 2 room cards as a reward
+  challengeRating: 1
+  numberOfEnemies: 2
+  potentialEnemies:
+  - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
+  - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
+  - {fileID: 3416990529513173020, guid: b00002414cb45474984fbef051d6a20f, type: 3}
+  - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
+  - {fileID: 2265765149846133580, guid: ff1e731165f9b1a40b04b995705c98da, type: 3}
+  - {fileID: 7208793983774415166, guid: 360c4cc4e06ae2a45918d74e477a9758, type: 3}
+  - {fileID: 1022246584129310469, guid: 097fe004524fdc041bbbb0124a5120f6, type: 3}
+  containsChest: 1
+  numberOfRewards: 2
+  combatCardRewards: []
+  roomCardRewards:
+  - {fileID: 11400000, guid: b10ab580e19efe849b813cd6d3dfee85, type: 2}
+  - {fileID: 11400000, guid: 3f9ec99d6d817b64a808c38091bc0a38, type: 2}
+  - {fileID: 11400000, guid: d2914e887a8d456498759ec222e5ea35, type: 2}
+  - {fileID: 11400000, guid: 1c0950505168f1f43bbac65c6fda8288, type: 2}
+  - {fileID: 11400000, guid: 614502cf663908c4980f6a728bc46d92, type: 2}
+  - {fileID: 11400000, guid: 0e57a8ddd8acc2446832e3582a57f78d, type: 2}
+  - {fileID: 11400000, guid: dfa16d1dd3f3c754b8a6b3b1d1b94c28, type: 2}

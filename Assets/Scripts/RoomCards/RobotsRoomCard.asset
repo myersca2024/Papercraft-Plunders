@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: RobotsRoomCard
   m_EditorClassIdentifier: 
   name: Robots
-  effectText: Contains 2 Enemies and a room card as a reward
+  effectText: Contains 2 Enemies, with a room card as a reward
   challengeRating: 1
   numberOfEnemies: 2
   potentialEnemies:
   - {fileID: 7807792608643645163, guid: d3abe3ab33054bb4b8e18dcef4b225d9, type: 3}
   - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
+  - {fileID: 7208793983774415166, guid: 632a6c448dedb894688b8bbbb360bfcb, type: 3}
   containsChest: 0
   numberOfRewards: 2
   combatCardRewards:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7cec3af8d3ac59244802930b4a0749de, type: 2}
   roomCardRewards:
-  - {fileID: 11400000, guid: 914472b58af6d5647a2b1c676bbe0bde, type: 2}
+  - {fileID: 11400000, guid: 614502cf663908c4980f6a728bc46d92, type: 2}
