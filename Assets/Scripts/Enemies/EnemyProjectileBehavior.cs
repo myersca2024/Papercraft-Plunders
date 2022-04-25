@@ -10,11 +10,12 @@ public class EnemyProjectileBehavior : MonoBehaviour
     public GameObject player;
     public float damage = 20f;
     private Vector3 velocity;
+    public float destroyDelay = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, destroyDelay);
         velocity = transform.forward;
         timePassed = 0;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,6 +48,7 @@ public class EnemyProjectileBehavior : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
