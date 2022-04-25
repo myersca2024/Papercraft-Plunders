@@ -40,11 +40,11 @@ public class PlayerHealth : MonoBehaviour
                 if (lifeSaveRoll == 7)
                 {
                     FindObjectOfType<EventManager>().LifeSave();
-                    lifeSaved = true;
                     currentHealth = maximumHealth;
                     healthSlider.value = currentHealth;
                     
                 }
+                lifeSaved = true;
             }
             else
             {
