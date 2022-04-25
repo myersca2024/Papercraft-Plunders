@@ -85,13 +85,25 @@ public class SplitEnemy : MonoBehaviour
         return player.transform.position == transform.position;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (attackTimer >= attackDelay)
+            {
+                player.GetComponent<PlayerHealth>().TakeDamage(damage);
+                attackTimer = 0.0f;
+            }
+        }
+    }
+
     void SplitIntoTwo() 
     {
         if (splitEnemy != null) 
         {
             Debug.Log("Splitting into more enemies"); 
-            Instantiate(splitEnemy, transform.position + offset, transform.rotation);
-            Instantiate(splitEnemy, transform.position - offset, transform.rotation);
+            Instantiate(splitEnemy, transform.position, transform.rotation);
+            Instantiate(splitEnemy, transform.position, transform.rotation);
             Debug.Log("More enemies have been made");
         }
     }
