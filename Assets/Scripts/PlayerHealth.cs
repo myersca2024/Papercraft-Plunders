@@ -43,24 +43,28 @@ public class PlayerHealth : MonoBehaviour
                     lifeSaved = true;
                     currentHealth = maximumHealth;
                     healthSlider.value = currentHealth;
+                    
                 }
             }
-            died = true;
+            else
+            {
+                died = true;
 
-            int rand = Random.Range(0, dialogues.Length);
-            FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[rand]);
+                int rand = Random.Range(0, dialogues.Length);
+                FindObjectOfType<PauseGameForDialogue>().PauseForDialogue(dialogues[rand]);
 
-            PlayerController.freeze = true;
+                PlayerController.freeze = true;
 
-            //print("Player died.");
-            //if (deathText)
-            //{
+                //print("Player died.");
+                //if (deathText)
+                //{
 
-            //    deathText.gameObject.SetActive(true);
-            //}
+                //    deathText.gameObject.SetActive(true);
+                //}
 
-            //restart level after 2 seconds
-            Invoke("PlayerDied", 1);
+                //restart level after 2 seconds
+                Invoke("PlayerDied", 1);
+            } 
         }
     }
 
