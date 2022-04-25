@@ -80,6 +80,7 @@ public class CCEditUI : MonoBehaviour
         {
             PlayerController.freeze = false;
             Destroy(chest.gameObject);
+            Time.timeScale = 1;
             this.gameObject.SetActive(false);
         }
     }

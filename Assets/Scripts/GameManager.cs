@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
         //StartGeneratePathways();
         DungeonRoom.grid = new bool[5, 7];
         DungeonRoom.grid[2, 0] = true;
+        DungeonRoom.bossRoomID = new Vector2Int();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
