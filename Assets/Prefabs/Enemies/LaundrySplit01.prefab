@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4183365933688315483}
   - component: {fileID: 4657277319841860000}
   - component: {fileID: 4355228460201396138}
-  - component: {fileID: 2096274908211738163}
+  - component: {fileID: 7107871162739044675}
+  - component: {fileID: 7088775644974770346}
   m_Layer: 0
   m_Name: LaundrySplit01
   m_TagString: Enemy
@@ -95,7 +96,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2096274908211738163
+--- !u!114 &7107871162739044675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,13 +105,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5141253468650089199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8c70abd8c730e41b3d8345720ebf3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc3513c46c3f6f498e15e4c56c4d3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDelay: 0.25
-  attackDelay: 1
-  player: {fileID: 4088965538696470931, guid: 99032fe18e1a2054d99a75d68ced2d6d, type: 3}
+  moveDelay: 1
+  attackDelay: 5
+  player: {fileID: 0}
   damage: 20
+  splitEnemy: {fileID: 4088965538696470931, guid: 99032fe18e1a2054d99a75d68ced2d6d, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &7088775644974770346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141253468650089199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5065b8220262894b906143f32f22985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitEnemy:
+  - {fileID: 784070535457010673, guid: 0e276942a0e88334c8a28361fca7af48, type: 3}
+  - {fileID: 6124415057140535081, guid: 52e6b3be0d150a64bb3b4b9f25a5761a, type: 3}
+  - {fileID: 1940237352218934544, guid: d6b6f848daa27eb4ab3787562c14f735, type: 3}
+  - {fileID: 6846649646560017462, guid: 6f3b5267a1f299945a6345f2dc5eba94, type: 3}
+  - {fileID: 6324665033098204349, guid: d7a5447f21d094046a2fce6a1f2ef1ea, type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &5760683456054490651
 GameObject:
   m_ObjectHideFlags: 0
