@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LotsOfLasersRoomCard
   m_EditorClassIdentifier: 
   name: Lots Of Lasers
-  effectText: Contains 4 Enemies and a rare combat card.
+  effectText: Contains 4 Enemies with a rare combat card reward.
   challengeRating: 2
   numberOfEnemies: 4
   potentialEnemies: []

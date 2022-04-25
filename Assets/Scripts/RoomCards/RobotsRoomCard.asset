@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RobotsRoomCard
   m_EditorClassIdentifier: 
   name: Robots
-  effectText: Contains 2 Enemies and a room card as a reward
+  effectText: Contains 2 Enemies, with a room card as a reward
   challengeRating: 1
   numberOfEnemies: 2
   potentialEnemies:
