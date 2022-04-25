@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8978500193161496968}
   - component: {fileID: 8616871453346233785}
   - component: {fileID: 2994721677385549572}
+  - component: {fileID: 3193794731064182495}
   m_Layer: 0
   m_Name: Boss Enemy 2
   m_TagString: Enemy
@@ -196,3 +197,37 @@ MonoBehaviour:
   enemyProjectile: {fileID: 7027003725158611349, guid: efc803ced9841104d8b100a74830c9a1, type: 3}
   rangedAttackCooldown: 4
   fanDelay: 0.75
+--- !u!114 &3193794731064182495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351886071396813039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94810f85655269049846e1b28b1a35b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initDialogue:
+    names:
+    - Stan
+    - Wally
+    - Wally
+    - Wally
+    - Stan
+    - Wally
+    sentences:
+    - alright wally im ready what is it this time
+    - its a giant robot
+    - and it shoots laser beams everywhere
+    - and it has infinity health
+    - THATS WAY TOO MUCH HEALTH
+    - ok ill make it infinity minus 1
+    sprites:
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}
