@@ -10,6 +10,7 @@ public class RandomEnemyMovement : MonoBehaviour {
     public GameObject player;
     public float damage = 20f;
     public GameObject enemyProjectile;
+    public int numberOfProjectiles = 4;
 
     private GridObject go;
 
@@ -34,7 +35,16 @@ public class RandomEnemyMovement : MonoBehaviour {
         }
 
         if (attackTimer >= attackDelay) {
-            QuadAttack();
+            if (numberOfProjectiles == 4) 
+            {
+                QuadAttack();
+                Debug.Log("Testing something out rq ");
+            }
+
+            if (numberOfProjectiles == 8) 
+            {
+                EightWayAttack();
+            }
             attackTimer = 0.0f;
         }
 
@@ -70,6 +80,18 @@ public class RandomEnemyMovement : MonoBehaviour {
         Instantiate(enemyProjectile, transform.position + new Vector3(1, 0, 0), Quaternion.LookRotation(new Vector3(1, 0, 0)));
         Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(-1, 0, 0)));
         Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, 1), Quaternion.LookRotation(new Vector3(0, 0, 1)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, -1), Quaternion.LookRotation(new Vector3(0, 0, -1)));
+    }
+
+    private void EightWayAttack()
+    {
+        Instantiate(enemyProjectile, transform.position + new Vector3(1, 0, 0), Quaternion.LookRotation(new Vector3(1, 0, 0)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(1, 0, 1), Quaternion.LookRotation(new Vector3(1, 0, 1)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, 1), Quaternion.LookRotation(new Vector3(0, 0, 1)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(1, 0, -1), Quaternion.LookRotation(new Vector3(1, 0, -1)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 0), Quaternion.LookRotation(new Vector3(-1, 0, 0)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, 1), Quaternion.LookRotation(new Vector3(-1, 0, 1)));
+        Instantiate(enemyProjectile, transform.position + new Vector3(-1, 0, -1), Quaternion.LookRotation(new Vector3(-1, 0, -1)));
         Instantiate(enemyProjectile, transform.position + new Vector3(0, 0, -1), Quaternion.LookRotation(new Vector3(0, 0, -1)));
     }
 
