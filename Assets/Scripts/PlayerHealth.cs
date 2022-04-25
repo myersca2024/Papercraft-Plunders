@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public Dialogue[] dialogues;
 
-    public float maximumHealth = 100f;
+    public float maximumHealth = 200f;
     public float currentHealth;
     public GameManager gm;
     public Text deathText;

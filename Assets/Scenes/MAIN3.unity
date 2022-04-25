@@ -13365,6 +13365,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7432110656182458950}
     - target: {fileID: 4504757565164090752, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
+      propertyPath: currentHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504757565164090752, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
+      propertyPath: maximumHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504757565164090752, guid: a801549df411c5f4eaf00ef20c42b55f, type: 3}
       propertyPath: dialogues.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -42699,9 +42707,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 200
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 200
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

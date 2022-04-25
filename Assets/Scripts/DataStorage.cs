@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataStorage : MonoBehaviour
 {
-    public static float currentHealth = 100;
+    public static float currentHealth = 200;
 
     public static bool startTutorial = false;
     public static bool chestTutorial = false;
