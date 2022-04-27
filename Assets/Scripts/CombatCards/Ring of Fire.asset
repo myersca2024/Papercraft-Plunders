@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e1c28164a908a5742b6566333fd21e3b, type: 3}
   effectText: 
   damage: 3
-  healing: -10
+  healing: 0
   uses: 1
   duration: 3
   multidirectional: 0

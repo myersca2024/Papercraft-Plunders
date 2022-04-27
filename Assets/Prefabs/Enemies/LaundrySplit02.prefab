@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4559458906977026780}
   - component: {fileID: 4870479726739377366}
   - component: {fileID: 8613147451963371178}
+  - component: {fileID: -8457523764814071447}
   m_Layer: 0
   m_Name: LaundrySplit02
   m_TagString: Enemy
@@ -193,3 +194,93 @@ MonoBehaviour:
   attackDelay: 1
   player: {fileID: 0}
   damage: 20
+  strapped: 0
+  enemyProjectile: {fileID: 0}
+--- !u!114 &-8457523764814071447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088965538696470931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94810f85655269049846e1b28b1a35b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initDialogue:
+    names:
+    - Mom
+    - Wally
+    - Wally
+    - Mom
+    - Wally
+    - Mom
+    - Stan
+    - Wally
+    - Wally
+    - Stan
+    - Stan
+    - Mom
+    - Wally & Stan
+    - Mom
+    - Wally
+    - 
+    - Mom
+    - Stan
+    - Mom
+    - Stan
+    - Wally
+    - Wally
+    - Stan
+    - Wally
+    sentences:
+    - "Boys! You\u2019re playing that game again?"
+    - what game
+    - oh you must mean Papercraft Plunders
+    - When did you call it that?
+    - like 5 minutes ago
+    - "So what\u2019s going on in the game right now?"
+    - im about to fight the boss!!!!
+    - oh wait hold on
+    - i forgot to make a boss for this one
+    - YOU FORGOT???
+    - now what am i supposed to do
+    - How about I make the boss for you to fight?
+    - WHAT???
+    - I want to play the game with both of you! I have an idea for the boss.
+    - alright lets see it
+    - Their mother draws something.
+    - "Behold, my boss! It\u2019s all your DIRTY LAUNDRY!"
+    - mom please no anything but that
+    - It has gained a life of its own! And now it wants to FIGHT!
+    - i dont know if i can do this
+    - believe in yourself stan
+    - if you can defeat the laundry then you are the ultimate warrior
+    - i am the ultimate warrior i have to do this
+    - this is it stan. your final challenge. good luck.
+    sprites:
+    - {fileID: 21300000, guid: 1cb356720fcfaa041b4051e823422c2f, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: b80edc81453eb2a4fbf3c032c7308676, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 1cb356720fcfaa041b4051e823422c2f, type: 3}
+    - {fileID: 21300000, guid: 864b9b1762988f34a9758231d07f3dd3, type: 3}
+    - {fileID: 21300000, guid: 09452295bae10ad4893102d0336e7474, type: 3}
+    - {fileID: 21300000, guid: fbdc9b36221cb8d4aad383975d38a8fd, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 1cb356720fcfaa041b4051e823422c2f, type: 3}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: 1cb356720fcfaa041b4051e823422c2f, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: c43e9d8801ca8bb4993efb0c0427a093, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: c43e9d8801ca8bb4993efb0c0427a093, type: 3}
+    - {fileID: 21300000, guid: bd1e078ed499ebf4f94f9d198f551000, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 485b82956ef4f474eb53ce54809233a0, type: 3}
+    - {fileID: 21300000, guid: 9fa0968343c4be24b9f953a4261e1f9e, type: 3}
+    - {fileID: 21300000, guid: 6b8cc8f4f048cda4eba9d84cd9664fe9, type: 3}

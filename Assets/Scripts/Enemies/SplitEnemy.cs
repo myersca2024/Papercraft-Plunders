@@ -21,7 +21,7 @@ public class SplitEnemy : MonoBehaviour
         timePassed = moveDelay;
         attackTimer = 0;
         player = GameObject.FindGameObjectWithTag("Player");
-        enemyHealth = GetComponent<EnemyHealth>();
+        enemyHealth = gameObject.GetComponent<EnemyHealth>();
         go = FindObjectOfType<GridObject>();
         this.transform.position = go.GetGrid().AttemptMove(this.transform.position, this.transform.position);
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Boxed in!
   effectText: Contains 4 Enemies with a rare combat card as a reward.
-  challengeRating: 3
+  challengeRating: 4
   numberOfEnemies: 4
   potentialEnemies:
   - {fileID: 7807792608643645163, guid: 8791eae286c085543b37b9eb727fe5ed, type: 3}
@@ -22,4 +22,5 @@ MonoBehaviour:
   numberOfRewards: 2
   combatCardRewards:
   - {fileID: 11400000, guid: c6cf356ae92dcb2409321901297f648a, type: 2}
+  - {fileID: 11400000, guid: f744d9284e74f6e47acaa59e883904a2, type: 2}
   roomCardRewards: []
