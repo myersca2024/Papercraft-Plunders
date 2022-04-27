@@ -28,6 +28,8 @@ MonoBehaviour:
   numberOfRewards: 3
   combatCardRewards:
   - {fileID: 11400000, guid: 5bb74bce18b331248a6642dae3324a1e, type: 2}
+  - {fileID: 11400000, guid: f4f78a1de4fb8c34294cda9adc424cd0, type: 2}
+  - {fileID: 11400000, guid: 29056955d0804594f85f5828e591b292, type: 2}
   roomCardRewards:
   - {fileID: 11400000, guid: b10ab580e19efe849b813cd6d3dfee85, type: 2}
   - {fileID: 11400000, guid: dfa16d1dd3f3c754b8a6b3b1d1b94c28, type: 2}

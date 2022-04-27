@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b018957e6c38cc6438be75da50bb9493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDelay: 1
+  moveDelay: 0.75
   meleeAttackDelay: 1
   player: {fileID: 0}
   damage: 10

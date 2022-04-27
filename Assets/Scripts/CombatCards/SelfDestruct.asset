@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1b8e5e6a74446b749b9af4ec5a89de11, type: 3}
   effectText: 
   damage: 10
-  healing: -10
+  healing: -5
   uses: 1
   duration: 0.1
   multidirectional: 0
