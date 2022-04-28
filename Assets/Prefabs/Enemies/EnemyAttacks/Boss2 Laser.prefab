@@ -143,4 +143,4 @@ MonoBehaviour:
   moveDelay: 0.3
   player: {fileID: 0}
   damage: 20
-  destroyDelay: 2
+  destroyDelay: 3

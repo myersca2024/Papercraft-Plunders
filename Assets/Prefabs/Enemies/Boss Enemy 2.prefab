@@ -194,7 +194,7 @@ MonoBehaviour:
   moveDelay: 0.75
   meleeAttackDelay: 1
   player: {fileID: 0}
-  damage: 10
+  damage: 20
   enemyProjectile: {fileID: 7027003725158611349, guid: efc803ced9841104d8b100a74830c9a1, type: 3}
   rangedAttackCooldown: 4
   fanDelay: 0.75
