@@ -45,6 +45,12 @@ public class CounterEnemy : MonoBehaviour
             timePassed = 0.0f;
         }
 
+        //sets color to blue every frame if countering--
+        //if the enemy is hit while countering then its color gets reset to normal, even if it's still countering
+        if (counterStance)
+        {
+            material.SetColor("_Color", Color.blue);
+        }
 
         if (attackTimer >= attackDelay && !counterStance)
         {

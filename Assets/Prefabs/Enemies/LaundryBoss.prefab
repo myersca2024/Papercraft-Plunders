@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18e22d3223760f40989e3944aaa2f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 175
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 53d303e7a16bb8b43b9f86060acabe3e, type: 3}
   deathSound: {fileID: 8300000, guid: 5be32d0b99a929247bfe233c55a3a9b0, type: 3}

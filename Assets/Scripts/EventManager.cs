@@ -244,6 +244,7 @@ public class EventManager : MonoBehaviour
         //Debug.Log("making player invincible!");
         //just setting the player's current health to max health constantly
         playerhealth.currentHealth = playerhealth.maximumHealth;
+        playerhealth.healthSlider.value = playerhealth.currentHealth;
 
     }
 

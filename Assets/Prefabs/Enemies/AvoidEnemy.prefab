@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDelay: 1
-  attackDelay: 5
+  attackDelay: 3.5
   player: {fileID: 0}
   damage: 20
   laser: {fileID: 7027003725158611349, guid: a6285fb01aec20e4a9b32b5409a929f3, type: 3}
