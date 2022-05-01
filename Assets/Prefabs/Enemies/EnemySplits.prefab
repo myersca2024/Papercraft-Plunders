@@ -110,7 +110,7 @@ MonoBehaviour:
   moveDelay: 0.5
   attackDelay: 1
   player: {fileID: 0}
-  damage: 15
+  damage: 7
   strapped: 0
   enemyProjectile: {fileID: 0}
 --- !u!1 &2073029538378981866

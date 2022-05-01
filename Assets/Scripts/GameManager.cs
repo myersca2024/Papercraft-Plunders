@@ -60,12 +60,15 @@ public class GameManager : MonoBehaviour
         DungeonRoom.grid[2, 0] = true;
         DungeonRoom.bossRoomID = new Vector2Int();
         DungeonRoom.treasureRoomID = new Vector2Int();
+        player.GetComponent<PlayerHealth>().currentHealth = player.GetComponent<PlayerHealth>().maximumHealth;
+        player.GetComponent<PlayerHealth>().healthSlider.value = player.GetComponent<PlayerHealth>().maximumHealth;
     }
     void Start()
     {
-        InitializeObjects();
+       
         roomGrid = new bool[5, 7];
         player = FindObjectOfType<PlayerController>().gameObject;
+        InitializeObjects();
         go = FindObjectOfType<GridObject>();
         xSize *= go.cellSize;
         zSize *= go.cellSize;
